@@ -1,0 +1,667 @@
+{
+  "Percent Of": {
+    "prior": 0.05851251549018819,
+    "learns": 0.012996683982730742,
+    "guesses": 0.5339581704995794,
+    "slips": 0.0006898601772722872,
+    "forgets": 0.0
+  },
+  "Circle Graph": {
+    "prior": 0.5628464345577833,
+    "learns": 0.05845906287235211,
+    "guesses": 0.13951327800486416,
+    "slips": 0.28755331014546825,
+    "forgets": 0.0
+  },
+  "Finding Percents": {
+    "prior": 0.40382089864655796,
+    "learns": 0.08560312863684555,
+    "guesses": 0.11657517287282447,
+    "slips": 0.19921718170330052,
+    "forgets": 0.0
+  },
+  "Equivalent Fractions": {
+    "prior": 0.6072801459104594,
+    "learns": 0.09522080940338977,
+    "guesses": 0.08764974561756182,
+    "slips": 0.2867211465345994,
+    "forgets": 0.0
+  },
+  "Proportion": {
+    "prior": 0.5586980077520078,
+    "learns": 0.041978526454889066,
+    "guesses": 0.3536578523036067,
+    "slips": 0.18608155422938047,
+    "forgets": 0.0
+  },
+  "Median": {
+    "prior": 0.5280915779995266,
+    "learns": 0.08948108600339325,
+    "guesses": 0.33142856465023435,
+    "slips": 0.1669061529120701,
+    "forgets": 0.0
+  },
+  "Range": {
+    "prior": 0.7781007715234203,
+    "learns": 0.4232082974981775,
+    "guesses": 0.02025663500281799,
+    "slips": 0.1730061117893451,
+    "forgets": 0.0
+  },
+  "Table": {
+    "prior": 0.854775766443008,
+    "learns": 0.11890714506309895,
+    "guesses": 0.10707267992693258,
+    "slips": 0.20406935209579383,
+    "forgets": 0.0
+  },
+  "Mean": {
+    "prior": 0.6390478484625003,
+    "learns": 0.14935822198929566,
+    "guesses": 0.08363362121344552,
+    "slips": 0.3139379128350089,
+    "forgets": 0.0
+  },
+  "Multiplication and Division Integers": {
+    "prior": 0.7807387535603924,
+    "learns": 0.002008193512637128,
+    "guesses": 0.5045140492880663,
+    "slips": 0.06698166273726604,
+    "forgets": 0.0
+  },
+  "Equation Solving Two or Fewer Steps": {
+    "prior": 0.6416626571109912,
+    "learns": 0.027523483518399096,
+    "guesses": 0.34217047430121333,
+    "slips": 0.22973286798416798,
+    "forgets": 0.0
+  },
+  "Equation Solving More Than Two Steps": {
+    "prior": 0.1760644113337584,
+    "learns": 0.6329355188207191,
+    "guesses": 0.507329652256698,
+    "slips": 0.22394124750905722,
+    "forgets": 0.0
+  },
+  "Addition and Subtraction Positive Decimals": {
+    "prior": 0.6284053830059765,
+    "learns": 0.08677797041476336,
+    "guesses": 0.13893249308894,
+    "slips": 0.1973898251738151,
+    "forgets": 0.0
+  },
+  "Addition and Subtraction Integers": {
+    "prior": 0.541744843097294,
+    "learns": 0.0063570320219949435,
+    "guesses": 0.4389187380475364,
+    "slips": 0.07794720337965341,
+    "forgets": 0.0
+  },
+  "Congruence": {
+    "prior": 0.8639469038045456,
+    "learns": 0.7373888229735178,
+    "guesses": 0.3541389950289737,
+    "slips": 0.047617552503040395,
+    "forgets": 0.0
+  },
+  "Rounding": {
+    "prior": 0.7165210838522628,
+    "learns": 0.25662005530461107,
+    "guesses": 0.19801977810130447,
+    "slips": 0.15061137550910694,
+    "forgets": 0.0
+  },
+  "Multiplication Fractions": {
+    "prior": 0.6138516719610032,
+    "learns": 0.12162683701138335,
+    "guesses": 0.3105885997095148,
+    "slips": 0.21357618250191562,
+    "forgets": 0.0
+  },
+  "Addition and Subtraction Fractions": {
+    "prior": 0.7404229322742857,
+    "learns": 0.0905229571171474,
+    "guesses": 0.12216647821437382,
+    "slips": 0.19139936102391045,
+    "forgets": 0.0
+  },
+  "Addition Whole Numbers": {
+    "prior": 0.5958625810015681,
+    "learns": 0.20730436923231876,
+    "guesses": 0.3752566816930841,
+    "slips": 0.11318748799455872,
+    "forgets": 0.0
+  },
+  "Ordering Integers": {
+    "prior": 0.07112809994666824,
+    "learns": 0.013364920853288536,
+    "guesses": 0.86756132775308,
+    "slips": 0.5433624394844483,
+    "forgets": 0.0
+  },
+  "Ordering Positive Decimals": {
+    "prior": 0.6749254187383368,
+    "learns": 0.08017447242922035,
+    "guesses": 0.41641615335187854,
+    "slips": 0.10719651152786108,
+    "forgets": 0.0
+  },
+  "Order of Operations +,-,/,* () positive reals": {
+    "prior": 0.8221821163962477,
+    "learns": 0.06348447327148751,
+    "guesses": 0.15854944836297571,
+    "slips": 0.276629767085982,
+    "forgets": 0.0
+  },
+  "Solving for a variable": {
+    "prior": 0.6708860179374784,
+    "learns": 0.06003174784210768,
+    "guesses": 0.32367269934297804,
+    "slips": 0.16537676207938296,
+    "forgets": 0.0
+  },
+  "Surface Area Rectangular Prism": {
+    "prior": 0.44682599650269955,
+    "learns": 0.2616114486442298,
+    "guesses": 0.11104869908504045,
+    "slips": 0.24559188934333842,
+    "forgets": 0.0
+  },
+  "Nets of 3D Figures": {
+    "prior": 0.9787627520939925,
+    "learns": 0.10959990261282267,
+    "guesses": 0.46474265415865273,
+    "slips": 0.032779820265653674,
+    "forgets": 0.0
+  },
+  "Calculations with Similar Figures": {
+    "prior": 0.7271997284219299,
+    "learns": 0.1108159296309806,
+    "guesses": 0.24047837507710473,
+    "slips": 0.2586649632176943,
+    "forgets": 0.0
+  },
+  "Probability of a Single Event": {
+    "prior": 0.8776659014739463,
+    "learns": 0.07837251092061034,
+    "guesses": 0.11033622936526823,
+    "slips": 0.18019164278471678,
+    "forgets": 0.0
+  },
+  "Fraction Of": {
+    "prior": 0.9421990714394939,
+    "learns": 0.23032605126347952,
+    "guesses": 0.0786302183877537,
+    "slips": 0.09444760407404347,
+    "forgets": 0.0
+  },
+  "Mode": {
+    "prior": 0.9026813634826181,
+    "learns": 0.28140419670756806,
+    "guesses": 0.04491685447473569,
+    "slips": 0.06893599877103347,
+    "forgets": 0.0
+  },
+  "Conversion of Fraction Decimals Percents": {
+    "prior": 0.6167572017388457,
+    "learns": 0.01211592034771084,
+    "guesses": 0.4063408475747463,
+    "slips": 0.18721543344113717,
+    "forgets": 0.0
+  },
+  "Absolute Value": {
+    "prior": 0.5995174169669977,
+    "learns": 0.11857171553831351,
+    "guesses": 0.39904677120736654,
+    "slips": 0.09775275723901654,
+    "forgets": 0.0
+  },
+  "Subtraction Whole Numbers": {
+    "prior": 0.8565371450876841,
+    "learns": 0.02101756026167565,
+    "guesses": 0.07716607575031253,
+    "slips": 0.22825403929794438,
+    "forgets": 0.0
+  },
+  "Ordering Fractions": {
+    "prior": 0.6463854209048375,
+    "learns": 0.06484613416291975,
+    "guesses": 0.5025714408660253,
+    "slips": 0.0719068471288788,
+    "forgets": 0.0
+  },
+  "D.4.8-understanding-concept-of-probabilities": {
+    "prior": 0.23577305958259112,
+    "learns": 0.12390113797864544,
+    "guesses": 0.8226366554809519,
+    "slips": 0.09152085947386644,
+    "forgets": 0.0
+  },
+  "Complementary and Supplementary Angles": {
+    "prior": 0.8436223211978062,
+    "learns": 0.11898291421396462,
+    "guesses": 0.11649326644911595,
+    "slips": 0.18052138107025842,
+    "forgets": 0.0
+  },
+  "Circumference ": {
+    "prior": 0.90694137017462,
+    "learns": 0.10921683554388066,
+    "guesses": 0.13340162226008212,
+    "slips": 0.2684183558269534,
+    "forgets": 0.0
+  },
+  "Area Circle": {
+    "prior": 0.9059420961639387,
+    "learns": 0.15372341163354242,
+    "guesses": 0.1292527691191173,
+    "slips": 0.26266780309340315,
+    "forgets": 0.0
+  },
+  "Unit Conversion Within a System": {
+    "prior": 0.610564352499448,
+    "learns": 0.18713437387766188,
+    "guesses": 0.23247798037470196,
+    "slips": 0.3181099716545993,
+    "forgets": 0.0
+  },
+  "Unit Rate": {
+    "prior": 0.6729723485667997,
+    "learns": 0.0829261170432075,
+    "guesses": 0.14925687601862841,
+    "slips": 0.388007919876751,
+    "forgets": 0.0
+  },
+  "Multiplication Whole Numbers": {
+    "prior": 0.6606278883543171,
+    "learns": 0.053673675761791544,
+    "guesses": 0.11596434037831438,
+    "slips": 0.38228600585405365,
+    "forgets": 0.0
+  },
+  "Multiplication and Division Positive Decimals": {
+    "prior": 0.8056200359942077,
+    "learns": 0.10049752349890499,
+    "guesses": 0.3101933668961218,
+    "slips": 0.09263197926030746,
+    "forgets": 0.0
+  },
+  "Division Fractions": {
+    "prior": 0.6517266104342864,
+    "learns": 0.20127175659495694,
+    "guesses": 0.14543974286834588,
+    "slips": 0.1754235952256351,
+    "forgets": 0.0
+  },
+  "Exponents": {
+    "prior": 0.5156915223690145,
+    "learns": 0.16789996631821708,
+    "guesses": 0.4756927186319702,
+    "slips": 0.06273608851501747,
+    "forgets": 0.0
+  },
+  "Divisibility Rules": {
+    "prior": 0.3406879296392644,
+    "learns": 0.17913870655942613,
+    "guesses": 0.2032769611467129,
+    "slips": 0.21416477202489706,
+    "forgets": 0.0
+  },
+  "Least Common Multiple": {
+    "prior": 0.5069100852152688,
+    "learns": 0.27440441426536283,
+    "guesses": 0.13182972052317943,
+    "slips": 0.23881504642774892,
+    "forgets": 0.0
+  },
+  "Ordering Real Numbers": {
+    "prior": 0.687635888993092,
+    "learns": 0.08419636431130952,
+    "guesses": 0.2420590162624179,
+    "slips": 0.17385739641770095,
+    "forgets": 0.0
+  },
+  "Square Root": {
+    "prior": 0.7826765352589077,
+    "learns": 0.04851810175157353,
+    "guesses": 0.3442184102156288,
+    "slips": 0.15485262195646432,
+    "forgets": 0.0
+  },
+  "Order of Operations All": {
+    "prior": 0.6166639090726268,
+    "learns": 0.10272710972213422,
+    "guesses": 0.2716636776725204,
+    "slips": 0.27401997002207323,
+    "forgets": 0.0
+  },
+  "Prime Number": {
+    "prior": 0.3361035133373552,
+    "learns": 0.5317823763094114,
+    "guesses": 0.3918775017143171,
+    "slips": 0.09653790709734877,
+    "forgets": 0.0
+  },
+  "Estimation": {
+    "prior": 0.7025874230561044,
+    "learns": 0.15582912479170505,
+    "guesses": 0.4278672416125537,
+    "slips": 0.13475635655102625,
+    "forgets": 0.0
+  },
+  "Scientific Notation": {
+    "prior": 0.5915844755215718,
+    "learns": 0.18783670915763315,
+    "guesses": 0.324005970695276,
+    "slips": 0.09847225918344618,
+    "forgets": 0.0
+  },
+  "Pythagorean Theorem": {
+    "prior": 0.6504866349942283,
+    "learns": 0.025572501057256353,
+    "guesses": 0.4035703765496258,
+    "slips": 0.2921716880468134,
+    "forgets": 0.0
+  },
+  "Scatter Plot": {
+    "prior": 0.6417908126366403,
+    "learns": 0.4024017520611888,
+    "guesses": 0.39003494384720166,
+    "slips": 0.04774809545404179,
+    "forgets": 0.0
+  },
+  "Pattern Finding ": {
+    "prior": 0.6518185748540166,
+    "learns": 0.019543414221471794,
+    "guesses": 0.09131242196612481,
+    "slips": 0.23052797146391574,
+    "forgets": 0.0
+  },
+  "Scale Factor": {
+    "prior": 0.5010854237964233,
+    "learns": 0.5437972860373271,
+    "guesses": 0.18466058574721173,
+    "slips": 0.20555204271631397,
+    "forgets": 0.0
+  },
+  "Interior Angles Figures with More than 3 Sides": {
+    "prior": 0.6847286498714145,
+    "learns": 0.2088797904811679,
+    "guesses": 0.1510181775890643,
+    "slips": 0.2377818314744098,
+    "forgets": 0.0
+  },
+  "Interior Angles Triangle": {
+    "prior": 0.8135524878930875,
+    "learns": 0.1732498897214043,
+    "guesses": 0.16076642212454575,
+    "slips": 0.21846350224997704,
+    "forgets": 0.0
+  },
+  "Rotations": {
+    "prior": 0.006880464750189551,
+    "learns": 0.06489543224013083,
+    "guesses": 0.07955921704215273,
+    "slips": 0.09631506371339585,
+    "forgets": 0.0
+  },
+  "Reflection": {
+    "prior": 0.7008986372445162,
+    "learns": 0.05182202766523225,
+    "guesses": 0.03593666800860715,
+    "slips": 0.44850499740731775,
+    "forgets": 0.0
+  },
+  "Translations": {
+    "prior": 0.891130557610693,
+    "learns": 0.027600963041898966,
+    "guesses": 0.025188626928281777,
+    "slips": 0.3990450497514343,
+    "forgets": 0.0
+  },
+  "Box and Whisker": {
+    "prior": 0.7501359253347198,
+    "learns": 0.11736629772680954,
+    "guesses": 0.3702648126783053,
+    "slips": 0.1588714834333912,
+    "forgets": 0.0
+  },
+  "Probability of Two Distinct Events": {
+    "prior": 0.643413083860548,
+    "learns": 0.02014406088899443,
+    "guesses": 0.26662898199505614,
+    "slips": 0.40968117996209363,
+    "forgets": 0.0
+  },
+  "Counting Methods": {
+    "prior": 0.7329432497747255,
+    "learns": 0.0021447436286783235,
+    "guesses": 0.3512308624085889,
+    "slips": 0.40183033206302643,
+    "forgets": 0.0
+  },
+  "Histogram as Table or Graph": {
+    "prior": 0.7268052172818562,
+    "learns": 0.2433767829017074,
+    "guesses": 0.22856960674244794,
+    "slips": 0.22421936236368673,
+    "forgets": 0.0
+  },
+  "Stem and Leaf Plot": {
+    "prior": 0.756326357904125,
+    "learns": 0.1278226516595899,
+    "guesses": 0.14897574952050005,
+    "slips": 0.23066961134409522,
+    "forgets": 0.0
+  },
+  "Venn Diagram": {
+    "prior": 0.10657900189611579,
+    "learns": 0.014825699297248796,
+    "guesses": 0.5822840536610113,
+    "slips": 4.195671701609456e-05,
+    "forgets": 0.0
+  },
+  "Number Line": {
+    "prior": 0.6516063468129094,
+    "learns": 0.07868703672797984,
+    "guesses": 0.2872594357766555,
+    "slips": 0.3041466378299161,
+    "forgets": 0.0
+  },
+  "Solving Inequalities": {
+    "prior": 0.5260006584616035,
+    "learns": 0.06925893607883887,
+    "guesses": 0.3552664758025319,
+    "slips": 0.26850194317714643,
+    "forgets": 0.0
+  },
+  "Write Linear Equation from Situation": {
+    "prior": 0.9322331475487613,
+    "learns": 0.08637919321458955,
+    "guesses": 0.009550328166274562,
+    "slips": 0.11905325044517569,
+    "forgets": 0.0
+  },
+  "Write Linear Equation from Ordered Pairs": {
+    "prior": 0.8771215917851475,
+    "learns": 0.11054857629237602,
+    "guesses": 0.03114707451985764,
+    "slips": 0.35831847250033955,
+    "forgets": 0.0
+  },
+  "Write Linear Equation from Graph": {
+    "prior": 0.7039158775045428,
+    "learns": 0.059823877137170606,
+    "guesses": 0.11505034472938411,
+    "slips": 0.44418031030355337,
+    "forgets": 0.0
+  },
+  "Effect of Changing Dimensions of a Shape Prportionally": {
+    "prior": 0.0658075450087579,
+    "learns": 0.4287788153649363,
+    "guesses": 0.12363461206765729,
+    "slips": 0.17924140432421765,
+    "forgets": 0.0
+  },
+  "Volume Rectangular Prism": {
+    "prior": 0.8007139481966503,
+    "learns": 0.004194937215113563,
+    "guesses": 0.4660619810966589,
+    "slips": 0.016956105314403457,
+    "forgets": 0.0
+  },
+  "Volume Cylinder": {
+    "prior": 0.6648535163476272,
+    "learns": 0.01223444983744501,
+    "guesses": 0.009518461693657844,
+    "slips": 0.12354699530148523,
+    "forgets": 0.0
+  },
+  "Volume Sphere": {
+    "prior": 0.8530447650348325,
+    "learns": 0.05878494758614676,
+    "guesses": 0.369678876511287,
+    "slips": 0.32792883608068,
+    "forgets": 0.0
+  },
+  "Perimeter of a Polygon": {
+    "prior": 0.9009116153875528,
+    "learns": 0.00034385720468926243,
+    "guesses": 0.12485945014615547,
+    "slips": 0.2730064196966833,
+    "forgets": 0.0
+  },
+  "Area Rectangle": {
+    "prior": 0.894442960041516,
+    "learns": 0.012718776179064072,
+    "guesses": 0.024269398643741724,
+    "slips": 0.022442829843599774,
+    "forgets": 0.0
+  },
+  "Area Irregular Figure": {
+    "prior": 0.7023453948401959,
+    "learns": 0.053549996800723476,
+    "guesses": 0.15307269648556562,
+    "slips": 0.31573721596108223,
+    "forgets": 0.0
+  },
+  "Area Trapezoid": {
+    "prior": 0.7930991233186874,
+    "learns": 0.009444419404735355,
+    "guesses": 0.011676734322430434,
+    "slips": 0.12951473705622674,
+    "forgets": 0.0
+  },
+  "Greatest Common Factor": {
+    "prior": 0.6697365414529863,
+    "learns": 0.006731531421509511,
+    "guesses": 0.25482913818176706,
+    "slips": 1.7339597725371112e-06,
+    "forgets": 0.0
+  },
+  "Surface Area Cylinder": {
+    "prior": 0.0845343722975503,
+    "learns": 0.18507171795496175,
+    "guesses": 0.17458642520379863,
+    "slips": 0.3303657411598644,
+    "forgets": 0.0
+  },
+  "Angles on Parallel Lines Cut by a Transversal": {
+    "prior": 0.608809826204662,
+    "learns": 0.003558479430878493,
+    "guesses": 0.6975882816532024,
+    "slips": 0.05228732012245372,
+    "forgets": 0.0
+  },
+  "Area Parallelogram": {
+    "prior": 0.9148628621259558,
+    "learns": 0.0017754227934654173,
+    "guesses": 0.014206874504770676,
+    "slips": 2.876194021656978e-10,
+    "forgets": 0.0
+  },
+  "Area Triangle": {
+    "prior": 0.8374372399479714,
+    "learns": 0.01449388089908037,
+    "guesses": 0.11724162193600304,
+    "slips": 0.021363376291323875,
+    "forgets": 0.0
+  },
+  "Recognize Linear Pattern": {
+    "prior": 0.6265028603693409,
+    "learns": 0.043506653986566474,
+    "guesses": 0.00012593658826026311,
+    "slips": 0.1410911676869808,
+    "forgets": 0.0
+  },
+  "Angles - Obtuse, Acute, and Right": {
+    "prior": 0.5913909078267279,
+    "learns": 0.002260992615387997,
+    "guesses": 0.3347540365398578,
+    "slips": 0.21919636243270355,
+    "forgets": 0.0
+  },
+  "Polynomial Factors": {
+    "prior": 0.20917734369717744,
+    "learns": 0.10413248486158111,
+    "guesses": 0.28880209287890407,
+    "slips": 0.2833846569227509,
+    "forgets": 0.0
+  },
+  "Solving Systems of Linear Equations by Graphing": {
+    "prior": 0.33375933084138615,
+    "learns": 0.1273217434826501,
+    "guesses": 0.3305441333968205,
+    "slips": 0.26175839971687703,
+    "forgets": 0.0
+  },
+  "Algebraic Solving": {
+    "prior": 0.5078640472149684,
+    "learns": 0.0848101621058771,
+    "guesses": 0.14014570302445123,
+    "slips": 0.4286310308219722,
+    "forgets": 0.0
+  },
+  "Percents": {
+    "prior": 0.2651064598365966,
+    "learns": 0.05051716407969663,
+    "guesses": 0.15375320845069473,
+    "slips": 0.08631954008750016,
+    "forgets": 0.0
+  },
+  "Solving Systems of Linear Equations": {
+    "prior": 0.17519060920869853,
+    "learns": 0.04503057780033179,
+    "guesses": 0.04132096074533145,
+    "slips": 0.5136859711044822,
+    "forgets": 0.0
+  },
+  "Simplifying Expressions positive exponents": {
+    "prior": 0.011041522580481314,
+    "learns": 0.8696846988763113,
+    "guesses": 0.005024141567379024,
+    "slips": 0.3161126586661871,
+    "forgets": 0.0
+  },
+  "Parts of a Polyomial, Terms, Coefficient, Monomial, Exponent, Variable": {
+    "prior": 0.33076555224060944,
+    "learns": 0.006968395533797704,
+    "guesses": 0.3070057167146186,
+    "slips": 0.1344438415666647,
+    "forgets": 0.0
+  },
+  "Finding Slope From Equation": {
+    "prior": 0.8333145052516749,
+    "learns": 0.037220119622787706,
+    "guesses": 9.853420677200344e-05,
+    "slips": 0.11249017083344402,
+    "forgets": 0.0
+  },
+  "Recognize Quadratic Pattern": {
+    "prior": 0.4999809963446858,
+    "learns": 0.020022896822495164,
+    "guesses": 3.5219575743038805e-05,
+    "slips": 0.048481864086772915,
+    "forgets": 0.0
+  }
+}
