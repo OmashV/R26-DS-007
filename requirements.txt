@@ -6,5 +6,6 @@ numpy
 scikit-learn<1.5pytest
 pytest-asyncio
 httpx
-python-dotenv
 pydantic
+google-genai
+python-dotenv

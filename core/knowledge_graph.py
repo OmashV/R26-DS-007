@@ -111,7 +111,8 @@ class KnowledgeGraph:
     def update_mastery(self, student_id: str, skill: str) -> float:
         """
         Recalculate mastery for (student, skill) using full attempt history,
-        and persist the new value. Returns the new mastery probability.
+        persist the new value, and store the previous value for regression detection.
+        Returns the new mastery probability.
         """
         if not self.predictor.has_skill(skill):
             logger.warning(f"Skill '{skill}' not in BKT model — skipping update")
@@ -126,16 +127,24 @@ class KnowledgeGraph:
         label = label_mastery(probability)
 
         with get_connection() as conn:
+            existing = conn.execute(
+                "SELECT mastery_probability FROM mastery WHERE student_id = ? AND skill_name = ?",
+                (student_id, skill),
+            ).fetchone()
+            previous = existing["mastery_probability"] if existing else None
+
             conn.execute(
                 """
-                INSERT INTO mastery (student_id, skill_name, mastery_probability, mastery_label)
-                VALUES (?, ?, ?, ?)
+                INSERT INTO mastery 
+                    (student_id, skill_name, mastery_probability, mastery_label, previous_mastery_probability)
+                VALUES (?, ?, ?, ?, ?)
                 ON CONFLICT(student_id, skill_name) DO UPDATE SET
+                    previous_mastery_probability = mastery.mastery_probability,
                     mastery_probability = excluded.mastery_probability,
                     mastery_label = excluded.mastery_label,
                     last_updated = CURRENT_TIMESTAMP
                 """,
-                (student_id, skill, probability, label),
+                (student_id, skill, probability, label, previous),
             )
 
         logger.info(
@@ -149,7 +158,8 @@ class KnowledgeGraph:
         with get_connection() as conn:
             row = conn.execute(
                 """
-                SELECT mastery_probability, mastery_label, last_updated
+                SELECT mastery_probability, mastery_label,
+                       previous_mastery_probability, last_updated
                 FROM mastery
                 WHERE student_id = ? AND skill_name = ?
                 """,
@@ -163,6 +173,7 @@ class KnowledgeGraph:
             "skill": skill,
             "mastery_probability": row["mastery_probability"],
             "mastery_label": row["mastery_label"],
+            "previous_mastery_probability": row["previous_mastery_probability"],
             "last_updated": row["last_updated"],
         }
 
@@ -171,7 +182,8 @@ class KnowledgeGraph:
         with get_connection() as conn:
             rows = conn.execute(
                 """
-                SELECT skill_name, mastery_probability, mastery_label, last_updated
+                SELECT skill_name, mastery_probability, mastery_label,
+                       previous_mastery_probability, last_updated
                 FROM mastery
                 WHERE student_id = ?
                 ORDER BY skill_name
@@ -184,6 +196,7 @@ class KnowledgeGraph:
                 "skill": r["skill_name"],
                 "mastery_probability": r["mastery_probability"],
                 "mastery_label": r["mastery_label"],
+                "previous_mastery_probability": r["previous_mastery_probability"],
                 "last_updated": r["last_updated"],
             }
             for r in rows

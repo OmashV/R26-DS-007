@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS mastery (
     skill_name TEXT,
     mastery_probability REAL NOT NULL,
     mastery_label TEXT NOT NULL,
+    previous_mastery_probability REAL,  -- NEW
     last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (student_id, skill_name),
     FOREIGN KEY (student_id) REFERENCES students(student_id)
