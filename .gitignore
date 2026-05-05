@@ -1,0 +1,69 @@
+# ============================================================
+# FAPR-LB .gitignore
+# ============================================================
+
+# --- Python virtual environment ---
+venv/
+.venv/
+env/
+
+# --- Python bytecode and caches ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# --- IDE / editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# --- Jupyter notebook output (keep code, ignore output binaries) ---
+# (We do NOT ignore .ipynb files themselves — those should be committed)
+*-checkpoint.ipynb
+
+# --- Trained model artefacts (too large for GitHub) ---
+artifacts/pps_deberta/
+artifacts/tsrp/
+artifacts/*.pkl
+artifacts/*.pt
+artifacts/*.bin
+artifacts/*.safetensors
+
+# --- Raw data (too large, also licensing reasons) ---
+data/raw/
+data/processed/
+
+# --- Reports: keep PNGs and CSV, but ignore any zips ---
+reports/*.zip
+
+# --- Local logs and temp files ---
+*.log
+tmp/
+temp/
+.cache/
+
+# --- Backup files we created ---
+*.bak
+*_OLD.py
+*_OLD.py.bak
+
+# --- Test scratchpad ---
+test_pps.py
+scratch.py
+
+# --- OS junk ---
+.Trashes
+.Spotlight-V100
+ehthumbs.db
+
+# --- Colab uploads / downloads ---
+fapr-lb-eval.zip
+fapr-lb-results.zip
+fapr-lb-reports.zip
+pps_deberta.zip

@@ -1,0 +1,18 @@
+{
+  "feature_cols": [
+    "skill_seen_count",
+    "skill_correct_rate",
+    "overall_correct_rate",
+    "recent_correct_rate",
+    "help_dependency",
+    "mean_attempts",
+    "log_response_time",
+    "prev_correct",
+    "prev_hint_used"
+  ],
+  "test_auc": 0.8634309202173334,
+  "test_logloss": 0.3964573554909018,
+  "best_iteration": 412,
+  "n_train": 343813,
+  "n_test": 81148
+}
