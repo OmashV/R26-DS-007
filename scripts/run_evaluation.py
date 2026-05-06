@@ -28,10 +28,10 @@ from src.pipeline.closed_loop import (
 
 
 # ---- Configuration ----
-N_EPISODES = 200       # per policy per seed
+N_EPISODES = 200       # per policy
 MAX_TURNS = 20
 MIN_FAILURES = 3
-SEEDS = [1234, 2345, 3456]   # 3 seeds for averaged results
+SEEDS = [1234]   # Single seed for PP1 (CPU run); 3-seed averaged version is PP2 work.
 
 
 # Singleton sim â€” built once, reused for every episode. We only swap the
