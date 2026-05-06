@@ -28,12 +28,13 @@ from src.pipeline.closed_loop import (
 
 
 # ---- Configuration ----
-N_EPISODES = 200       # per policy (or per ablation)
+N_EPISODES = 200       # per policy per seed
 MAX_TURNS = 20
 MIN_FAILURES = 3
+SEEDS = [1234, 2345, 3456]   # 3 seeds for averaged results
 
 
-# Singleton sim — built once, reused for every episode. We only swap the
+# Singleton sim â€” built once, reused for every episode. We only swap the
 # RNG between episodes, which is cheap. This avoids re-loading the parquet
 # and re-building the bins on every episode.
 _GLOBAL_SIM = None
@@ -169,62 +170,84 @@ def main():
     print(f"Loading PPS scorer (one-time cost)...")
     pps = PreferenceScorer()
 
-    # ---------- Stage 1: Main policy comparison ----------
-    print(f"\n=== Stage 1: 4 policies × {N_EPISODES} episodes ===")
-    policies = {
+    print(f"\n=== 3-seed evaluation ===")
+    print(f"Seeds: {SEEDS}")
+    print(f"Episodes per seed per policy: {N_EPISODES}")
+    print(f"Total runs: {len(SEEDS)} seeds × 8 policies = {len(SEEDS)*8}")
+
+    policies_factory = {
         "random":   lambda: RandomPolicy(seed=1),
         "fixed_we": lambda: FixedPolicy("worked_example"),
         "rule":     lambda: RulePolicy(),
         "lin_ts":   lambda: LinTSBandit(context_dim=CONTEXT_DIM, seed=0),
     }
 
-    main_results = {}
-    for name, factory in policies.items():
-        print(f"  [policy: {name}] running {N_EPISODES} episodes...")
-        df = run_full_eval(factory, pps, N_EPISODES, ablation=None,
-                           base_seed=1234 if name != "fixed_we" else 5678)
-        main_results[name] = df
-        print(f"    turns={len(df)}  mean_reward={df['reward'].mean():.4f}  "
-              f"correct_rate={df['sim_correct'].mean():.4f}")
+    # Collect per-seed results
+    main_results_per_seed = {name: [] for name in policies_factory}
+    ablation_results_per_seed = {name: [] for name in ABLATIONS}
 
-    # ---------- Stage 2: LinTS ablations ----------
-    print(f"\n=== Stage 2: LinTS ablations × {N_EPISODES} episodes ===")
-    ablation_results = {}
-    for name, ab in ABLATIONS.items():
-        print(f"  [ablation: {name}] running {N_EPISODES} episodes...")
-        df = run_full_eval(
-            lambda: LinTSBandit(context_dim=CONTEXT_DIM, seed=0),
-            pps, N_EPISODES, ablation=ab,
-            base_seed=2345,
-        )
-        ablation_results[name] = df
-        print(f"    turns={len(df)}  mean_reward={df['reward'].mean():.4f}  "
-              f"correct_rate={df['sim_correct'].mean():.4f}")
+    for seed_idx, seed in enumerate(SEEDS):
+        print(f"\n=== Seed {seed_idx+1}/{len(SEEDS)}: base_seed={seed} ===")
 
-    # ---------- Stage 3: Save results CSV ----------
+        # Stage 1: 4 policies
+        for name, factory in policies_factory.items():
+            print(f"  [policy: {name}] running {N_EPISODES} episodes...")
+            df = run_full_eval(factory, pps, N_EPISODES, ablation=None,
+                               base_seed=seed)
+            main_results_per_seed[name].append(df)
+            print(f"    turns={len(df)}  mean_reward={df['reward'].mean():.4f}  "
+                  f"correct_rate={df['sim_correct'].mean():.4f}")
+
+        # Stage 2: 4 ablations
+        for name, ab in ABLATIONS.items():
+            print(f"  [ablation: {name}] running {N_EPISODES} episodes...")
+            df = run_full_eval(
+                lambda: LinTSBandit(context_dim=CONTEXT_DIM, seed=0),
+                pps, N_EPISODES, ablation=ab,
+                base_seed=seed + 1000,
+            )
+            ablation_results_per_seed[name].append(df)
+            print(f"    turns={len(df)}  mean_reward={df['reward'].mean():.4f}  "
+                  f"correct_rate={df['sim_correct'].mean():.4f}")
+
+    # ---- Aggregate across seeds ----
+    print("\n=== Aggregating across seeds ===")
     summary_rows = []
-    for name, df in {**main_results, **ablation_results}.items():
-        if df.empty:
+    main_results = {}
+    ablation_results = {}
+
+    for name, dfs in {**main_results_per_seed, **ablation_results_per_seed}.items():
+        if not dfs:
             continue
+        rewards_per_seed = [df["reward"].mean() for df in dfs if not df.empty]
+        correct_per_seed = [df["sim_correct"].mean() for df in dfs if not df.empty]
+        hints_per_seed = [df["sim_hint"].mean() for df in dfs if not df.empty]
+        # Pool the per-seed dataframes for plotting (use first seed)
+        if name in policies_factory:
+            main_results[name] = dfs[0]
+        else:
+            ablation_results[name] = dfs[0]
         summary_rows.append({
             "policy": name,
+            "n_seeds": len(rewards_per_seed),
             "n_episodes": N_EPISODES,
-            "n_turns": len(df),
-            "mean_reward": df["reward"].mean(),
-            "correct_rate": df["sim_correct"].mean(),
-            "mean_hint": df["sim_hint"].mean(),
-            "hint_used_rate": (df["sim_hint"] > 0).mean(),
+            "mean_reward_avg": float(np.mean(rewards_per_seed)),
+            "mean_reward_std": float(np.std(rewards_per_seed)),
+            "correct_rate_avg": float(np.mean(correct_per_seed)),
+            "correct_rate_std": float(np.std(correct_per_seed)),
+            "mean_hint_avg": float(np.mean(hints_per_seed)),
         })
+
     summary_df = pd.DataFrame(summary_rows).round(4)
     summary_path = REPORTS_DIR / "evaluation_summary.csv"
     summary_df.to_csv(summary_path, index=False)
     print(f"\nSaved summary -> {summary_path}")
     print(summary_df.to_string(index=False))
 
-    # ---------- Stage 4: Plots ----------
+    # ---------- Stage 4: Plots (uses first seed's data for trace plots) ----------
     print("\n=== Stage 4: Generating plots ===")
 
-    # Plot 1: Cumulative reward curve (4 main policies)
+    # Plot 1: Cumulative reward curve (4 main policies, first seed)
     plt.figure(figsize=(8, 5))
     for name, df in main_results.items():
         if df.empty:
@@ -233,7 +256,7 @@ def main():
         plt.plot(cum_mean.values, label=name, linewidth=1.6)
     plt.xlabel("Turn (across episodes)")
     plt.ylabel("Cumulative mean reward")
-    plt.title(f"Closed-loop performance: 4 policies × {N_EPISODES} episodes")
+    plt.title(f"Closed-loop performance: 4 policies × {N_EPISODES} episodes (seed 1)")
     plt.legend()
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
@@ -241,7 +264,7 @@ def main():
     plt.savefig(p1, dpi=140); plt.close()
     print(f"  Saved {p1}")
 
-    # Plot 2: Cumulative regret (relative to best-policy mean reward as reference)
+    # Plot 2: Cumulative regret
     best_mean = max(df["reward"].mean() for df in main_results.values() if not df.empty)
     plt.figure(figsize=(8, 5))
     for name, df in main_results.items():
@@ -250,7 +273,7 @@ def main():
         regret = cumulative_regret(df["reward"], optimal_per_turn=best_mean)
         plt.plot(regret, label=name, linewidth=1.6)
     plt.xlabel("Turn")
-    plt.ylabel("Cumulative regret (vs. best mean reward)")
+    plt.ylabel("Cumulative regret")
     plt.title("Cumulative regret across policies")
     plt.legend()
     plt.grid(True, alpha=0.3)
@@ -259,7 +282,7 @@ def main():
     plt.savefig(p2, dpi=140); plt.close()
     print(f"  Saved {p2}")
 
-    # Plot 3: LinTS arm-pull distribution
+    # Plot 3: LinTS arm-pull distribution (first seed)
     lin_df = main_results["lin_ts"]
     arm_counts = lin_df["action"].value_counts().reindex(REPAIR_ACTIONS, fill_value=0)
     plt.figure(figsize=(8, 4.5))
@@ -271,24 +294,28 @@ def main():
     plt.savefig(p3, dpi=140); plt.close()
     print(f"  Saved {p3}")
 
-    # Plot 4: Ablation cumulative-reward bar chart
-    abl_means = {name: df["reward"].mean() for name, df in ablation_results.items() if not df.empty}
+    # Plot 4: Ablation bar chart with error bars
+    abl_means = {row["policy"]: (row["mean_reward_avg"], row["mean_reward_std"])
+                 for _, row in summary_df.iterrows()
+                 if row["policy"] in ABLATIONS}
     plt.figure(figsize=(8, 4.5))
     names = list(abl_means.keys())
-    vals = [abl_means[n] for n in names]
-    bars = plt.bar(names, vals, color=["#4c72b0", "#dd8452", "#55a467", "#c44e52"])
+    vals = [abl_means[n][0] for n in names]
+    errs = [abl_means[n][1] for n in names]
+    bars = plt.bar(names, vals, yerr=errs, capsize=5,
+                   color=["#4c72b0", "#dd8452", "#55a467", "#c44e52"])
     for b, v in zip(bars, vals):
-        plt.text(b.get_x() + b.get_width() / 2, v + 0.005, f"{v:.3f}",
+        plt.text(b.get_x() + b.get_width() / 2, v + 0.01, f"{v:.3f}",
                  ha="center", fontsize=9)
-    plt.ylabel("Mean reward per turn")
-    plt.title("Ablation: contribution of each component to LinTS reward")
+    plt.ylabel("Mean reward per turn (±1 SD across seeds)")
+    plt.title(f"Ablation: contribution of each component (avg over {len(SEEDS)} seeds)")
     plt.xticks(rotation=15)
     plt.tight_layout()
     p4 = REPORTS_DIR / "eval_ablations.png"
     plt.savefig(p4, dpi=140); plt.close()
     print(f"  Saved {p4}")
 
-    # Plot 5: Per-failure-type action-distribution for LinTS (interpretability)
+    # Plot 5: Per-failure-type action distribution (first seed)
     pivot = (lin_df.groupby(["failure_type", "action"]).size()
              .unstack(fill_value=0))
     pivot = pivot.div(pivot.sum(axis=1), axis=0)
@@ -304,8 +331,7 @@ def main():
     plt.savefig(p5, dpi=140); plt.close()
     print(f"  Saved {p5}")
 
-    print("\nDay 6 evaluation complete. Plots in", REPORTS_DIR)
-
-
+    print(f"\n=== Done. {len(SEEDS)}-seed evaluation complete. ===")
+    print(f"Plots in {REPORTS_DIR}")
 if __name__ == "__main__":
     main()

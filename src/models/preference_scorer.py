@@ -45,8 +45,12 @@ class PreferenceScorer:
         self.net.eval()
         # Calibration: store min/max we'll see in practice for [0,1] scaling.
         # We default to a sensible range based on margin loss output.
-        self._lo = -4.0
-        self._hi = -1.0
+# Calibration range for template-vs-template scoring.
+        # Templates produce raw scores roughly in [-1.0, +1.0]; we map this
+        # range to [0, 1] so the bandit reward sees meaningful differences
+        # between actions in similar contexts.
+        self._lo = -1.0
+        self._hi = +1.0
 
     @torch.no_grad()
     def raw_score(self, context: str, candidate_turn: str) -> float:

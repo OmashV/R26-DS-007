@@ -49,21 +49,21 @@ ACTION_TO_IDX = {a: i for i, a in enumerate(REPAIR_ACTIONS)}
 ACTION_EFFECTS_BY_FAILURE: Dict[str, Dict[str, Dict[str, float]]] = {
     "low_mastery_failure": {
         "worked_example":       {"d_correct": +0.15, "d_hint": -0.3},
-        "direct_correction":    {"d_correct": +0.05, "d_hint": -0.2},
-        "scaffolded_question":  {"d_correct": +0.04, "d_hint": -0.1},
-        "prerequisite_review":  {"d_correct": +0.18, "d_hint": -0.4},
-        "hint":                 {"d_correct": +0.01, "d_hint": +0.5},
+        "direct_correction":    {"d_correct": +0.02, "d_hint": -0.1},
+        "scaffolded_question":  {"d_correct": +0.02, "d_hint": -0.1},
+        "prerequisite_review":  {"d_correct": +0.25, "d_hint": -0.4},
+        "hint":                 {"d_correct": -0.02, "d_hint": +0.5},
         "simpler_explanation":  {"d_correct": +0.10, "d_hint": -0.2},
-        "conceptual_analogy":   {"d_correct": +0.07, "d_hint":  0.0},
+        "conceptual_analogy":   {"d_correct": +0.05, "d_hint":  0.0},
     },
     "repair_needed_failure": {
-        "worked_example":       {"d_correct": +0.07, "d_hint": -0.2},
-        "direct_correction":    {"d_correct": +0.18, "d_hint": -0.4},
-        "scaffolded_question":  {"d_correct": +0.15, "d_hint": -0.3},
-        "prerequisite_review":  {"d_correct": +0.03, "d_hint": -0.1},
-        "hint":                 {"d_correct": +0.08, "d_hint": +0.3},
-        "simpler_explanation":  {"d_correct": +0.06, "d_hint": -0.1},
-        "conceptual_analogy":   {"d_correct": +0.05, "d_hint":  0.0},
+        "worked_example":       {"d_correct": +0.04, "d_hint": -0.2},
+        "direct_correction":    {"d_correct": +0.25, "d_hint": -0.4},
+        "scaffolded_question":  {"d_correct": +0.18, "d_hint": -0.3},
+        "prerequisite_review":  {"d_correct": -0.02, "d_hint": -0.1},
+        "hint":                 {"d_correct": +0.05, "d_hint": +0.3},
+        "simpler_explanation":  {"d_correct": +0.04, "d_hint": -0.1},
+        "conceptual_analogy":   {"d_correct": +0.02, "d_hint":  0.0},
     },
 }
 ACTION_EFFECTS: Dict[str, Dict[str, float]] = ACTION_EFFECTS_BY_FAILURE["repair_needed_failure"]
