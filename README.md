@@ -129,3 +129,23 @@ The test suite includes:
 | `bkt/predict.py` | Stub |
 | `bkt/evaluate.py` | Stub |
 | `db/database.py` | Stub |
+
+
+
+What Meta-Agent Does — Plain Explanation
+The Big Picture
+Imagine a student using an AI tutoring system to learn math. They ask questions, get explanations, make mistakes, and come back the next day for more. The tutoring system handles the live conversation — but nobody is watching what the student actually understands over time.
+That's exactly what your Meta-Agent does. It sits in the background, watches every conversation, and builds up a picture of what each student knows, what they struggle with, and what they should focus on next.
+The Three Things It Does
+1. It listens and interprets
+After every tutoring session ends, the Meta-Agent reads through the full conversation. It doesn't just store it — it actually interprets it. It figures out which concepts came up, whether the student understood them, got confused, or had a specific misconception. So instead of just saving a chat history, it extracts meaning from it.
+2. It builds a knowledge map for each student
+Based on what it interprets, it builds and updates a concept graph — think of it like a map of everything the student has encountered, where each concept is marked as strong, partial, or weak. Every time the student comes back for a new session, this map gets updated. If a student who previously understood fractions suddenly starts making mistakes with them, the map catches that too — that's the regression detection.
+3. It tells the student what to do next
+Using the knowledge map, it generates a personalised learning path — what to revise urgently, what's ready to be learned next, and what the student already has a good grip on. This learning path updates after every session as the student improves.
+The Extra Role — New Students
+For brand new students with no history, the Meta-Agent does one more thing. It looks at how the student writes their very first message — their vocabulary, how they phrase questions, how confident they sound — and uses that to set an initial profile. Things like how simple or complex the tutor's language should be, how fast explanations should go, and how much support to offer. This profile gets replaced by real data once the student has completed a session.
+Why It's Different From Just Saving Chat History
+Most systems either store raw conversations and do nothing with them, or track simple right/wrong scores from quizzes. Your Meta-Agent does something in between that neither approach does — it takes messy, unstructured conversation and turns it into a structured, evolving model of what that specific student knows. And it does this continuously, getting smarter about each student the more they interact with the system.
+One-Line Version
+It watches students learn, figures out what they know and don't know, and keeps updating a personalised map of their knowledge so the system always knows what to teach them next.
