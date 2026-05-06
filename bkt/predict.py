@@ -10,7 +10,7 @@ Implements: FR8, FR9, FR10 (knowledge tracing requirements)
 import json
 import logging
 from pathlib import Path
-from typing import Iterable
+from typing import Iterable, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -140,3 +140,100 @@ class BKTPredictor:
             trajectory.append(p_known)
 
         return trajectory
+
+
+class ColdStartPriorCalculator:
+    """
+    Computes informed initial mastery priors for new (student, skill) pairs
+    based on the student's mastery on related skills.
+
+    For a brand-new (student, skill) pair where no attempt history exists,
+    standard BKT uses the population prior P(L₀) for that skill. This class
+    computes a more informative prior by transferring evidence from skills
+    the student has already mastered.
+
+    Implements: cold-start novelty extension to BKT.
+    """
+
+    def __init__(
+        self,
+        similarity_path: Optional[Path] = None,
+        similarity_threshold: float = 0.5,
+    ) -> None:
+        """
+        Args:
+            similarity_path: Path to JSON file mapping {skill: {related_skill: similarity}}.
+            similarity_threshold: Minimum similarity to count as "related" (default 0.5).
+        """
+        path = similarity_path or (PROJECT_ROOT / "models" / "skill_similarity.json")
+
+        if not path.exists():
+            raise FileNotFoundError(
+                f"Skill similarity matrix not found at {path}. "
+                f"Run notebooks/skill_similarity.ipynb first to generate it."
+            )
+
+        with open(path) as f:
+            self.similarity = json.load(f)
+
+        self.threshold = similarity_threshold
+        logger.info(
+            f"ColdStartPriorCalculator initialised with similarities for "
+            f"{len(self.similarity)} skills"
+        )
+
+    def compute_prior(
+        self,
+        skill: str,
+        student_masteries: dict[str, float],
+        population_prior: float,
+    ) -> dict:
+        """
+        Compute an informed initial prior for a (student, skill) pair.
+
+        Args:
+            skill: The skill the student is about to encounter.
+            student_masteries: The student's current mastery on other skills,
+                            as a dict {skill_name: P(known)}.
+            population_prior: The default P(L₀) for this skill from the BKT model.
+
+        Returns:
+            Dict with 'prior' (the computed prior), 'used_transfer' (bool),
+            'related_skills_used' (list), and 'transfer_evidence' (debug info).
+        """
+        related = self.similarity.get(skill, {})
+
+        # Find related skills the student has actually attempted
+        relevant = [
+            (rel_skill, sim, student_masteries[rel_skill])
+            for rel_skill, sim in related.items()
+            if sim >= self.threshold and rel_skill in student_masteries
+        ]
+
+        if not relevant:
+            # No related evidence — fall back to population prior
+            return {
+                "prior": population_prior,
+                "used_transfer": False,
+                "related_skills_used": [],
+                "transfer_evidence": "No related skills attempted by student",
+            }
+
+        # Weighted average of related-skill masteries, weights = similarities
+        total_weight = sum(sim for _, sim, _ in relevant)
+        weighted_mastery = sum(sim * mastery for _, sim, mastery in relevant) / total_weight
+
+        # The transferred prior is a blend: population prior + evidence from related skills
+        # We take the maximum so transfer can only help, not hurt
+        transferred_prior = max(population_prior, weighted_mastery)
+
+        return {
+            "prior": transferred_prior,
+            "used_transfer": transferred_prior > population_prior,
+            "related_skills_used": [s for s, _, _ in relevant],
+            "transfer_evidence": (
+                f"Population prior: {population_prior:.3f}, "
+                f"weighted related mastery: {weighted_mastery:.3f}, "
+                f"using: {transferred_prior:.3f}"
+            ),
+        }
