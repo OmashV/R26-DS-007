@@ -17,8 +17,7 @@ external code that needs to read or update student mastery state.
 import logging
 import uuid
 from typing import Optional
-
-from bkt.predict import BKTPredictor
+from bkt.predict import BKTPredictor, ColdStartPriorCalculator
 from db.database import get_connection, initialise_database
 from config import (
     MASTERY_STRONG_THRESHOLD,
@@ -50,13 +49,30 @@ class KnowledgeGraph:
         graph = kg.get_student_graph("u_42")
     """
 
-    def __init__(self, predictor: Optional[BKTPredictor] = None) -> None:
+    def __init__(
+        self,
+        predictor: Optional[BKTPredictor] = None,
+        cold_start: Optional[ColdStartPriorCalculator] = None,
+    ) -> None:
         """
         Args:
             predictor: BKT predictor (loaded from default location if None).
+            cold_start: Cold-start prior calculator. If None, attempts to load
+                        from default path. Falls back gracefully if unavailable.
         """
         initialise_database()
         self.predictor = predictor or BKTPredictor.load()
+
+        # Cold-start is optional — system works without it
+        try:
+            self.cold_start = cold_start or ColdStartPriorCalculator()
+        except FileNotFoundError:
+            logger.warning(
+                "Skill similarity matrix not found — cold-start transfer disabled. "
+                "System will fall back to population priors for new (student, skill) pairs."
+            )
+            self.cold_start = None
+
         logger.info("KnowledgeGraph initialised")
 
     # ----- Student management -----
@@ -112,6 +128,11 @@ class KnowledgeGraph:
         """
         Recalculate mastery for (student, skill) using full attempt history,
         persist the new value, and store the previous value for regression detection.
+
+        On a student's first encounter with a skill, uses cross-skill knowledge
+        transfer (cold-start prior) to set an informed initial mastery probability,
+        rather than the default population prior.
+
         Returns the new mastery probability.
         """
         if not self.predictor.has_skill(skill):
@@ -123,7 +144,39 @@ class KnowledgeGraph:
             logger.warning(f"No attempts recorded for {student_id}/{skill}")
             return 0.0
 
-        probability = self.predictor.predict(skill, attempts)
+        # Detect first encounter and compute cold-start prior
+        previous_record = self.get_mastery(student_id, skill)
+        is_first_encounter = previous_record is None
+        cold_start_used = False
+        cold_start_prior = None
+
+        if is_first_encounter and self.cold_start is not None:
+            student_graph = self.get_student_graph(student_id)
+            student_masteries = {
+                e["skill"]: e["mastery_probability"]
+                for e in student_graph
+                if e["skill"] != skill
+            }
+            population_prior = self.predictor.params[skill]["prior"]
+            cold_start_result = self.cold_start.compute_prior(
+                skill=skill,
+                student_masteries=student_masteries,
+                population_prior=population_prior,
+            )
+            cold_start_prior = cold_start_result["prior"]
+            cold_start_used = cold_start_result["used_transfer"]
+
+            if cold_start_used:
+                logger.info(
+                    f"Cold-start transfer for {student_id}/{skill}: "
+                    f"prior {population_prior:.3f} → {cold_start_prior:.3f} "
+                    f"(transferred from {cold_start_result['related_skills_used']})"
+                )
+
+        # Run BKT with the appropriate prior
+        probability = self.predictor.predict(
+            skill, attempts, initial_prior=cold_start_prior
+        )
         label = label_mastery(probability)
 
         with get_connection() as conn:
@@ -135,7 +188,7 @@ class KnowledgeGraph:
 
             conn.execute(
                 """
-                INSERT INTO mastery 
+                INSERT INTO mastery
                     (student_id, skill_name, mastery_probability, mastery_label, previous_mastery_probability)
                 VALUES (?, ?, ?, ?, ?)
                 ON CONFLICT(student_id, skill_name) DO UPDATE SET
@@ -150,9 +203,9 @@ class KnowledgeGraph:
         logger.info(
             f"Updated mastery: student={student_id} skill='{skill}' "
             f"P={probability:.3f} ({label})"
+            + (" [cold-start transfer applied]" if cold_start_used else "")
         )
         return probability
-
     def get_mastery(self, student_id: str, skill: str) -> Optional[dict]:
         """Return current stored mastery for (student, skill), or None if not present."""
         with get_connection() as conn:

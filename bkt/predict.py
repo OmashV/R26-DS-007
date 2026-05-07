@@ -51,13 +51,22 @@ class BKTPredictor:
         """Check whether the model has parameters for a given skill."""
         return skill in self.params
 
-    def predict(self, skill: str, attempts: Iterable[int]) -> float:
+    def predict(
+        self,
+        skill: str,
+        attempts: Iterable[int],
+        initial_prior: Optional[float] = None,
+    ) -> float:
         """
         Compute mastery probability for a student given their attempt history.
 
         Args:
             skill: The skill name (must exist in trained parameters).
             attempts: Sequence of 1 (correct) and 0 (incorrect) values, in order.
+            initial_prior: Optional override for the starting P(known). If None,
+                           uses the population prior P(L₀) from the trained model.
+                           Used by cold-start transfer to set an informed prior
+                           on a student's first encounter with a skill.
 
         Returns:
             P(student has mastered skill) — a value in [0, 1].
@@ -70,7 +79,7 @@ class BKTPredictor:
             raise KeyError(f"Skill '{skill}' not found in trained model")
 
         p = self.params[skill]
-        prior   = p["prior"]
+        prior   = initial_prior if initial_prior is not None else p["prior"]
         learn   = p["learns"]
         slip    = p["slips"]
         guess   = p["guesses"]
@@ -223,9 +232,20 @@ class ColdStartPriorCalculator:
         total_weight = sum(sim for _, sim, _ in relevant)
         weighted_mastery = sum(sim * mastery for _, sim, mastery in relevant) / total_weight
 
-        # The transferred prior is a blend: population prior + evidence from related skills
-        # We take the maximum so transfer can only help, not hurt
-        transferred_prior = max(population_prior, weighted_mastery)
+        # Apply a transfer discount — even strong related mastery doesn't perfectly
+        # transfer to a brand-new skill. The discount blends evidence with the
+        # population prior, scaled by the strongest similarity used.
+        TRANSFER_DISCOUNT = 0.7  # how much weighted mastery contributes vs population prior
+        MAX_TRANSFERRED_PRIOR = 0.85  # ceiling — never claim near-certainty pre-evidence
+
+        # Blend the related-skill evidence with the population prior
+        blended = (
+            TRANSFER_DISCOUNT * weighted_mastery
+            + (1 - TRANSFER_DISCOUNT) * population_prior
+        )
+        # Take the higher of population prior and blended evidence (transfer only helps)
+        # Then apply the safety cap
+        transferred_prior = min(MAX_TRANSFERRED_PRIOR, max(population_prior, blended))
 
         return {
             "prior": transferred_prior,
