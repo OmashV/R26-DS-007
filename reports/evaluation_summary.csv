@@ -1,0 +1,9 @@
+policy,n_seeds,n_episodes,mean_reward_avg,mean_reward_std,correct_rate_avg,correct_rate_std,mean_hint_avg
+random,1,200,0.3027,0.0,0.3988,0.0,0.892
+fixed_we,1,200,0.2581,0.0,0.3991,0.0,0.8783
+rule,1,200,0.3075,0.0,0.4465,0.0,0.8783
+lin_ts,1,200,0.3193,0.0,0.4285,0.0,0.8886
+linTS_full,1,200,0.324,0.0,0.4372,0.0,0.8923
+linTS_no_failure,1,200,0.3143,0.0,0.4176,0.0,0.8985
+linTS_no_reflect,1,200,0.3259,0.0,0.4406,0.0,0.8943
+linTS_no_pps,1,200,0.2019,0.0,0.4165,0.0,0.8919
