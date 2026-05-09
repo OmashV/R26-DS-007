@@ -44,9 +44,12 @@ REPAIR_ACTIONS = [
 ACTION_TO_IDX = {a: i for i, a in enumerate(REPAIR_ACTIONS)}
 
 
-# Action effects now DEPEND on the failure type. This gives the contextual
-# bandit something real to learn: the best action changes with context.
+# Action effects depend on the failure type. Each failure type has its
+# own preferred actions. The relative ordering encodes pedagogical theory;
+# magnitudes are calibrated so the contextual bandit can recover the
+# optimal context-conditioned policy from observed outcomes.
 ACTION_EFFECTS_BY_FAILURE: Dict[str, Dict[str, Dict[str, float]]] = {
+    # Foundation gap — rebuild from prerequisites or worked examples.
     "low_mastery_failure": {
         "worked_example":       {"d_correct": +0.15, "d_hint": -0.3},
         "direct_correction":    {"d_correct": +0.02, "d_hint": -0.1},
@@ -56,6 +59,7 @@ ACTION_EFFECTS_BY_FAILURE: Dict[str, Dict[str, Dict[str, float]]] = {
         "simpler_explanation":  {"d_correct": +0.10, "d_hint": -0.2},
         "conceptual_analogy":   {"d_correct": +0.05, "d_hint":  0.0},
     },
+    # Has the foundation, just slipped — point at the specific error.
     "repair_needed_failure": {
         "worked_example":       {"d_correct": +0.04, "d_hint": -0.2},
         "direct_correction":    {"d_correct": +0.25, "d_hint": -0.4},
@@ -64,6 +68,36 @@ ACTION_EFFECTS_BY_FAILURE: Dict[str, Dict[str, Dict[str, float]]] = {
         "hint":                 {"d_correct": +0.05, "d_hint": +0.3},
         "simpler_explanation":  {"d_correct": +0.04, "d_hint": -0.1},
         "conceptual_analogy":   {"d_correct": +0.02, "d_hint":  0.0},
+    },
+    # Slow / disengaged — re-engage with relatable framing first.
+    "disengagement_failure": {
+        "worked_example":       {"d_correct": +0.05, "d_hint": -0.1},
+        "direct_correction":    {"d_correct": -0.02, "d_hint": -0.2},
+        "scaffolded_question":  {"d_correct": +0.06, "d_hint": -0.1},
+        "prerequisite_review":  {"d_correct": +0.02, "d_hint": -0.1},
+        "hint":                 {"d_correct": +0.04, "d_hint": +0.2},
+        "simpler_explanation":  {"d_correct": +0.18, "d_hint": -0.2},
+        "conceptual_analogy":   {"d_correct": +0.22, "d_hint":  0.0},
+    },
+    # Used to know it, now failing — light nudge, don't over-explain.
+    "skill_regression_failure": {
+        "worked_example":       {"d_correct": +0.05, "d_hint": -0.2},
+        "direct_correction":    {"d_correct": +0.10, "d_hint": -0.3},
+        "scaffolded_question":  {"d_correct": +0.08, "d_hint": -0.2},
+        "prerequisite_review":  {"d_correct": -0.05, "d_hint": -0.1},
+        "hint":                 {"d_correct": +0.22, "d_hint": +0.2},
+        "simpler_explanation":  {"d_correct": +0.18, "d_hint": -0.1},
+        "conceptual_analogy":   {"d_correct": +0.06, "d_hint":  0.0},
+    },
+    # Sustained recent failure — reset with high scaffolding.
+    "compounding_struggle_failure": {
+        "worked_example":       {"d_correct": +0.22, "d_hint": -0.3},
+        "direct_correction":    {"d_correct": +0.04, "d_hint": -0.2},
+        "scaffolded_question":  {"d_correct": +0.10, "d_hint": -0.2},
+        "prerequisite_review":  {"d_correct": +0.12, "d_hint": -0.3},
+        "hint":                 {"d_correct": -0.02, "d_hint": +0.6},
+        "simpler_explanation":  {"d_correct": +0.20, "d_hint": -0.3},
+        "conceptual_analogy":   {"d_correct": +0.08, "d_hint":  0.0},
     },
 }
 ACTION_EFFECTS: Dict[str, Dict[str, float]] = ACTION_EFFECTS_BY_FAILURE["repair_needed_failure"]
