@@ -17,8 +17,7 @@ external code that needs to read or update student mastery state.
 import logging
 import uuid
 from typing import Optional
-
-from bkt.predict import BKTPredictor
+from bkt.predict import BKTPredictor, ColdStartPriorCalculator
 from db.database import get_connection, initialise_database
 from config import (
     MASTERY_STRONG_THRESHOLD,
@@ -50,13 +49,30 @@ class KnowledgeGraph:
         graph = kg.get_student_graph("u_42")
     """
 
-    def __init__(self, predictor: Optional[BKTPredictor] = None) -> None:
+    def __init__(
+        self,
+        predictor: Optional[BKTPredictor] = None,
+        cold_start: Optional[ColdStartPriorCalculator] = None,
+    ) -> None:
         """
         Args:
             predictor: BKT predictor (loaded from default location if None).
+            cold_start: Cold-start prior calculator. If None, attempts to load
+                        from default path. Falls back gracefully if unavailable.
         """
         initialise_database()
         self.predictor = predictor or BKTPredictor.load()
+
+        # Cold-start is optional — system works without it
+        try:
+            self.cold_start = cold_start or ColdStartPriorCalculator()
+        except FileNotFoundError:
+            logger.warning(
+                "Skill similarity matrix not found — cold-start transfer disabled. "
+                "System will fall back to population priors for new (student, skill) pairs."
+            )
+            self.cold_start = None
+
         logger.info("KnowledgeGraph initialised")
 
     # ----- Student management -----
@@ -108,22 +124,76 @@ class KnowledgeGraph:
 
     # ----- Mastery -----
 
-    def update_mastery(self, student_id: str, skill: str) -> float:
+    def update_mastery(self, student_id: str, skill: str) -> dict:
         """
         Recalculate mastery for (student, skill) using full attempt history,
         persist the new value, and store the previous value for regression detection.
-        Returns the new mastery probability.
+
+        On a student's first encounter with a skill, uses cross-skill knowledge
+        transfer (cold-start prior) to set an informed initial mastery probability,
+        rather than the default population prior.
+
+        Returns:
+            Dict with 'probability', 'label', 'cold_start_used', and
+            'cold_start_details' fields.
         """
         if not self.predictor.has_skill(skill):
             logger.warning(f"Skill '{skill}' not in BKT model — skipping update")
-            return 0.0
+            return {
+                "probability": 0.0,
+                "label": "weak",
+                "cold_start_used": False,
+                "cold_start_details": None,
+            }
 
         attempts = self.get_attempts(student_id, skill)
         if not attempts:
             logger.warning(f"No attempts recorded for {student_id}/{skill}")
-            return 0.0
+            return {
+                "probability": 0.0,
+                "label": "weak",
+                "cold_start_used": False,
+                "cold_start_details": None,
+            }
 
-        probability = self.predictor.predict(skill, attempts)
+        previous_record = self.get_mastery(student_id, skill)
+        is_first_encounter = previous_record is None
+        cold_start_used = False
+        cold_start_prior = None
+        cold_start_details = None
+
+        if is_first_encounter and self.cold_start is not None:
+            student_graph = self.get_student_graph(student_id)
+            student_masteries = {
+                e["skill"]: e["mastery_probability"]
+                for e in student_graph
+                if e["skill"] != skill
+            }
+            population_prior = self.predictor.params[skill]["prior"]
+            cold_start_result = self.cold_start.compute_prior(
+                skill=skill,
+                student_masteries=student_masteries,
+                population_prior=population_prior,
+            )
+            cold_start_prior = cold_start_result["prior"]
+            cold_start_used = cold_start_result["used_transfer"]
+            cold_start_details = {
+                "population_prior": population_prior,
+                "transferred_prior": cold_start_prior,
+                "related_skills_used": cold_start_result["related_skills_used"],
+                "evidence": cold_start_result["transfer_evidence"],
+            }
+
+            if cold_start_used:
+                logger.info(
+                    f"Cold-start transfer for {student_id}/{skill}: "
+                    f"prior {population_prior:.3f} → {cold_start_prior:.3f} "
+                    f"(transferred from {cold_start_result['related_skills_used']})"
+                )
+
+        probability = self.predictor.predict(
+            skill, attempts, initial_prior=cold_start_prior
+        )
         label = label_mastery(probability)
 
         with get_connection() as conn:
@@ -135,7 +205,7 @@ class KnowledgeGraph:
 
             conn.execute(
                 """
-                INSERT INTO mastery 
+                INSERT INTO mastery
                     (student_id, skill_name, mastery_probability, mastery_label, previous_mastery_probability)
                 VALUES (?, ?, ?, ?, ?)
                 ON CONFLICT(student_id, skill_name) DO UPDATE SET
@@ -150,9 +220,15 @@ class KnowledgeGraph:
         logger.info(
             f"Updated mastery: student={student_id} skill='{skill}' "
             f"P={probability:.3f} ({label})"
+            + (" [cold-start transfer applied]" if cold_start_used else "")
         )
-        return probability
 
+        return {
+            "probability": probability,
+            "label": label,
+            "cold_start_used": cold_start_used,
+            "cold_start_details": cold_start_details,
+        }
     def get_mastery(self, student_id: str, skill: str) -> Optional[dict]:
         """Return current stored mastery for (student, skill), or None if not present."""
         with get_connection() as conn:
@@ -220,12 +296,12 @@ class KnowledgeGraph:
             session_id: Optional session identifier (auto-generated if None).
 
         Returns:
-            Summary dict with session_id, skills_updated, and updated graph.
+            Summary dict with session_id, skills_updated (with cold-start details),
+            and the updated student graph.
         """
         session_id = session_id or f"sess_{uuid.uuid4().hex[:12]}"
         self.ensure_student(student_id)
 
-        # Log session start
         with get_connection() as conn:
             conn.execute(
                 """
@@ -235,17 +311,20 @@ class KnowledgeGraph:
                 (session_id, student_id, len({a["skill"] for a in attempts})),
             )
 
-        # Record every attempt
         for a in attempts:
             self.record_attempt(student_id, a["skill"], a["correct"], session_id)
 
-        # Update mastery for each unique skill touched in this session
         affected_skills = sorted({a["skill"] for a in attempts})
+        skill_updates = []
         for skill in affected_skills:
-            self.update_mastery(student_id, skill)
+            update_result = self.update_mastery(student_id, skill)
+            skill_updates.append({
+                "skill": skill,
+                **update_result,
+            })
 
         return {
             "session_id": session_id,
-            "skills_updated": affected_skills,
+            "skills_updated": skill_updates,
             "graph": self.get_student_graph(student_id),
         }

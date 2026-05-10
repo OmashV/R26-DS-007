@@ -9,6 +9,8 @@ import streamlit as st
 from bkt.predict import BKTPredictor
 from core.knowledge_graph import KnowledgeGraph
 from core.concept_extractor import ConceptExtractor
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent
 
 st.set_page_config(
     page_title="Meta-Agent Dashboard",
@@ -82,6 +84,66 @@ STUDENT: 8.
 TUTOR: That's not right either. 1/4 of 16 is 4.
 STUDENT: I'm confused.
 TUTOR: It's okay. Let's slow down.""",
+    "🔵 [Cold-start demo 1A] Master Adding/Subtracting Fractions": """\
+TUTOR: Let's work on adding fractions. What's 1/4 + 1/4?
+STUDENT: 2/4
+TUTOR: Right. Try 1/3 + 1/3.
+STUDENT: 2/3
+TUTOR: Good. What's 3/8 minus 1/8?
+STUDENT: 2/8
+TUTOR: Excellent. Try 5/9 - 2/9.
+STUDENT: 3/9
+TUTOR: Perfect. One more — 2/7 + 4/7?
+STUDENT: 6/7
+TUTOR: Brilliant, you've got this.""",
+    "⭐ [Cold-start demo 1B] First encounter: Equivalent Fractions": """\
+TUTOR: Now let's look at equivalent fractions. Is 2/4 the same as 1/2?
+STUDENT: I think so.
+TUTOR: Yes. Is 3/9 equivalent to 1/3?
+STUDENT: yes
+TUTOR: Good. What about 4/10 and 2/5?
+STUDENT: yes
+TUTOR: Right. Is 6/8 the same as 3/4?
+STUDENT: yes
+TUTOR: Excellent.""",
+    "🔵 [Cold-start demo 2A] Master Equation Solving (≤2 steps)": """\
+TUTOR: Let's start with simple equations. Solve x + 5 = 12.
+STUDENT: x = 7
+TUTOR: Right. Try 2x = 10.
+STUDENT: x = 5
+TUTOR: Good. Solve 2x + 3 = 11.
+STUDENT: x = 4
+TUTOR: Perfect. What about 3y - 4 = 8?
+STUDENT: y = 4
+TUTOR: Excellent. One more — 5z + 2 = 17.
+STUDENT: z = 3
+TUTOR: Brilliant.""",
+    "⭐ [Cold-start demo 2B] First encounter: Equation Solving (>2 steps)": """\
+TUTOR: Let's try harder ones. Solve 3x + 4 - x = 10.
+STUDENT: x = 3
+TUTOR: Yes. Try 2(x + 3) = 14.
+STUDENT: x = 4
+TUTOR: Good. Solve 4x - 2 = 2x + 6.
+STUDENT: x = 4
+TUTOR: Excellent.""",
+    "🔵 [Cold-start demo 3A] Master Volume of Rectangular Prism": """\
+TUTOR: Find the volume of a box that is 3 by 4 by 5.
+STUDENT: 60
+TUTOR: Right. What about a box 2 by 6 by 4?
+STUDENT: 48
+TUTOR: Good. Find the volume of a 5 by 5 by 3 box.
+STUDENT: 75
+TUTOR: Perfect. Now a 7 by 2 by 4 box.
+STUDENT: 56
+TUTOR: Excellent.""",
+    "⭐ [Cold-start demo 3B] First encounter: Surface Area of Rectangular Prism": """\
+TUTOR: Now let's find surface area. For a box 2 by 3 by 4, what's the surface area?
+STUDENT: 52
+TUTOR: Yes. Try a 3 by 3 by 5 box.
+STUDENT: 78
+TUTOR: Good. What about 4 by 5 by 6?
+STUDENT: 148
+TUTOR: Excellent.""",
 }
 
 
@@ -158,20 +220,35 @@ with tab_session:
 
                 st.success(f"Session {session['session_id']} processed")
 
-                # Show updated mastery
+                # Show updated mastery, highlighting cold-start transfers
                 with st.expander("🧠 Updated knowledge graph", expanded=True):
-                    for entry in session["graph"]:
-                        p = entry["mastery_probability"]
-                        label = entry["mastery_label"]
+                    # First, the skills affected this session (with cold-start details)
+                    cold_start_skills = [s for s in session["skills_updated"] if s.get("cold_start_used")]
+                    if cold_start_skills:
+                        st.markdown("**⭐ Cold-start transfer applied** to skills the student encountered for the first time:")
+                        for s in cold_start_skills:
+                            details = s["cold_start_details"]
+                            related = ", ".join(details["related_skills_used"])
+                            st.info(
+                                f"**{s['skill']}** — prior boosted "
+                                f"{details['population_prior']:.3f} → {details['transferred_prior']:.3f} "
+                                f"based on student's mastery of: *{related}*"
+                            )
+
+                    st.markdown("**Current mastery for affected skills:**")
+                    for s in session["skills_updated"]:
+                        p = s["probability"]
+                        label = s["label"]
                         if label == "strong":
                             colour = "🟢"
                         elif label == "weak":
                             colour = "🔴"
                         else:
                             colour = "🟡"
+                        cold_start_marker = "  ⭐" if s.get("cold_start_used") else ""
                         st.write(
-                            f"{colour}  **{entry['skill']}** — "
-                            f"P(mastery) = {p:.3f} ({label})"
+                            f"{colour}  **{s['skill']}** — "
+                            f"P(mastery) = {p:.3f} ({label}){cold_start_marker}"
                         )
 
                 st.info("👤 Switch to **Student Profile** tab to see the full graph "
@@ -360,6 +437,88 @@ with tab_system:
     )
 
     st.divider()
+
+    st.divider()
+
+    # Skill similarity explorer (cold-start novelty)
+    st.subheader("Skill similarity explorer")
+    st.markdown(
+        "The system uses sentence embeddings to compute semantic similarity between "
+        "skill names. Skills with similarity ≥ 0.5 are considered related and used "
+        "for **cold-start knowledge transfer** — when a new student first encounters "
+        "a skill, the system transfers evidence from related skills they've already "
+        "mastered, rather than starting from the population prior."
+    )
+
+    # Load similarity data
+    import json
+    similarity_path = PROJECT_ROOT / "models" / "skill_similarity.json"
+    if not similarity_path.exists():
+        st.warning(
+            "Skill similarity matrix not found. Run `notebooks/skill_similarity.ipynb` "
+            "to generate it. The system falls back to population priors without it."
+        )
+    else:
+        with open(similarity_path) as f:
+            similarity_data = json.load(f)
+
+        col_picker, col_stats = st.columns([1.5, 1])
+
+        with col_picker:
+            picked_skill = st.selectbox(
+                "Choose a skill to see its related neighbours",
+                sorted(similarity_data.keys()),
+            )
+
+        related = similarity_data.get(picked_skill, {})
+        related_sorted = sorted(related.items(), key=lambda kv: -kv[1])
+
+        with col_stats:
+            st.metric("Related skills", len(related_sorted))
+            if related_sorted:
+                st.metric("Strongest similarity", f"{related_sorted[0][1]:.3f}")
+
+        if not related_sorted:
+            st.info(
+                f"**{picked_skill}** has no related skills above the 0.5 threshold. "
+                f"It is treated as conceptually isolated for cold-start purposes — "
+                f"new students encountering this skill use the population prior."
+            )
+        else:
+            st.markdown(f"**Skills related to *{picked_skill}*:**")
+            for related_skill, sim in related_sorted:
+                # Visual bar showing similarity strength
+                bar_width = int(sim * 100)
+                st.markdown(
+                    f"`{sim:.3f}`  **{related_skill}**  \n"
+                    f"<div style='background: linear-gradient(to right, "
+                    f"#4CAF50 0%, #4CAF50 {bar_width}%, #eee {bar_width}%, #eee 100%); "
+                    f"height: 8px; border-radius: 4px; margin-bottom: 8px;'></div>",
+                    unsafe_allow_html=True,
+                )
+
+        # Global stats
+        st.divider()
+        st.markdown("**Across the full skill set:**")
+
+        n_skills = len(similarity_data)
+        n_with_relations = sum(1 for r in similarity_data.values() if r)
+        n_isolated = n_skills - n_with_relations
+        total_pairs = sum(len(r) for r in similarity_data.values()) // 2
+        all_sims = [s for r in similarity_data.values() for s in r.values()]
+
+        col1, col2, col3, col4 = st.columns(4)
+        col1.metric("Total skills", n_skills)
+        col2.metric("With related skills", n_with_relations)
+        col3.metric("Isolated skills", n_isolated)
+        col4.metric("Total related pairs", total_pairs)
+
+        if all_sims:
+            st.caption(
+                f"Mean similarity (above threshold): {sum(all_sims) / len(all_sims):.3f}.  "
+                f"Maximum similarity: {max(all_sims):.3f}.  "
+                f"Embeddings via sentence-transformers (all-MiniLM-L6-v2)."
+            )
 
     # Architecture summary
     st.subheader("Architecture")
