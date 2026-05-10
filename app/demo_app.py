@@ -287,7 +287,7 @@ if st.session_state.last_decision is not None:
     # ---------------------------------------------------------
     st.markdown("## Step 4 — Context vector built for the bandit")
     st.caption(
-        "The bandit reads only this 10-dim vector. It cannot see raw text or history — "
+        "The bandit reads only this 13-dim vector. It cannot see raw text or history — "
         "only these numbers."
     )
 
@@ -299,9 +299,12 @@ if st.session_state.last_decision is not None:
         "4: skill_correct_rate",
         "5: failure=low_mastery (one-hot)",
         "6: failure=repair_needed (one-hot)",
-        "7: prev_action_was_repair",
-        "8: prev_outcome_correct",
-        "9: prev_outcome_used_hint",
+        "7: failure=disengagement (one-hot)",
+        "8: failure=skill_regression (one-hot)",
+        "9: failure=compounding_struggle (one-hot)",
+        "10: prev_action_was_repair",
+        "11: prev_outcome_correct",
+        "12: prev_outcome_used_hint",
     ]
     ctx_df = pd.DataFrame({
         "Dimension": ctx_labels,
