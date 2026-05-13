@@ -1,3 +1,7 @@
+GEMINI_API_KEY=AIzaSyB09HoYgjlnN-cvnSobxp9W0JVsZITBC7Y
+
+
+
 # Meta-Agent — Persistent Student Modelling & Learning Path Generation
 
 Part of an AI Tutoring System (Final Year Research Project, SLIIT).

@@ -54,7 +54,7 @@ class BKTPredictor:
     def predict(
         self,
         skill: str,
-        attempts: Iterable[int],
+        attempts: Iterable,
         initial_prior: Optional[float] = None,
     ) -> float:
         """
@@ -62,18 +62,16 @@ class BKTPredictor:
 
         Args:
             skill: The skill name (must exist in trained parameters).
-            attempts: Sequence of 1 (correct) and 0 (incorrect) values, in order.
-            initial_prior: Optional override for the starting P(known). If None,
+            attempts: Sequence of attempts. Each attempt may be either:
+                - An int (0 or 1) — standard binary BKT signal, equivalent to
+                  confidence=1.0
+                - A tuple (label, confidence) — graded conversational signal,
+                  where label ∈ {0, 1} and confidence ∈ [0, 1]
+            initial_prior: Optional override for starting P(known). If None,
                            uses the population prior P(L₀) from the trained model.
-                           Used by cold-start transfer to set an informed prior
-                           on a student's first encounter with a skill.
 
         Returns:
             P(student has mastered skill) — a value in [0, 1].
-
-        Raises:
-            KeyError: If the skill is not in the trained model.
-            ValueError: If attempts contain values other than 0 or 1.
         """
         if skill not in self.params:
             raise KeyError(f"Skill '{skill}' not found in trained model")
@@ -88,64 +86,101 @@ class BKTPredictor:
         p_known = prior
 
         for attempt in attempts:
-            if attempt not in (0, 1):
-                raise ValueError(f"Attempts must be 0 or 1, got {attempt}")
+            # Normalise the attempt to (label, confidence) regardless of input type
+            if isinstance(attempt, tuple):
+                label, confidence = attempt
+            else:
+                label, confidence = attempt, 1.0
 
-            # Step A — posterior update given the observed answer
-            if attempt == 1:
-                # Correct answer
+            if label not in (0, 1):
+                raise ValueError(f"Attempt label must be 0 or 1, got {label}")
+            if not 0.0 <= confidence <= 1.0:
+                raise ValueError(f"Confidence must be in [0, 1], got {confidence}")
+
+            # Step A — standard BKT posterior update given the observed label
+            if label == 1:
                 numerator   = p_known * (1 - slip)
                 denominator = p_known * (1 - slip) + (1 - p_known) * guess
             else:
-                # Wrong answer
                 numerator   = p_known * slip
                 denominator = p_known * slip + (1 - p_known) * (1 - guess)
 
-            # Guard against division by zero (degenerate parameters)
-            p_known_posterior = numerator / denominator if denominator > 0 else p_known
+            # Guard against division by zero
+            p_known_full_update = numerator / denominator if denominator > 0 else p_known
 
-            # Step B — learning transition
-            p_known = p_known_posterior + (1 - p_known_posterior) * learn
+            # Confidence-weighted blend: c=1 reduces to standard BKT,
+            # c=0 ignores the signal entirely
+            p_known_posterior = (
+                confidence * p_known_full_update
+                + (1 - confidence) * p_known
+            )
 
-            # (Forgetting term — kept at 0 in standard BKT, included for completeness)
+            # Step B — learning transition (unchanged)
+# Step B — learning transition, scaled by confidence
+            # A confidence-zero signal isn't a learning opportunity, so the
+            # transition should fire proportionally to how strongly we
+            # observed the attempt.
+            effective_learn = confidence * learn
+            p_known = p_known_posterior + (1 - p_known_posterior) * effective_learn
             if forget > 0:
                 p_known = p_known * (1 - forget)
 
         return p_known
 
-    def predict_trajectory(self, skill: str, attempts: Iterable[int]) -> list[float]:
+    def predict_trajectory(
+        self,
+        skill: str,
+        attempts: Iterable,
+    ) -> list[float]:
         """
-        Like predict(), but returns mastery probability after every attempt.
+        Compute mastery probability after every attempt — useful for visualising
+        how mastery evolves across a sequence.
 
-        Useful for visualisation and demos — shows how P(mastery) evolves
-        across the attempt sequence rather than just the final value.
+        Args:
+            skill: The skill name.
+            attempts: Sequence of attempts. Each may be int (0/1) or
+                      tuple (label, confidence). Same format as predict().
 
         Returns:
-            List of mastery probabilities, one per attempt, plus the prior at index 0.
+            List of mastery probabilities. Length = len(attempts) + 1.
+            Index 0 is the prior; index i is mastery after the i-th attempt.
         """
         if skill not in self.params:
             raise KeyError(f"Skill '{skill}' not found in trained model")
 
         p = self.params[skill]
-        trajectory = [p["prior"]]
+        prior   = p["prior"]
+        learn   = p["learns"]
+        slip    = p["slips"]
+        guess   = p["guesses"]
+
+        trajectory = [prior]
+        p_known = prior
 
         for attempt in attempts:
-            current = self.predict(skill, list(attempts)[:len(trajectory)])
-            trajectory.append(current)
-
-        # Cleaner implementation — just compute incrementally
-        trajectory = [p["prior"]]
-        p_known = p["prior"]
-        for attempt in attempts:
-            if attempt == 1:
-                num = p_known * (1 - p["slips"])
-                den = p_known * (1 - p["slips"]) + (1 - p_known) * p["guesses"]
+            # Normalise input
+            if isinstance(attempt, tuple):
+                label, confidence = attempt
             else:
-                num = p_known * p["slips"]
-                den = p_known * p["slips"] + (1 - p_known) * (1 - p["guesses"])
+                label, confidence = attempt, 1.0
 
-            posterior = num / den if den > 0 else p_known
-            p_known = posterior + (1 - posterior) * p["learns"]
+            # Standard BKT posterior given the label
+            if label == 1:
+                num = p_known * (1 - slip)
+                den = p_known * (1 - slip) + (1 - p_known) * guess
+            else:
+                num = p_known * slip
+                den = p_known * slip + (1 - p_known) * (1 - guess)
+
+            full_update = num / den if den > 0 else p_known
+
+            # Confidence-weighted blend
+            posterior = confidence * full_update + (1 - confidence) * p_known
+
+            # Confidence-scaled learning transition
+            effective_learn = confidence * learn
+            p_known = posterior + (1 - posterior) * effective_learn
+
             trajectory.append(p_known)
 
         return trajectory

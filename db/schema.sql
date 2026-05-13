@@ -27,6 +27,8 @@ CREATE TABLE IF NOT EXISTS attempts (
     student_id TEXT NOT NULL,
     skill_name TEXT NOT NULL,
     correct INTEGER NOT NULL CHECK (correct IN (0, 1)),
+    confidence REAL NOT NULL DEFAULT 1.0,
+    signal_type TEXT,
     session_id TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (student_id) REFERENCES students(student_id)

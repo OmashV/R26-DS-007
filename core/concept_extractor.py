@@ -31,30 +31,46 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_MODEL = "gemini-2.5-flash"
 
 
-SYSTEM_PROMPT = """You are an educational data extraction assistant. Your job is to read a tutoring conversation between a student and a tutor, and output structured data about which mathematical concepts the student attempted and whether they answered correctly.
+SYSTEM_PROMPT = """You are an educational data extraction assistant. Your job is to read a tutoring conversation between a student and a tutor, and identify learning evidence signals about specific concepts. The system uses these signals to estimate student mastery.
 
 Rules:
-1. Only use skill names from the provided list of allowed skills. If a concept appears that isn't in the list, choose the closest match or omit it.
-2. For each distinct attempt by the student at solving a problem, output one entry: {"skill": "<skill name>", "correct": 0 or 1}.
-3. "correct": 1 means the student got the answer right. "correct": 0 means they got it wrong, gave up, or only got it after the tutor revealed the answer.
-4. Multiple attempts on the same problem each get their own entry, in chronological order.
-5. Only count actual problem-solving attempts. Don't count clarifying questions, expressions of confusion, or off-topic chat as attempts.
-6. Optionally, identify any misconceptions — specific wrong beliefs the student revealed (e.g. "thinks multiplying always increases size"). These are distinct from just getting an answer wrong.
+1. Only use skill names from the provided list of allowed skills.
+2. For each piece of learning evidence, output one signal entry.
+3. Multiple signals on the same skill in chronological order are normal — the system models sequences.
+4. Don't invent signals. Only emit a signal when there is clear textual evidence.
+5. Optionally, identify any misconceptions — specific wrong beliefs the student revealed.
+
+Signal types and their meanings:
+
+POSITIVE EVIDENCE (label=1):
+- correct_answer       — Student gave a correct, definitive answer to a problem (confidence 1.0)
+- correct_explanation  — Student explained the concept correctly in their own words (confidence 0.7)
+- partial_correct      — Student got there with significant scaffolding/hints from the tutor (confidence 0.4)
+- evaluator_positive   — Explicit positive feedback from an evaluator agent (confidence 1.0)
+
+NEGATIVE EVIDENCE (label=0):
+- incorrect_answer            — Student gave a wrong answer to a problem (confidence 1.0)
+- repeated_misunderstanding   — Student showed the same misconception multiple times (confidence 0.8)
+- confusion                   — Student expressed clear confusion ("I don't get it") (confidence 0.6)
+- clarification_request       — Student asked for an explanation (confidence 0.3)
+- evaluator_negative          — Explicit negative feedback from an evaluator agent (confidence 1.0)
 
 Output strict JSON with this exact structure:
 {
-  "attempts": [
-    {"skill": "Percent Of", "correct": 0},
-    {"skill": "Percent Of", "correct": 1}
+  "signals": [
+    {
+      "skill": "<skill name from allowed list>",
+      "signal_type": "<one of the types above>",
+      "label": 0 or 1,
+      "confidence": <float matching the type's confidence>
+    }
   ],
   "misconceptions": [
     "Specific wrong belief expressed by the student"
   ]
 }
 
-If no attempts can be identified, return {"attempts": [], "misconceptions": []}.
-Output ONLY the JSON. No prose, no markdown fences, no explanation."""
-
+Use the exact label and confidence values from the lists above. Don't invent your own. Output ONLY the JSON, no prose, no markdown fences."""
 
 class ConceptExtractor:
     """
@@ -142,33 +158,60 @@ class ConceptExtractor:
 
         result = self._validate_output(result)
         logger.info(
-            f"Extracted {len(result['attempts'])} attempts, "
+            f"Extracted {len(result['signals'])} signals, "
             f"{len(result['misconceptions'])} misconceptions"
         )
         return result
 
+    # Allowed signal types and their canonical (label, confidence) values
+    SIGNAL_TYPES = {
+        # positive
+        "correct_answer":       (1, 1.0),
+        "correct_explanation":  (1, 0.7),
+        "partial_correct":      (1, 0.4),
+        "evaluator_positive":   (1, 1.0),
+        # negative
+        "incorrect_answer":           (0, 1.0),
+        "repeated_misunderstanding":  (0, 0.8),
+        "confusion":                  (0, 0.6),
+        "clarification_request":      (0, 0.3),
+        "evaluator_negative":         (0, 1.0),
+    }
+
     def _validate_output(self, result: dict) -> dict:
         """Validate LLM output structure and filter invalid entries."""
-        attempts = result.get("attempts", [])
+        signals = result.get("signals", [])
         misconceptions = result.get("misconceptions", [])
 
-        valid_attempts = []
-        for a in attempts:
-            if not isinstance(a, dict):
+        valid_signals = []
+        for s in signals:
+            if not isinstance(s, dict):
                 continue
-            skill = a.get("skill")
-            correct = a.get("correct")
+            skill = s.get("skill")
+            signal_type = s.get("signal_type")
+            label = s.get("label")
+            confidence = s.get("confidence")
+
             if skill not in self.allowed_skills:
                 logger.warning(f"LLM returned skill not in allowed list: '{skill}' — skipping")
                 continue
-            if correct not in (0, 1):
-                logger.warning(f"Invalid 'correct' value: {correct} — skipping")
+            if signal_type not in self.SIGNAL_TYPES:
+                logger.warning(f"Unknown signal type: '{signal_type}' — skipping")
                 continue
-            valid_attempts.append({"skill": skill, "correct": correct})
+
+            # Enforce canonical label/confidence for the signal type
+            # (LLMs can drift; we trust the taxonomy, not the LLM's numbers)
+            canonical_label, canonical_confidence = self.SIGNAL_TYPES[signal_type]
+            valid_signals.append({
+                "skill": skill,
+                "signal_type": signal_type,
+                "label": canonical_label,
+                "confidence": canonical_confidence,
+            })
 
         valid_misconceptions = [m for m in misconceptions if isinstance(m, str)]
 
         return {
-            "attempts": valid_attempts,
+            "signals": valid_signals,
             "misconceptions": valid_misconceptions,
         }

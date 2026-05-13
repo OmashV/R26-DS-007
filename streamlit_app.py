@@ -54,6 +54,79 @@ tab_session, tab_profile, tab_system = st.tabs([
 # Preset transcripts — useful for live demos so you don't have to type
 PRESET_TRANSCRIPTS = {
     "(Custom — paste your own)": "",
+    # ───── Pseudo-observation showcase presets ─────
+
+    "🟢 [Signals demo] Clean correct answers + explanation": """\
+TUTOR: Let's work on percentages. What's 25% of 80?
+STUDENT: 20.
+TUTOR: Right. What's 15% of 60?
+STUDENT: 9.
+TUTOR: How did you work that out?
+STUDENT: 15 over 100 times 60. Same as 0.15 times 60.
+TUTOR: Exactly. What's 40% of 50?
+STUDENT: 20.
+TUTOR: Perfect.""",
+
+    "🟡 [Signals demo] Mixed — incorrect, partial, then correct": """\
+TUTOR: What's 30% of 60?
+STUDENT: Um... 30?
+TUTOR: Not quite. 30% means 30 out of every 100. So it's 0.3 times 60.
+STUDENT: Oh, 18.
+TUTOR: Right. Now try 25% of 40.
+STUDENT: Is it 10?
+TUTOR: Yes! How did you get there?
+STUDENT: I just figured 25% is a quarter, so a quarter of 40 is 10.
+TUTOR: Great thinking. Try 50% of 90.
+STUDENT: 45.
+TUTOR: Perfect.""",
+
+    "🔴 [Signals demo] Confusion and clarification requests": """\
+TUTOR: What's 20% of 50?
+STUDENT: I don't get percentages.
+TUTOR: Let me explain. Percent means out of 100. So 20% is 20 out of 100.
+STUDENT: Can you explain that again?
+TUTOR: Sure. If you have 100 sweets, 20% is 20 of them.
+STUDENT: I'm still confused.
+TUTOR: Let's try a smaller example. What's 10% of 100?
+STUDENT: 100?
+TUTOR: Not quite. 10% of 100 is 10.
+STUDENT: Wait, what?""",
+
+    "🟠 [Signals demo] Repeated misunderstanding (subtraction error)": """\
+TUTOR: What's 25% of 80?
+STUDENT: 25.
+TUTOR: Not quite. Remember, percent means out of 100, so 25% is 0.25 of the number.
+STUDENT: Oh, so 25% of 80 is 80 minus 25?
+TUTOR: No — it's 80 times 0.25. So one quarter of 80.
+STUDENT: 20.
+TUTOR: Right. Try 30% of 50.
+STUDENT: 50 minus 30, so 20?
+TUTOR: Hmm, that's the wrong approach. 30% of 50 is 0.3 times 50, which is 15.
+STUDENT: Oh. So it's like multiplication, not subtraction.
+TUTOR: Yes — percents are about parts of a whole, not what's left over.""",
+
+    "🔵 [Signals demo] Mixed skills — equations and percentages": """\
+TUTOR: Let's start with equation solving. Solve 2x + 4 = 10.
+STUDENT: x equals 3.
+TUTOR: Right. Try 5x - 7 = 18.
+STUDENT: 5.
+TUTOR: Correct. Now let's switch to percentages. What's 20% of 90?
+STUDENT: Um... 18?
+TUTOR: Yes. How did you get there?
+STUDENT: 20 percent is one fifth, and one fifth of 90 is 18.
+TUTOR: Excellent. Try 75% of 40.
+STUDENT: 30.
+TUTOR: Perfect.""",
+
+    "🟣 [Signals demo] Student-initiated question (no upfront signals)": """\
+STUDENT: What's 30% of 50?
+TUTOR: Let me walk you through it. 30% means 30 out of 100. What's half of 30?
+STUDENT: 15.
+TUTOR: Right — so 30% of 50 is 15.
+STUDENT: Oh that makes sense.
+TUTOR: Try 20% of 80.
+STUDENT: 16.
+TUTOR: Perfect.""",
     "Percent Of — student struggling then learning": """\
 TUTOR: Today we're working on percentages. What's 25% of 80?
 STUDENT: Um... 25?
@@ -194,28 +267,48 @@ with tab_session:
                 st.error("Couldn't parse any turns from the transcript. "
                          "Make sure each line starts with 'TUTOR:' or 'STUDENT:'.")
             else:
-                with st.spinner("Extracting concepts via LLM..."):
+                with st.spinner("Extracting conversational signals via LLM..."):
                     extractor = load_extractor()
                     extraction = extractor.extract(transcript)
 
-                st.success(f"Extracted {len(extraction['attempts'])} attempts")
+                st.success(f"Extracted {len(extraction['signals'])} learning signals")
 
-                # Show extracted attempts
-                with st.expander("📋 Extracted attempts", expanded=True):
-                    for a in extraction["attempts"]:
-                        marker = "✅" if a["correct"] == 1 else "❌"
-                        st.write(f"{marker}  **{a['skill']}**")
+                # Show extracted signals with confidence levels
+                with st.expander("📋 Extracted conversational signals", expanded=True):
+                    st.caption(
+                        "Each signal is a piece of evidence about student mastery, "
+                        "weighted by confidence. Standard binary attempts have confidence 1.0; "
+                        "softer evidence (confusion, partial reasoning) has lower confidence."
+                    )
+                    for s in extraction["signals"]:
+                        marker = "✅" if s["label"] == 1 else "❌"
+                        sig_type = s.get("signal_type", "unknown")
+                        confidence = s.get("confidence", 1.0)
+                        # Visual confidence bar
+                        bar_width = int(confidence * 100)
+                        bar_color = "#10b981" if s["label"] == 1 else "#ef4444"
+                        st.markdown(
+                            f"{marker}  **{s['skill']}**  "
+                            f"`{sig_type}`  &nbsp; "
+                            f"<span style='background: linear-gradient(to right, "
+                            f"{bar_color} 0%, {bar_color} {bar_width}%, "
+                            f"#e5e7eb {bar_width}%, #e5e7eb 100%); "
+                            f"padding: 2px 8px; border-radius: 4px; "
+                            f"color: white; font-size: 0.75em; font-weight: 600;'>"
+                            f"conf {confidence:.1f}</span>",
+                            unsafe_allow_html=True,
+                        )
                     if extraction["misconceptions"]:
                         st.markdown("**Misconceptions detected:**")
                         for m in extraction["misconceptions"]:
                             st.write(f"- {m}")
 
                 # Run through knowledge graph
-                with st.spinner("Updating knowledge graph (running BKT)..."):
+                with st.spinner("Updating knowledge graph (running BKT with confidence-weighted signals)..."):
                     kg = load_knowledge_graph()
                     session = kg.process_session(
                         student_id=student_id,
-                        attempts=extraction["attempts"],
+                        signals=extraction["signals"],
                     )
 
                 st.success(f"Session {session['session_id']} processed")
@@ -346,19 +439,29 @@ with tab_profile:
                 st.warning("No attempts recorded.")
             else:
                 trajectory = predictor.predict_trajectory(selected_skill, attempts)
+
+                # Extract just the labels for the plot's marker rendering
+                attempt_labels = [a[0] if isinstance(a, tuple) else a for a in attempts]
+
                 from core.visualisations import plot_mastery_trajectory
                 fig = plot_mastery_trajectory(
                     skill=selected_skill,
-                    attempts=attempts,
+                    attempts=attempt_labels,
                     trajectory=trajectory,
                     student_id=selected_student,
                 )
                 st.pyplot(fig)
 
-                with st.expander("Raw attempt history"):
+                with st.expander("Raw signal history"):
                     for i, a in enumerate(attempts, 1):
-                        marker = "✅" if a == 1 else "❌"
-                        st.write(f"{i}. {marker}")
+                        if isinstance(a, tuple):
+                            label, confidence = a
+                            marker = "✅" if label == 1 else "❌"
+                            conf_text = f" (confidence {confidence:.1f})" if confidence < 1.0 else ""
+                            st.write(f"{i}. {marker}{conf_text}")
+                        else:
+                            marker = "✅" if a == 1 else "❌"
+                            st.write(f"{i}. {marker}")
 
 with tab_system:
     st.header("System info")

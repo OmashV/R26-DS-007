@@ -92,35 +92,42 @@ class KnowledgeGraph:
         student_id: str,
         skill: str,
         correct: int,
+        confidence: float = 1.0,
+        signal_type: Optional[str] = None,
         session_id: Optional[str] = None,
     ) -> None:
-        """Log a single attempt to the database."""
+        """Log a single attempt (with optional confidence weight) to the database."""
         if correct not in (0, 1):
             raise ValueError(f"correct must be 0 or 1, got {correct}")
+        if not 0.0 <= confidence <= 1.0:
+            raise ValueError(f"confidence must be in [0, 1], got {confidence}")
 
         self.ensure_student(student_id)
 
         with get_connection() as conn:
             conn.execute(
                 """
-                INSERT INTO attempts (student_id, skill_name, correct, session_id)
-                VALUES (?, ?, ?, ?)
+                INSERT INTO attempts (student_id, skill_name, correct, confidence, signal_type, session_id)
+                VALUES (?, ?, ?, ?, ?, ?)
                 """,
-                (student_id, skill, correct, session_id),
+                (student_id, skill, correct, confidence, signal_type, session_id),
             )
 
-    def get_attempts(self, student_id: str, skill: str) -> list[int]:
-        """Return chronological list of correct/incorrect for a (student, skill) pair."""
+    def get_attempts(self, student_id: str, skill: str) -> list[tuple[int, float]]:
+        """
+        Return chronological list of (label, confidence) tuples for a (student, skill) pair.
+        Format matches what BKTPredictor.predict() expects for graded observations.
+        """
         with get_connection() as conn:
             rows = conn.execute(
                 """
-                SELECT correct FROM attempts
+                SELECT correct, confidence FROM attempts
                 WHERE student_id = ? AND skill_name = ?
                 ORDER BY created_at ASC, attempt_id ASC
                 """,
                 (student_id, skill),
             ).fetchall()
-        return [r["correct"] for r in rows]
+        return [(r["correct"], r["confidence"]) for r in rows]
 
     # ----- Mastery -----
 
@@ -283,24 +290,45 @@ class KnowledgeGraph:
     def process_session(
         self,
         student_id: str,
-        attempts: list[dict],
+        signals: list[dict],
         session_id: Optional[str] = None,
     ) -> dict:
         """
-        Process a full session: record all attempts, then update mastery
+        Process a full session: record all signals, then update mastery
         for each affected skill.
 
         Args:
             student_id: Student identifier.
-            attempts: List of {"skill": str, "correct": 0|1} dicts.
+            signals: List of signal dicts. Each must contain {skill, label, confidence}
+                     and optionally signal_type. Backward-compatible with the
+                     older {skill, correct} format (treated as confidence=1.0).
             session_id: Optional session identifier (auto-generated if None).
 
         Returns:
-            Summary dict with session_id, skills_updated (with cold-start details),
-            and the updated student graph.
+            Summary dict with session_id, skills_updated, and updated graph.
         """
         session_id = session_id or f"sess_{uuid.uuid4().hex[:12]}"
         self.ensure_student(student_id)
+
+        # Backward-compatibility shim: convert old {skill, correct} format
+        normalised = []
+        for s in signals:
+            if "label" in s:
+                normalised.append({
+                    "skill": s["skill"],
+                    "label": s["label"],
+                    "confidence": s.get("confidence", 1.0),
+                    "signal_type": s.get("signal_type"),
+                })
+            elif "correct" in s:
+                normalised.append({
+                    "skill": s["skill"],
+                    "label": s["correct"],
+                    "confidence": 1.0,
+                    "signal_type": None,
+                })
+            else:
+                raise ValueError(f"Signal missing label/correct: {s}")
 
         with get_connection() as conn:
             conn.execute(
@@ -308,20 +336,24 @@ class KnowledgeGraph:
                 INSERT OR REPLACE INTO sessions (session_id, student_id, concept_count)
                 VALUES (?, ?, ?)
                 """,
-                (session_id, student_id, len({a["skill"] for a in attempts})),
+                (session_id, student_id, len({s["skill"] for s in normalised})),
             )
 
-        for a in attempts:
-            self.record_attempt(student_id, a["skill"], a["correct"], session_id)
+        for s in normalised:
+            self.record_attempt(
+                student_id=student_id,
+                skill=s["skill"],
+                correct=s["label"],
+                confidence=s["confidence"],
+                signal_type=s["signal_type"],
+                session_id=session_id,
+            )
 
-        affected_skills = sorted({a["skill"] for a in attempts})
+        affected_skills = sorted({s["skill"] for s in normalised})
         skill_updates = []
         for skill in affected_skills:
             update_result = self.update_mastery(student_id, skill)
-            skill_updates.append({
-                "skill": skill,
-                **update_result,
-            })
+            skill_updates.append({"skill": skill, **update_result})
 
         return {
             "session_id": session_id,
