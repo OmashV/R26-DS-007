@@ -1,0 +1,2403 @@
+example_id,target_text,context_text,guess,clarification_request,affirmation,other,num_context_turns,target_normalized
+0,So what's the correct answer?,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+Okay.  What is tree again?
+Hmm...  ""tree"" is  ""l'albero""
+Thanks.  How do I say ""behind"" in Italian?
+OK,  ""is behind the"" is ""e dietro""
+il cane e dietro rosa l'albero?
+l' (""the"") is prepended to the following word when it begins with a vowel
+Is it correct to say ""il cane e dietro rosa l'albero""?
+l' (""the"" is prepended to the following word when it begins with a vowel.",0,1,0,0,9,so what's the correct answer
+3,e accanto al coniglio amarillo,"Please try to fill in the blank in Italian.
+nexto il bunio amarillo
+OK,  ""is next to the"" is  ""e accanto al""
+e accanto al bunio amarillo
+Hmm...  ""bunny"" is  ""coniglio""",1,0,0,0,5,e accanto al coniglio amarillo
+5,"How do you say ""is under""?",Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say is under
+7,"What is the word for ""red""?","Please try to fill in the blank in Italian.
+How do you say ""is in front of""?
+Remember that  ""is in front of the"" is ""e di fronte al""",0,1,0,0,3,what is the word for red
+8,what is is behind?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is is behind
+10,What is yellow box in Italian?,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is yellow box in italian
+12,"How do you say ""bunny""?",Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say bunny
+13,e di fronte al conigli viola,Please try to fill in the blank in Italian.,1,0,0,0,1,e di fronte al conigli viola
+15,l cane e di fronte al blu coniglio,"""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.
+e di fronte al
+OK,  ""bunny"" is  ""coniglio""
+How do I say in front of?
+Okay, I'll give you a hint.  ""is in front of the"" is ""e di fronte al""
+Il cane e di fronte al ... how do I say blue?
+Remember that  ""blue"" is ""blu""",1,0,0,0,7,l cane e di fronte al blu coniglio
+16,"OK, thanks. Is it ""il gatto e davanti alla scatola rosa""?","Please try to fill in the blank in Italian.
+I know the Italian for box, but not for ""in front of""
+OK,  ""box"" is  ""scatola""
+Thanks, I knew that already. What is Italian for ""in front of""?
+OK,  ""is in front of the"" is ""e davanti alla""",1,0,1,0,5,ok thanks is it il gatto e davanti alla scatola rosa
+17,oh yeah I remember that,"Please try to fill in the blank in Italian.
+How do you say ""is next to""?
+Well,  ""is next to the"" is ""e accanto al""
+What is the word for ""blue""?
+Okay, I'll give you a hint.  ""blue"" is ""blu""
+What is the word for ""bed""?
+Remember that  ""bed"" is  ""letto""",0,0,1,0,7,oh yeah i remember that
+18,"Understood. How about ""il coniglio e dietro la scatola azul""","""Is Behind The"" is ""e dietro la"". Please try to fill in the blank in Italian.
+OK, but what is blue box in Italian?
+OK,  ""box"" is  ""scatola""",1,0,1,0,3,understood how about il coniglio e dietro la scatola azul
+19,What is Italian for is behind the?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is italian for is behind the
+20,Il cane e di fronte al ... how do I say blue?,"""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.
+e di fronte al
+OK,  ""bunny"" is  ""coniglio""
+How do I say in front of?
+Okay, I'll give you a hint.  ""is in front of the"" is ""e di fronte al""",0,1,0,0,5,il cane e di fronte al  how do i say blue
+21,how do I say in front of?,"Please try to fill in the blank in Italian.
+how do I say box?
+Hmm...  ""box"" is  ""scatola""",0,1,0,0,3,how do i say in front of
+23,"Sì, il gatto è dentro la scatola","""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.",1,0,0,0,1,sì il gatto è dentro la scatola
+24,Okay. What is the word for bed again?,"""Blue"" is ""blu"". Please try to fill in the blank in Italian.",0,1,0,0,1,okay what is the word for bed again
+25,blu,"""Table"" is ""tavolo"". Please try to fill in the blank in Italian.
+il cane tavolo
+OK,  ""is next to the"" is  ""e accanto al""
+avolo
+OK,  ""blue"" is ""blu""",0,0,1,0,5,blu
+26,And how do you say yellow?,"""Box"" is ""scatola"". Please try to fill in the blank in Italian.
+Okay, how do you say in front of?
+OK,  ""is in front of the"" is ""e di fronte alla""",0,1,0,0,3,and how do you say yellow
+27,What is the word for blue?,"Please try to fill in the blank in Italian.
+What is the word under the?
+Hmm...  ""is under the"" is ""e sotto il""",0,1,0,0,3,what is the word for blue
+28,"OK, thanks. Is it ""il gatto e vicino al il cane""?","Please try to fill in the blank in Italian.
+Can you remind me of Italian for ""next to""?
+Hmm...  ""is next to the"" is ""e vicino al""",1,0,1,0,3,ok thanks is it il gatto e vicino al il cane
+29,e vicino alla pianta jaune.,Please try to fill in the blank in Italian.,1,0,0,0,1,e vicino alla pianta jaune
+30,How do you say dog?,"Please try to fill in the blank in Italian.
+how do you say behind?
+Okay, I'll give you a hint.  ""is behind the"" is ""e dietro la""
+and how do you say dog?
+OK,  ""box"" is  ""scatola""",0,1,0,0,5,how do you say dog
+31,How do you say tree?,"Please try to fill in the blank in Italian.
+How do you say pink?
+Okay, I'll give you a hint.  ""pink"" is ""rosa""",0,1,0,0,3,how do you say tree
+34,I don't remember how to say is in front of the in Italian. Any help?,Please try to fill in the blank in Italian.,0,1,0,0,1,i don't remember how to say is in front of the in italian any help
+35,how do I say box?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do i say box
+37,e dietro la scatola amarillo then is my guess.,"Please try to fill in the blank in Italian.
+e di behinde alla scatola amarillo maybe?
+Okay, I'll give you a hint.  ""is behind the"" is  ""e dietro la""",1,0,0,0,3,e dietro la scatola amarillo then is my guess
+39,What is the word for blue again?,"""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is the word for blue again
+41,e di fronte alla scatola rosa,"Please try to fill in the blank in Italian.
+what is ""bag"" bag in italian?
+Well,  ""box"" is  ""scatola""
+what is ""bag"" in italian?
+alla (""to the"") is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all' and prepended to the word.
+bag alla scatola rosa
+Well,  ""is in front of the"" is  ""e di fronte alla""",1,0,0,0,7,e di fronte alla scatola rosa
+42,"I can't remember the word for ""box"".",Please try to fill in the blank in Italian.,0,1,0,0,1,i can't remember the word for box
+43,e dentro la rosa,"Please try to fill in the blank in Italian.
+rosa
+Okay, I'll give you a hint.  ""is inside of the"" is  ""e dentro la""",1,0,0,0,3,e dentro la rosa
+44,How do you say table?,"Please try to fill in the blank in Italian.
+How do you say ""is under""?
+Remember that  ""is under the"" is ""e sotto il""
+How do you say pink?
+Okay, I'll give you a hint.  ""pink"" is ""rosa""",0,1,0,0,5,how do you say table
+45,what is red?,"Please try to fill in the blank in Italian.
+what is behind?
+Okay, I'll give you a hint.  ""is behind the"" is ""e dietro il""",0,1,0,0,3,what is red
+48,al cane rosa,Please try to fill in the blank in Italian.,1,0,0,0,1,al cane rosa
+50,What is the word for plant in Italian?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for plant in italian
+51,"What is the word for ""bed""?","Please try to fill in the blank in Italian.
+How do you say ""is next to""?
+Well,  ""is next to the"" is ""e accanto al""
+What is the word for ""blue""?
+Okay, I'll give you a hint.  ""blue"" is ""blu""",0,1,0,0,5,what is the word for bed
+52,il coniglio e sotto.,"""Is Under The"" is ""e sotto"". Please try to fill in the blank in Italian.
+il coniglio e sotto
+Can you give me your best guess?",0,0,1,0,3,il coniglio e sotto
+53,So what's the word for purple then?,"Please try to fill in the blank in Italian.
+I really don't remember the word for bunny. Any help?
+Hmm...  ""bunny"" is  ""coniglio""
+e vacino al coniglio rossa perhaps?
+Well,  ""is next to the"" is  ""e accanto al""",0,1,0,0,5,so what's the word for purple then
+54,The dog is inside of the box.,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.",1,0,0,0,1,the dog is inside of the box
+55,"ok, did I get it correct or should I have done something different?","""Yellow"" is ""giallo"". Please try to fill in the blank in Italian.
+what is the word for behind?
+Remember that  ""is behind the"" is ""e dietro il""
+il coniglio e dietro giallo carne.
+Hmm...  ""dog"" is  ""cane""
+il coniglio e dietro giallo cane.
+il (""the"") is used for when the following word (cane) is masculine.
+il coniglio e dietro il giallo cane
+giallo is the masculine form, because the noun it modifies (cane) is masculine.",0,1,0,0,9,ok did i get it correct or should i have done something different
+56,Yes I remember.,"Please try to fill in the blank in Italian.
+how do you say behind?
+Okay, I'll give you a hint.  ""is behind the"" is ""e dietro la""
+and how do you say dog?
+OK,  ""box"" is  ""scatola""
+How do you say dog?
+rossa is the feminine form, because the noun it modifies (scatola) is feminine.",0,0,1,0,7,yes i remember
+58,How do I say dog,"Please try to fill in the blank in Italian.
+How do I say next to
+OK,  ""is next to the"" is ""e vicino al""",0,1,0,0,3,how do i say dog
+59,pianta,"Please try to fill in the blank in Italian.
+How do you say green?
+OK,  ""green"" is ""verde""
+And how do you say plant?
+Okay, I'll give you a hint.  ""plant"" is  ""pianta""
+And how do you say ""is next to the""?
+Remember that  ""is next to the"" is ""e vicino alla""
+Ok, I will remember.
+Do you know how to say plant?",0,0,1,0,9,pianta
+61,la borsa e di dietro la scatola verde,"Please try to fill in the blank in Italian.
+la borsa
+Remember that  ""is behind the"" is  ""e dietro la""
+la borsa e di dietro la
+OK,  ""box"" is  ""scatola""
+la borsa e di dietro la scatola
+Okay, I'll give you a hint.  ""green"" is  ""verde""",1,1,0,0,7,la borsa e di dietro la scatola verde
+62,"Ok, is it ""la palla e dentro la gialla borsa""?","""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.
+Ok! But what is ""bag"" in Italian?
+OK,  ""bag"" is  ""borsa""
+Oh! And I can't remember what ""yellow"" is...
+OK,  ""yellow"" is ""gialla""",1,0,1,0,5,ok is it la palla e dentro la gialla borsa
+65,il gatto e vicino all'abero blu.,"Please try to fill in the blank in Italian.
+what is nest to ?
+all' (""to the"" is prepended to the following word when it begins with a vowel.  This is a contraction of al (""to"") and l' (""the"")
+blue?
+OK,  ""blue"" is ""blu""
+il gatto all'bero blu.
+OK,  ""is next to the"" is  ""e vicino""",1,0,0,0,7,il gatto e vicino all'abero blu
+66,"Oh, ""il gatto e vicino al all'albero verde""?","Please try to fill in the blank in Italian.
+""il gatto e vicino al tree verde""?
+Remember that  ""tree"" is  ""all'albero""",1,0,1,0,3,oh il gatto e vicino al all'albero verde
+67,il gatto e dentro la scatola rosa?,"Please try to fill in the blank in Italian.
+what is the word for pink?
+Well,  ""pink"" is ""rosa""",1,0,0,0,3,il gatto e dentro la scatola rosa
+72,What is yellow in Italian?,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.
+What is yellow box in Italian?
+Okay, I'll give you a hint.  ""box"" is  ""scatola""",0,1,0,0,3,what is yellow in italian
+73,What is the word for green tree?,"""Is Under The"" is ""e sotto"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is the word for green tree
+75,"Okay. How do you say ""on top of""?","""Blue"" is ""blu"". Please try to fill in the blank in Italian.
+Okay. What is the word for bed again?
+Well,  ""bed"" is  ""letto""",0,1,0,0,3,okay how do you say on top of
+76,Okay! But how do you say green?,"Please try to fill in the blank in Italian.
+I don't remember how to say is in front of the in Italian. Any help?
+OK,  ""is in front of the"" is ""e di fronte al""",0,1,0,0,3,okay but how do you say green
+77,what is yellow?,"Please try to fill in the blank in Italian.
+what is next to?
+Well,  ""is next to the"" is ""e vicino""
+what is tree?
+Okay, I'll give you a hint.  ""tree"" is  ""all'albero""",0,1,0,0,5,what is yellow
+79,e accanto al bunio amarillo,"Please try to fill in the blank in Italian.
+nexto il bunio amarillo
+OK,  ""is next to the"" is  ""e accanto al""",1,0,0,0,3,e accanto al bunio amarillo
+80,e vicino alla il botano rojo.,"""Is Next To The"" is ""e vicino alla"". Please try to fill in the blank in Italian.
+et proximo il botano rojo.
+Okay, I'll give you a hint.  ""is next to the"" is  ""e vicino alla""",1,0,0,0,3,e vicino alla il botano rojo
+81,And what is the word for box?,"Please try to fill in the blank in Italian.
+What is the word for red?
+Okay, I'll give you a hint.  ""red"" is ""rossa""",0,1,0,0,3,and what is the word for box
+83,and how do you say purple?,"Please try to fill in the blank in Italian.
+how do you say in front of?
+Okay, I'll give you a hint.  ""is in front of the"" is ""e di fronte""",0,1,0,0,3,and how do you say purple
+85,I believe box is scatola right?,"""Purple"" is ""viola"". Please try to fill in the blank in Italian.
+Can you tell me how to say in front of the in Italian?
+Hmm...  ""is in front of the"" is ""e di fronte alla""",0,1,0,0,3,i believe box is scatola right
+86,e di fronte alla scatola rojo perhaps?,Please try to fill in the blank in Italian.,1,0,0,0,1,e di fronte alla scatola rojo perhaps
+87,"Ok! So it's ""il gatto e di fronte alle..."" but I don't remember the word for ""green"".","Please try to fill in the blank in Italian.
+I don't know how to say ""in front of"".
+Okay, I'll give you a hint.  ""is in front of the"" is ""e di fronte alla""
+Oh yeah, I remember that.
+Why don't you try filling in what you can.",1,1,1,0,5,ok so it's il gatto e di fronte alle but i don't remember the word for green
+89,al dentro scatola viola,Please try to fill in the blank in Italian.,1,0,0,0,1,al dentro scatola viola
+90,I thought next to was e accanto?,"Please try to fill in the blank in Italian.
+e accanto al arbio purplio
+Okay, I'll give you a hint.  ""is next to the"" is  ""e vicino""",0,1,0,0,3,i thought next to was e accanto
+91,okay so alla is a contraction of to and the.,"""Box"" is ""scatola"". Please try to fill in the blank in Italian.
+es en la fronta de pinke scatola
+Hmm...  ""is in front of the"" is  ""e di fronte alla""
+is it, il coniglio e di fronte alla penke scatola?
+Well,  ""pink"" is  ""rosa""
+so it must be il coniglio e di fronte scatola rosa, right?
+alla (""to the"") is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all' and prepended to the word.",0,0,1,0,7,okay so alla is a contraction of to and the
+92,what is tree?,"Please try to fill in the blank in Italian.
+what is in front of?
+Remember that  ""is in front of the"" is ""e di fronte""",0,1,0,0,3,what is tree
+95,how do I say green?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do i say green
+96,"what is ""bag"" bag in italian?",Please try to fill in the blank in Italian.,0,1,0,0,1,what is bag bag in italian
+100,e davanti alla scatola rosso,"Please try to fill in the blank in Italian.
+What is Italian for in front of the?
+Well,  ""is in front of the"" is ""e davanti alla""
+What is the word for box?
+Okay, I'll give you a hint.  ""box"" is  ""scatola""",1,0,0,0,5,e davanti alla scatola rosso
+101,how do you say purple?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say purple
+102,"Is it ""il coniglio e sotto abero l'verde?""","""Is Under The"" is ""e sotto"". Please try to fill in the blank in Italian.
+What is the word for green tree?
+Remember that  ""tree"" is  ""l'albero""
+What is the word for green?
+Hmm...  ""green"" is ""verde""
+Is it ""il coniglio e sotto verde l'abero?""
+l' (""the"") is prepended to the following word when it begins with a vowel",1,0,0,0,7,is it il coniglio e sotto abero l'verde
+104,rosa,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.",1,0,0,0,1,rosa
+105,il coniglio è dietro il gatto giallo,Please try to fill in the blank in Italian.,0,0,1,0,1,il coniglio è dietro il gatto giallo
+106,"Is blue, azul?",Please try to fill in the blank in Italian.,0,1,0,0,1,is blue azul
+108,what is pink?,"Please try to fill in the blank in Italian.
+what is in front of?
+Remember that  ""is in front of the"" is ""e di fronte""
+what is tree?
+Well,  ""tree"" is  ""all'albero""",0,1,0,0,5,what is pink
+109,Oh yes I remember you telling me that earlier.,"""Purple"" is ""viola"". Please try to fill in the blank in Italian.
+Can you tell me how to say in front of the in Italian?
+Hmm...  ""is in front of the"" is ""e di fronte alla""
+I believe box is scatola right?
+OK,  ""box"" is  ""scatola""
+So my response is e di fronte alla scatola verde.
+Well,  ""purple"" is  ""viola""",0,0,1,0,7,oh yes i remember you telling me that earlier
+110,"Is it ""il coniglio e sotto abero verde?""","""Is Under The"" is ""e sotto"". Please try to fill in the blank in Italian.
+What is the word for green tree?
+Remember that  ""tree"" is  ""l'albero""
+What is the word for green?
+Hmm...  ""green"" is ""verde""
+Is it ""il coniglio e sotto verde l'abero?""
+l' (""the"") is prepended to the following word when it begins with a vowel
+Is it ""il coniglio e sotto abero l'verde?""
+l' (""the"" is prepended to the following word when it begins with a vowel.",1,0,0,0,9,is it il coniglio e sotto abero verde
+111,"Okay.  How do I say ""blue""?","Please try to fill in the blank in Italian.
+What is the word for ""bed""?
+OK,  ""bed"" is  ""letto""
+Okay, good.  Is it ""e di letto""?
+Hmm...  ""is on top of the"" is  ""e in cima al""",0,1,1,0,5,okay how do i say blue
+112,La pianta e dentro la scatola,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.
+La piant e dentro la box
+Okay, I'll give you a hint.  ""box"" is  ""scatola""",1,0,0,0,3,la pianta e dentro la scatola
+117,e accanto al scatola rosa is my guess then.,"Please try to fill in the blank in Italian.
+How do you say is next to the?
+Well,  ""is next to the"" is ""e accanto al""",1,0,0,0,3,e accanto al scatola rosa is my guess then
+118,how do you say tree in Italian?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say tree in italian
+119,is a dog a masculine word in Italian?,"""Yellow"" is ""giallo"". Please try to fill in the blank in Italian.
+How do I saw 'next to'?
+Okay, I'll give you a hint.  ""is next to the"" is ""e vicino al""
+il gatto e vicino al giallo cane?
+al (""to the"", or ""of the"") is used when the following word (cane) is masculine and a singular object.  It is a contraction of the words a (""to"") and il (""the"").
+So is 'il gatto e vicino al giallo cane' correct?
+Why don't you try filling in what you can.
+il gatto e vicino il giallo cane?
+giallo is the masculine form, because the noun it modifies (cane) is masculine.",0,1,0,0,9,is a dog a masculine word in italian
+120,"What is the word for ""blue""?",Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for blue
+121,La pianta e dentro la scatola gialla.,Please try to fill in the blank in Italian.,1,0,0,0,1,la pianta e dentro la scatola gialla
+122,"Thanks.  How do I say ""behind"" in Italian?","""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+Okay.  What is tree again?
+Hmm...  ""tree"" is  ""l'albero""",0,1,1,0,3,thanks how do i say behind in italian
+123,e sotto il lavolo rosa,"Please try to fill in the blank in Italian.
+What is the phrase for under?
+OK,  ""is under the"" is ""e sotto il""
+e sotto il tablo rosa
+Remember that  ""table"" is  ""tavolo""",1,0,0,0,5,e sotto il lavolo rosa
+124,allalbero,"""Tree"" is ""all'albero"". Please try to fill in the blank in Italian.
+What is tree in Italian?
+Okay, I'll give you a hint.  ""tree"" is  ""all'albero""
+Oh I remember you saying that.
+Do you know how to say is in front of the?
+No can you tell me?
+all' (""to the"" is prepended to the following word when it begins with a vowel.  This is a contraction of al (""to"") and l' (""the"")
+Ok i think I got it.
+Do you know how to say tree?",1,0,0,0,9,allalbero
+128,"I know the Italian for box, but not for ""in front of""",Please try to fill in the blank in Italian.,0,1,0,0,1,i know the italian for box but not for in front of
+129,And how do you say plant?,"Please try to fill in the blank in Italian.
+How do you say green?
+OK,  ""green"" is ""verde""",0,1,0,0,3,and how do you say plant
+131,What is the word for on top of?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for on top of
+132,"Ok, I will remember.","Please try to fill in the blank in Italian.
+How do you say green?
+OK,  ""green"" is ""verde""
+And how do you say plant?
+Okay, I'll give you a hint.  ""plant"" is  ""pianta""
+And how do you say ""is next to the""?
+Remember that  ""is next to the"" is ""e vicino alla""",0,0,1,0,7,ok i will remember
+135,arbor viola scatola,Please try to fill in the blank in Italian.,1,0,0,0,1,arbor viola scatola
+138,"My guess is  ""il gatto e di fronte al viola coniglio"". Is that right?","""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.
+How do you say ""purple bunny""?
+OK,  ""bunny"" is  ""coniglio""
+How do you say purple?
+Well,  ""purple"" is ""viola""
+il gatto e di fronte al viola coniglio
+al (""to the"", or ""of the"") is used when the following word (coniglio) is masculine and a singular object.  It is a contraction of the words a (""to"") and il (""the"").",1,0,0,0,7,my guess is il gatto e di fronte al viola coniglio is that right
+140,el dietro alla scatola blu is my first guess.,Please try to fill in the blank in Italian.,1,0,0,0,1,el dietro alla scatola blu is my first guess
+141,la borsa e di dietro la scatola,"Please try to fill in the blank in Italian.
+la borsa
+Remember that  ""is behind the"" is  ""e dietro la""
+la borsa e di dietro la
+OK,  ""box"" is  ""scatola""",1,1,0,0,5,la borsa e di dietro la scatola
+142,how do I say tree?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do i say tree
+143,How do you say pink?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say pink
+144,How do you say pink?,"Please try to fill in the blank in Italian.
+How do you say ""is under""?
+Remember that  ""is under the"" is ""e sotto il""",0,1,0,0,3,how do you say pink
+145,"How would you say ""is on top of the"" in Italian?",Please try to fill in the blank in Italian.,0,1,0,0,1,how would you say is on top of the in italian
+146,coniglio viola,Please try to fill in the blank in Italian.,1,0,0,0,1,coniglio viola
+147,what is tree?,"Please try to fill in the blank in Italian.
+what is next to?
+Well,  ""is next to the"" is ""e vicino""",0,1,0,0,3,what is tree
+151,Okay. Can you remind me how to say is on top of again?,Please try to fill in the blank in Italian.,0,1,0,0,1,okay can you remind me how to say is on top of again
+153,il gatto e de fronte al all'albero blu,"Please try to fill in the blank in Italian.
+What is the word for blue?
+Okay, I'll give you a hint.  ""blue"" is ""blu""
+ok, and what is the word for tree?
+Hmm...  ""tree"" is  ""all'albero""",1,0,0,0,5,il gatto e de fronte al all'albero blu
+154,il gatto is next to the verde tree,"""Green"" is ""verde"". Please try to fill in the blank in Italian.",1,0,0,0,1,il gatto is next to the verde tree
+156,la borsa e di fronte alla gialla scatola?,"""Box"" is ""scatola"". Please try to fill in the blank in Italian.
+Okay, how do you say in front of?
+OK,  ""is in front of the"" is ""e di fronte alla""
+And how do you say yellow?
+Okay, I'll give you a hint.  ""yellow"" is ""gialla""
+Is it ""la borsa e di fronte alla gialla scatola""?
+alla (""to the"") is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all' and prepended to the word.",1,0,0,0,7,la borsa e di fronte alla gialla scatola
+157,Oh okay! Thanks for reminding me.,"Please try to fill in the blank in Italian.
+el dietro alla scatola blu is my first guess.
+Well,  ""is in front of the"" is  ""e di fronte alla""",0,0,1,0,3,oh okay thanks for reminding me
+158,"What is ""red""?","Please try to fill in the blank in Italian.
+How do you say ""is behind""?
+Okay, I'll give you a hint.  ""is behind the"" is ""e dietro la""
+How do you say ""red box""?
+OK,  ""box"" is  ""scatola""",0,1,0,0,5,what is red
+159,e sotto il tavolo,"""Table"" is ""tavolo"". Please try to fill in the blank in Italian.
+undero tavolo
+Well,  ""is under the"" is  ""e sotto il""",1,0,0,0,3,e sotto il tavolo
+160,I remember learning that,"Please try to fill in the blank in Italian.
+What is the phrase for under?
+OK,  ""is under the"" is ""e sotto il""
+e sotto il tablo rosa
+Remember that  ""table"" is  ""tavolo""
+e sotto il lavolo rosa
+il (""the"") is used for when the following word (tavolo) is masculine.
+ok
+['il (""the"") is used for when the following word (tavolo) is masculine.', 'Words in Italian have a gender associated with them (either masculine or feminine), even when the word is an object, concepts, or abstract ideas.']",0,0,1,0,9,i remember learning that
+161,"How do you say ""is in front of""?",Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say is in front of
+162,"ok, and what is the word for tree?","Please try to fill in the blank in Italian.
+What is the word for blue?
+Okay, I'll give you a hint.  ""blue"" is ""blu""",0,1,1,0,3,ok and what is the word for tree
+163,"Oh, thank you.  How do I say ""table"" in Italian?","Please try to fill in the blank in Italian.
+Is pink ""rossa"" in Italian?
+Well,  ""pink"" is ""rosa""",0,1,1,0,3,oh thank you how do i say table in italian
+164,"Alright. Then is it ""il gatto e in cima al il letto blu""?","""Blue"" is ""blu"". Please try to fill in the blank in Italian.
+Okay. What is the word for bed again?
+Well,  ""bed"" is  ""letto""
+Okay. How do you say ""on top of""?
+Well,  ""is on top of the"" is ""e in cima al""",1,0,0,0,5,alright then is it il gatto e in cima al il letto blu
+165,e dentro la rosa scatola,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.
+The dog is inside of the box.
+OK,  ""is inside of the"" is  ""e dentro la""
+e dentro la
+OK,  ""box"" is  ""scatola""
+e dentro la scatola
+Hmm...  ""pink"" is  ""rosa""",1,0,0,0,7,e dentro la rosa scatola
+166,What is the word for red?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for red
+171,bag alla scatola rosa,"Please try to fill in the blank in Italian.
+what is ""bag"" bag in italian?
+Well,  ""box"" is  ""scatola""
+what is ""bag"" in italian?
+alla (""to the"") is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all' and prepended to the word.",1,0,0,0,5,bag alla scatola rosa
+172,Then I believe its e in cima al letto avo perhaps.,"""Is On Top Of The"" is ""e in cima al"". Please try to fill in the blank in Italian.
+Could you remind me how to say bed in Italian?
+Well,  ""bed"" is  ""letto""",1,0,0,0,3,then i believe its e in cima al letto avo perhaps
+175,Yes.  So?,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.
+Sì, il gatto è dentro la scatola
+Hmm...  ""is inside of the"" is  ""e dentro la""
+Yes.   That's what I said
+Do you know how to say box?
+Scatola
+Well,  ""red"" is  ""rossa""",0,0,1,0,7,yes so
+176,e vicino al la rosa letto,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+rosa
+Okay, I'll give you a hint.  ""is next to the"" is  ""e vicino al""
+e vicino al la rosa
+Hmm...  ""bed"" is  ""letto""",1,0,0,0,5,e vicino al la rosa letto
+178,il coniglio e sotto l'albero?,"""Is Under The"" is ""e sotto"". Please try to fill in the blank in Italian.
+il coniglio e sotto tree?
+Okay, I'll give you a hint.  ""tree"" is  ""l'albero""",1,0,0,0,3,il coniglio e sotto l'albero
+179,Okay! My final answer is e di fronte alla scatola giallo.,"Please try to fill in the blank in Italian.
+e dentro la scatola giallo is my first guess.
+Well,  ""is in front of the"" is  ""e di fronte alla""
+I completely forgot that. So maybe its e di fronte alla scatola giallo.
+Hmm...  ""yellow"" is  ""gialla""
+So I just messed up the gender of yellow?
+alla (""to the"") is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all' and prepended to the word.",1,0,0,0,7,okay my final answer is e di fronte alla scatola giallo
+180,how do you say inside?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say inside
+183,what is yellow?,"Please try to fill in the blank in Italian.
+what is is behind?
+Well,  ""is behind the"" is ""e dietro la""
+what is box?
+Well,  ""box"" is  ""scatola""",0,1,0,0,5,what is yellow
+184,"Is it correct to say ""il cane e dietro rosa l'albero""?","""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+Okay.  What is tree again?
+Hmm...  ""tree"" is  ""l'albero""
+Thanks.  How do I say ""behind"" in Italian?
+OK,  ""is behind the"" is ""e dietro""
+il cane e dietro rosa l'albero?
+l' (""the"") is prepended to the following word when it begins with a vowel",1,0,0,0,7,is it correct to say il cane e dietro rosa l'albero
+187,è dentro la,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.
+Sì, il gatto è dentro la scatola
+Hmm...  ""is inside of the"" is  ""e dentro la""
+Yes.   That's what I said
+Do you know how to say box?
+Scatola
+Well,  ""red"" is  ""rossa""
+Yes.  So?
+Do you know how to say is inside of the?",1,0,0,0,9,è dentro la
+188,"Ok! The word for box is ""scatola,"" right?","Please try to fill in the blank in Italian.
+I don't remember how to say ""is inside of.""
+Well,  ""is inside of the"" is ""e dentro la""",1,0,1,0,3,ok the word for box is scatola right
+189,e vicino al doggo rosa is my guess at this point.,"Please try to fill in the blank in Italian.
+I forgot, how do you say is next to the again?
+Hmm...  ""is next to the"" is ""e vicino al""",1,0,0,0,3,e vicino al doggo rosa is my guess at this point
+190,how do you say is behind?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say is behind
+191,il coniglio e sotto,"""Is Under The"" is ""e sotto"". Please try to fill in the blank in Italian.",0,0,1,0,1,il coniglio e sotto
+192,How do I say inside?,Please try to fill in the blank in Italian.,1,0,0,0,1,how do i say inside
+193,"I forgot, how do you say is next to the again?",Please try to fill in the blank in Italian.,0,1,0,0,1,i forgot how do you say is next to the again
+194,I completely forgot that. So maybe its e di fronte alla scatola giallo.,"Please try to fill in the blank in Italian.
+e dentro la scatola giallo is my first guess.
+Well,  ""is in front of the"" is  ""e di fronte alla""",1,0,0,0,3,i completely forgot that so maybe its e di fronte alla scatola giallo
+195,e dentro la boxo violo,"Please try to fill in the blank in Italian.
+e encanta all'boxo viola
+Remember that  ""is inside of the"" is  ""e dentro la""",1,0,0,0,3,e dentro la boxo violo
+197,How do I say blue?,"Please try to fill in the blank in Italian.
+How do I say bunny
+Okay, I'll give you a hint.  ""tree"" is  ""l'albero""
+How do I say under
+OK,  ""is under the"" is ""e sotto""",0,1,0,0,5,how do i say blue
+198,il coniglio e dietro giallo carne.,"""Yellow"" is ""giallo"". Please try to fill in the blank in Italian.
+what is the word for behind?
+Remember that  ""is behind the"" is ""e dietro il""",1,0,0,0,3,il coniglio e dietro giallo carne
+200,What's bunny?,"Please try to fill in the blank in Italian.
+What's bunny?
+Okay, I'll give you a hint.  ""tree"" is  ""all'albero""",0,1,0,0,3,what's bunny
+201,I know the word gatto from the instructions and giallo from what you taught me before.,Please try to fill in the blank in Italian.,0,0,1,0,1,i know the word gatto from the instructions and giallo from what you taught me before
+202,e accanto al arbio purplio,Please try to fill in the blank in Italian.,1,0,0,0,1,e accanto al arbio purplio
+207,"Oh yeah, I remember that.","Please try to fill in the blank in Italian.
+I don't know how to say ""in front of"".
+Okay, I'll give you a hint.  ""is in front of the"" is ""e di fronte alla""",0,0,1,0,3,oh yeah i remember that
+208,"Okay, is it il cane di fronte alla bed viola","Please try to fill in the blank in Italian.
+how do you say purple?
+OK,  ""purple"" is ""viola""",1,0,0,0,3,okay is it il cane di fronte alla bed viola
+209,il gatto e dentro la all'albero viola,Please try to fill in the blank in Italian.,1,0,0,0,1,il gatto e dentro la all'albero viola
+210,et proximo il botano rojo.,"""Is Next To The"" is ""e vicino alla"". Please try to fill in the blank in Italian.",1,0,0,0,1,et proximo il botano rojo
+212,Oh I remember you saying that.,"""Tree"" is ""all'albero"". Please try to fill in the blank in Italian.
+What is tree in Italian?
+Okay, I'll give you a hint.  ""tree"" is  ""all'albero""",0,0,1,0,3,oh i remember you saying that
+213,"The only thing I'm confused about it how to say ""is behind the"" in Italian. Can you help?",Please try to fill in the blank in Italian.,0,1,0,0,1,the only thing i'm confused about it how to say is behind the in italian can you help
+215,how do you say red?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say red
+216,blue?,"Please try to fill in the blank in Italian.
+what is nest to ?
+all' (""to the"" is prepended to the following word when it begins with a vowel.  This is a contraction of al (""to"") and l' (""the"")",0,1,0,0,3,blue
+220,il coniglio e sotto tree?,"""Is Under The"" is ""e sotto"". Please try to fill in the blank in Italian.",1,0,0,0,1,il coniglio e sotto tree
+222,la borsa e dietro la scatola blu,"Please try to fill in the blank in Italian.
+what is purple in italian?
+Okay, I'll give you a hint.  ""purple"" is ""viola""
+what is is behind the in italian
+Okay, I'll give you a hint.  ""is behind the"" is ""e dietro la""",1,0,0,0,5,la borsa e dietro la scatola blu
+223,tavolo,"""Table"" is ""tavolo"". Please try to fill in the blank in Italian.
+il cane tavolo
+OK,  ""is next to the"" is  ""e accanto al""
+avolo
+OK,  ""blue"" is ""blu""
+blu
+OK,  ""table"" is "" tavolo""
+tavolo
+al (""to the"", or ""of the"") is used when the following word (tavolo) is masculine and a singular object.  It is a contraction of the words a (""to"") and il (""the"").",0,1,0,0,9,tavolo
+224,"What is the word for ""blue""?","Please try to fill in the blank in Italian.
+How do you say ""is next to""?
+Well,  ""is next to the"" is ""e accanto al""",0,1,0,0,3,what is the word for blue
+227,And how do you say bunny?,"Please try to fill in the blank in Italian.
+How do you say in front of?
+Hmm...  ""is in front of the"" is ""e di fronte al""",0,1,0,0,3,and how do you say bunny
+229,"Is it ""e di fronte al letto""?","""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.
+Okay.  But what's the word for ""red bed""?
+OK,  ""bed"" is  ""letto""",1,0,0,0,3,is it e di fronte al letto
+230,es en la fronta de pinke scatola,"""Box"" is ""scatola"". Please try to fill in the blank in Italian.",1,0,0,0,1,es en la fronta de pinke scatola
+231,"""il cane e dietro all'aletro juno""?",Please try to fill in the blank in Italian.,1,0,0,0,1,il cane e dietro all'aletro juno
+232,so how do you say is next to the in Italian?,"Please try to fill in the blank in Italian.
+What is the word for plant in Italian?
+Okay, I'll give you a hint.  ""plant"" is  ""pianta""
+I think yellow is gialla correct?
+OK,  ""yellow"" is ""gialla""",0,1,0,0,5,so how do you say is next to the in italian
+234,"what's a prepositional phrase--like, e dietro la?","Please try to fill in the blank in Italian.
+e vicino alla bota tyrio
+Hmm...  ""is behind the"" is  ""e dietro la""
+e dietro la bota tyrio
+Well,  ""box"" is  ""scatola""
+e dietro la bota scatola tyrio
+Remember that  ""purple"" is  ""viola""
+e dietro la bota scatola viola
+Prepositional phrases separate the two noun phrases.",0,1,0,0,9,what's a prepositional phraselike e dietro la
+235,"Okay, good.  Is it ""e di letto""?","Please try to fill in the blank in Italian.
+What is the word for ""bed""?
+OK,  ""bed"" is  ""letto""",1,0,1,0,3,okay good is it e di letto
+236,What's bunny?,"Please try to fill in the blank in Italian.
+What's bunny?
+Okay, I'll give you a hint.  ""tree"" is  ""all'albero""
+What's bunny?
+all' (""to the"" is prepended to the following word when it begins with a vowel.  This is a contraction of al (""to"") and l' (""the"")",0,1,0,0,5,what's bunny
+237,e vicino al arborio purplio,"Please try to fill in the blank in Italian.
+e accanto al arbio purplio
+Okay, I'll give you a hint.  ""is next to the"" is  ""e vicino""
+I thought next to was e accanto?
+all' (""to the"" is prepended to the following word when it begins with a vowel.  This is a contraction of al (""to"") and l' (""the"")",1,0,0,0,5,e vicino al arborio purplio
+238,how do you say behind?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say behind
+239,What is the word for tree again?,"""Red"" is ""rosso"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is the word for tree again
+240,"How do you say ""is behind""?",Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say is behind
+241,No can you tell me?,"""Tree"" is ""all'albero"". Please try to fill in the blank in Italian.
+What is tree in Italian?
+Okay, I'll give you a hint.  ""tree"" is  ""all'albero""
+Oh I remember you saying that.
+Do you know how to say is in front of the?",0,1,0,0,5,no can you tell me
+244,e di fronte alla scatola blu?,"Please try to fill in the blank in Italian.
+Is blue, azul?
+OK,  ""blue"" is ""blu""
+Oh okay! That seems easy enough.
+Why don't you try filling in what you can.",1,0,0,0,5,e di fronte alla scatola blu
+247,il cane tavolo,"""Table"" is ""tavolo"". Please try to fill in the blank in Italian.",1,0,0,0,1,il cane tavolo
+249,what is pink?,"Please try to fill in the blank in Italian.
+what is behind
+Remember that  ""is behind the"" is ""e dietro il""
+what is pink cat?
+OK,  ""cat"" is  ""gatto""",0,1,0,0,5,what is pink
+250,I don't remember how to say is behind the in Italian. Can you help?,Please try to fill in the blank in Italian.,0,1,0,0,1,i don't remember how to say is behind the in italian can you help
+254,what is the word for bed again?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for bed again
+255,Can you tell me how to say in front of the in Italian?,"""Purple"" is ""viola"". Please try to fill in the blank in Italian.",0,1,0,0,1,can you tell me how to say in front of the in italian
+257,"is it, il coniglio e di fronte alla penke scatola?","""Box"" is ""scatola"". Please try to fill in the blank in Italian.
+es en la fronta de pinke scatola
+Hmm...  ""is in front of the"" is  ""e di fronte alla""",1,0,0,0,3,is it il coniglio e di fronte alla penke scatola
+258,"Is pink ""rossa"" in Italian?",Please try to fill in the blank in Italian.,0,1,0,0,1,is pink rossa in italian
+260,How do I say tree?,"Please try to fill in the blank in Italian.
+How do I say next to
+Well,  ""is next to the"" is ""e vicino""",0,1,0,0,3,how do i say tree
+262,What is the word for red?,"""Is On Top Of The"" is ""e in cima al"". Please try to fill in the blank in Italian.
+What is the word for table?
+Remember that  ""table"" is  ""tavolo""",0,1,0,0,3,what is the word for red
+265,Is a bunny masculine or feminine?,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.
+What is yellow box in Italian?
+Okay, I'll give you a hint.  ""box"" is  ""scatola""
+What is yellow in Italian?
+Okay, I'll give you a hint.  ""yellow"" is ""gialla""
+Is the answer il coniglio e dentro la gialla scatola?
+gialla is the feminine form, because the noun it modifies (scatola) is feminine.",0,1,0,0,7,is a bunny masculine or feminine
+266,e sotto il tablo rosa,"Please try to fill in the blank in Italian.
+What is the phrase for under?
+OK,  ""is under the"" is ""e sotto il""",1,0,0,0,3,e sotto il tablo rosa
+268,e dentro la alla scatola rossa is the correct answer,"Please try to fill in the blank in Italian.
+How do you say is inside of?
+Okay, I'll give you a hint.  ""is inside of the"" is ""e dentro la""",1,0,0,0,3,e dentro la alla scatola rossa is the correct answer
+270,how do you say blue tree?,"""Is Under The"" is ""e sotto"". Please try to fill in the blank in Italian.
+il coniglio e sotto
+Can you give me your best guess?
+il coniglio e sotto.
+Can you give me your best guess?",0,1,0,0,5,how do you say blue tree
+277,il gatto e di fronte al coniglio rosa,"Please try to fill in the blank in Italian.
+How do you say in front of?
+Hmm...  ""is in front of the"" is ""e di fronte al""
+And how do you say bunny?
+Well,  ""bunny"" is  ""coniglio""",1,0,0,0,5,il gatto e di fronte al coniglio rosa
+278,what is cat?,"Please try to fill in the blank in Italian.
+what is behind?
+Okay, I'll give you a hint.  ""is behind the"" is ""e dietro il""
+what is red?
+Remember that  ""red"" is ""rosso""",0,1,0,0,5,what is cat
+279,e in cima al letto amarillo is my guess then.,"Please try to fill in the blank in Italian.
+Okay. Can you remind me how to say is on top of again?
+Remember that  ""is on top of the"" is ""e in cima al""",1,0,0,0,3,e in cima al letto amarillo is my guess then
+280,"OK, but what is blue box in Italian?","""Is Behind The"" is ""e dietro la"". Please try to fill in the blank in Italian.",0,1,1,0,1,ok but what is blue box in italian
+281,"How do you say ""is inside""?",Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say is inside
+284,il coniglio e dentro la gialla scatola,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.
+What is yellow box in Italian?
+Okay, I'll give you a hint.  ""box"" is  ""scatola""
+What is yellow in Italian?
+Okay, I'll give you a hint.  ""yellow"" is ""gialla""
+Is the answer il coniglio e dentro la gialla scatola?
+gialla is the feminine form, because the noun it modifies (scatola) is feminine.
+Is a bunny masculine or feminine?
+Prepositional phrases separate the two noun phrases.",1,0,0,0,9,il coniglio e dentro la gialla scatola
+285,What is Italian for is under the?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is italian for is under the
+286,il gatto e vicino verde al albero,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+il gatto is next to the verde tree
+Remember that  ""is next to the"" is  ""e vicino""
+il gatto e vicino the verde tree
+OK,  ""tree"" is  ""all'albero""
+il gatto e vicino verde all albero
+all' (""to the"" is prepended to the following word when it begins with a vowel.  This is a contraction of al (""to"") and l' (""the"")",1,0,0,0,7,il gatto e vicino verde al albero
+288,il gatto e vicino al giallo cane?,"""Yellow"" is ""giallo"". Please try to fill in the blank in Italian.
+How do I saw 'next to'?
+Okay, I'll give you a hint.  ""is next to the"" is ""e vicino al""",1,0,0,0,3,il gatto e vicino al giallo cane
+289,il cane e di fronte al l'letto viola?,"Please try to fill in the blank in Italian.
+How do you say ""is in front of""?
+Well,  ""is in front of the"" is ""e di fronte al""
+How do you say ""bed""?
+Well,  ""bed"" is  ""letto""",1,0,0,0,5,il cane e di fronte al l'letto viola
+290,What is the word for blue?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for blue
+292,What's bunny?,"Please try to fill in the blank in Italian.
+What's bunny?
+Okay, I'll give you a hint.  ""tree"" is  ""all'albero""
+What's bunny?
+all' (""to the"" is prepended to the following word when it begins with a vowel.  This is a contraction of al (""to"") and l' (""the"")
+What's bunny?
+Prepositional phrases separate the two noun phrases.",0,1,0,0,7,what's bunny
+293,e in cima al,"Please try to fill in the blank in Italian.
+What is the word for on top of?
+Remember that  ""is on top of the"" is ""e in cima al""",1,0,0,0,3,e in cima al
+294,Oh okay! That seems easy enough.,"Please try to fill in the blank in Italian.
+Is blue, azul?
+OK,  ""blue"" is ""blu""",0,0,1,0,3,oh okay that seems easy enough
+295,Okay.  What is tree again?,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.",0,1,1,0,1,okay what is tree again
+298,tavolo,"""Table"" is ""tavolo"". Please try to fill in the blank in Italian.
+il cane tavolo
+OK,  ""is next to the"" is  ""e accanto al""
+avolo
+OK,  ""blue"" is ""blu""
+blu
+OK,  ""table"" is "" tavolo""",0,1,0,0,7,tavolo
+301,Okay! And what's the word for table?,"Please try to fill in the blank in Italian.
+How would you say ""is on top of the"" in Italian?
+Remember that  ""is on top of the"" is ""e in cima al""",0,1,0,0,3,okay and what's the word for table
+303,"How do you say ""tree""?","Please try to fill in the blank in Italian.
+How do you say ""is next to""?
+Well,  ""is next to the"" is ""e vicino""",0,1,0,0,3,how do you say tree
+304,"Okay.  So is it ""il de all'albero""?","Please try to fill in the blank in Italian.
+How do I say ""tree"" in Italian?
+Hmm...  ""tree"" is  ""all'albero""",1,0,1,0,3,okay so is it il de all'albero
+306,"Ok, what is the word for purple?","""Bag"" is ""borsa"". Please try to fill in the blank in Italian.",0,1,0,0,1,ok what is the word for purple
+309,How do you say purple?,"""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.
+How do you say ""purple bunny""?
+OK,  ""bunny"" is  ""coniglio""",0,1,0,0,3,how do you say purple
+311,what is red?,"Please try to fill in the blank in Italian.
+what is next to?
+Remember that  ""is next to the"" is  ""e accanto al""
+what is bunny?
+Hmm...  ""bunny"" is  ""coniglio""",0,1,0,0,5,what is red
+312,e dentro la scatola,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.
+The dog is inside of the box.
+OK,  ""is inside of the"" is  ""e dentro la""
+e dentro la
+OK,  ""box"" is  ""scatola""",1,0,0,0,5,e dentro la scatola
+313,e vacino al coniglio rossa perhaps?,"Please try to fill in the blank in Italian.
+I really don't remember the word for bunny. Any help?
+Hmm...  ""bunny"" is  ""coniglio""",1,0,0,0,3,e vacino al coniglio rossa perhaps
+314,la borsa e di dietro la,"Please try to fill in the blank in Italian.
+la borsa
+Remember that  ""is behind the"" is  ""e dietro la""",1,1,0,0,3,la borsa e di dietro la
+315,"Is it ""e di fronte coniglio rosso""?","Please try to fill in the blank in Italian.
+Is the word for red ""rossa""?
+Hmm...  ""red"" is ""rosso""
+Okay, and what is the word for ""bunny""?
+Okay, I'll give you a hint.  ""bunny"" is  ""coniglio""",1,0,0,0,5,is it e di fronte coniglio rosso
+316,What is the word for yellow?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for yellow
+317,What is the word under the?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word under the
+318,"How do you say ""bed""?","Please try to fill in the blank in Italian.
+How do you say ""is in front of""?
+Well,  ""is in front of the"" is ""e di fronte al""",0,1,0,0,3,how do you say bed
+319,"Is the word for red ""rossa""?",Please try to fill in the blank in Italian.,0,1,0,0,1,is the word for red rossa
+321,How do I say in front of?,"""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.
+e di fronte al
+OK,  ""bunny"" is  ""coniglio""",0,1,0,0,3,how do i say in front of
+322,Could you remind me how to say bed in Italian?,"""Is On Top Of The"" is ""e in cima al"". Please try to fill in the blank in Italian.",0,1,0,0,1,could you remind me how to say bed in italian
+324,"Is it ""la borsa e di fronte alla gialla scatola""?","""Box"" is ""scatola"". Please try to fill in the blank in Italian.
+Okay, how do you say in front of?
+OK,  ""is in front of the"" is ""e di fronte alla""
+And how do you say yellow?
+Okay, I'll give you a hint.  ""yellow"" is ""gialla""",1,0,0,0,5,is it la borsa e di fronte alla gialla scatola
+325,what is the word for pink?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for pink
+326,e dentro la scatola giallo is my first guess.,Please try to fill in the blank in Italian.,1,0,0,0,1,e dentro la scatola giallo is my first guess
+328,How do I say under,"Please try to fill in the blank in Italian.
+How do I say bunny
+Okay, I'll give you a hint.  ""tree"" is  ""l'albero""",0,1,0,0,3,how do i say under
+329,la pianta e in cima al rosso tavolo.,"Please try to fill in the blank in Italian.
+What is the word for table again?
+OK,  ""table"" is  ""tavolo""
+What is the word for is on top of the again?
+Well,  ""is on top of the"" is ""e in cima al""",1,0,0,0,5,la pianta e in cima al rosso tavolo
+330,e vicino al rosa letto,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+rosa
+Okay, I'll give you a hint.  ""is next to the"" is  ""e vicino al""
+e vicino al la rosa
+Hmm...  ""bed"" is  ""letto""
+e vicino al la rosa letto
+al (""to the"", or ""of the"") is used when the following word (letto) is masculine and a singular object.  It is a contraction of the words a (""to"") and il (""the"").",1,0,0,0,7,e vicino al rosa letto
+331,What is the word for tree?,"Please try to fill in the blank in Italian.
+What is Italian for is under the?
+Okay, I'll give you a hint.  ""is under the"" is ""e sotto""",0,1,0,0,3,what is the word for tree
+335,What's bunny?,Please try to fill in the blank in Italian.,0,1,0,0,1,what's bunny
+340,rosa,Please try to fill in the blank in Italian.,1,0,0,0,1,rosa
+341,what is  the purple table?,"""Is Under The"" is ""e sotto il"". Please try to fill in the blank in Italian.
+e sotto il
+OK,  ""is under the"" is ""e sotto il""",0,1,0,0,3,what is the purple table
+342,"The word for yellow is ""gialla,"" right?","Please try to fill in the blank in Italian.
+I can't remember the word for ""box"".
+Okay, I'll give you a hint.  ""box"" is  ""scatola""
+Ok! ""Scatola"" is feminine, right?
+OK,  ""is inside of the"" is ""e dentro la""",1,0,0,0,5,the word for yellow is gialla right
+343,nexto il bunio amarillo,Please try to fill in the blank in Italian.,1,0,0,0,1,nexto il bunio amarillo
+345,e ascanto il coniglio rosso,"Please try to fill in the blank in Italian.
+what is next to?
+Remember that  ""is next to the"" is  ""e accanto al""
+what is bunny?
+Hmm...  ""bunny"" is  ""coniglio""
+what is red?
+Okay, I'll give you a hint.  ""red"" is ""rosso""",1,0,0,0,7,e ascanto il coniglio rosso
+347,e vicino alla bota tyrio,Please try to fill in the blank in Italian.,1,0,0,0,1,e vicino alla bota tyrio
+348,What is Italian for in front of the?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is italian for in front of the
+349,and how do you say dog?,"Please try to fill in the blank in Italian.
+how do you say behind?
+Okay, I'll give you a hint.  ""is behind the"" is ""e dietro la""",0,1,0,0,3,and how do you say dog
+350,il gatto e accanto al all'albero viola,"Please try to fill in the blank in Italian.
+how do I say tree?
+Remember that  ""tree"" is  ""all'albero""",1,0,0,0,3,il gatto e accanto al all'albero viola
+351,"How do I say ""tree"" in Italian?",Please try to fill in the blank in Italian.,0,1,0,0,1,how do i say tree in italian
+352,e di fronte alla scatola,"""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.
+e di fronte alla
+Well,  ""box"" is  ""scatola""
+Oh ok thanks
+Okay, I'll give you a hint.  ""is in front of the"" is  ""e di fronte alla""",1,0,0,0,5,e di fronte alla scatola
+353,il gatto e di fronte al viola coniglio,"""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.
+How do you say ""purple bunny""?
+OK,  ""bunny"" is  ""coniglio""
+How do you say purple?
+Well,  ""purple"" is ""viola""",1,0,0,0,5,il gatto e di fronte al viola coniglio
+354,How do you say green?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say green
+355,la borsa,Please try to fill in the blank in Italian.,1,0,0,0,1,la borsa
+357,"Is it ""il coniglio e sotto verde l'abero?""","""Is Under The"" is ""e sotto"". Please try to fill in the blank in Italian.
+What is the word for green tree?
+Remember that  ""tree"" is  ""l'albero""
+What is the word for green?
+Hmm...  ""green"" is ""verde""",1,0,0,0,5,is it il coniglio e sotto verde l'abero
+358,what is in front of?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is in front of
+359,"Oh! Box is ""scatola"", right?","Please try to fill in the blank in Italian.
+What is the word for ""blue""?
+Hmm...  ""blue"" is ""blu""",1,0,1,0,3,oh box is scatola right
+360,"how about 
+""il gatto è di fronte al coniglio rosso""","""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.
+ok, how do you say bunny?
+OK,  ""bunny"" is  ""coniglio""
+and how do you say red?
+Okay, I'll give you a hint.  ""red"" is ""rosso""
+then is the translation il gatto e di fronte a rosso coniglio
+Remember that  ""is in front of the"" is  ""e di fronte al""",1,0,0,0,7,how about il gatto è di fronte al coniglio rosso
+361,"Thanks, I knew that already. What is Italian for ""in front of""?","Please try to fill in the blank in Italian.
+I know the Italian for box, but not for ""in front of""
+OK,  ""box"" is  ""scatola""",0,1,1,0,3,thanks i knew that already what is italian for in front of
+362,Ok i think I got it.,"""Tree"" is ""all'albero"". Please try to fill in the blank in Italian.
+What is tree in Italian?
+Okay, I'll give you a hint.  ""tree"" is  ""all'albero""
+Oh I remember you saying that.
+Do you know how to say is in front of the?
+No can you tell me?
+all' (""to the"" is prepended to the following word when it begins with a vowel.  This is a contraction of al (""to"") and l' (""the"")",0,0,1,0,7,ok i think i got it
+363,"What is the word for ""bed""?",Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for bed
+364,avolo,"""Table"" is ""tavolo"". Please try to fill in the blank in Italian.
+il cane tavolo
+OK,  ""is next to the"" is  ""e accanto al""",0,0,1,0,3,avolo
+365,What is the word for plant?,"""Purple"" is ""viola"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is the word for plant
+366,Is the answer il coniglio e dentro la gialla scatola?,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.
+What is yellow box in Italian?
+Okay, I'll give you a hint.  ""box"" is  ""scatola""
+What is yellow in Italian?
+Okay, I'll give you a hint.  ""yellow"" is ""gialla""",1,0,0,0,5,is the answer il coniglio e dentro la gialla scatola
+367,"I don't know how to say ""in front of"".",Please try to fill in the blank in Italian.,0,1,0,0,1,i don't know how to say in front of
+371,"How do you say ""is in front of the""?",Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say is in front of the
+372,How do I saw 'next to'?,"""Yellow"" is ""giallo"". Please try to fill in the blank in Italian.",0,1,0,0,1,how do i saw 'next to'
+373,what is the word for blue again?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for blue again
+374,il gatto e dietro rosso albero?,"""Red"" is ""rosso"". Please try to fill in the blank in Italian.
+What is the word for tree again?
+Okay, I'll give you a hint.  ""tree"" is  ""l'albero""
+What is the word for behind again?
+Well,  ""is behind the"" is ""e dietro""
+il gatto e dietro rosso l'albero?
+l' (""the"") is prepended to the following word when it begins with a vowel",1,0,0,0,7,il gatto e dietro rosso albero
+375,how do you say next?,"Please try to fill in the blank in Italian.
+How do you say pink?
+Okay, I'll give you a hint.  ""pink"" is ""rosa""
+How do you say tree?
+Remember that  ""tree"" is  ""all'albero""",0,1,0,0,5,how do you say next
+377,il cane e dietro rosa l'albero?,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+Okay.  What is tree again?
+Hmm...  ""tree"" is  ""l'albero""
+Thanks.  How do I say ""behind"" in Italian?
+OK,  ""is behind the"" is ""e dietro""",1,0,0,0,5,il cane e dietro rosa l'albero
+378,then is the translation il gatto e di fronte a rosso coniglio,"""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.
+ok, how do you say bunny?
+OK,  ""bunny"" is  ""coniglio""
+and how do you say red?
+Okay, I'll give you a hint.  ""red"" is ""rosso""",1,0,0,0,5,then is the translation il gatto e di fronte a rosso coniglio
+381,la borsa a la e dietro la,"Please try to fill in the blank in Italian.
+how do i saY behind the
+Almost, ""la"" is a contraction of ""a"" and ""la"", so ""la"" is not needed.
+la borsa a la
+Well,  ""is behind the"" is ""e dietro la""",1,0,0,0,5,la borsa a la e dietro la
+382,What's inside and red?,"""Box"" is ""scatola"". Please try to fill in the blank in Italian.",0,1,0,0,1,what's inside and red
+384,What was the Italian word for tree again?,Please try to fill in the blank in Italian.,0,1,0,0,1,what was the italian word for tree again
+388,e dentro la scatola. But what is red?,"Please try to fill in the blank in Italian.
+what is the word for plant?
+Remember that  ""box"" is  ""scatola""
+Thanks. What is plant?
+['rossa is the feminine form, because the noun it modifies (scatola) is feminine.', 'Words in Italian have a gender associated with them (either masculine or feminine), even when the word is an object, concepts, or abstract ideas.']
+how do you say inside of the red box?
+Remember that  ""is inside of the"" is ""e dentro la""",0,1,0,0,7,e dentro la scatola but what is red
+391,il gatto er di fronte al amirilla bunny.,"Please try to fill in the blank in Italian.
+il gatto e vicino amirillo bunny.
+Well,  ""is in front of the"" is  ""e di fronte al""",1,0,0,0,3,il gatto er di fronte al amirilla bunny
+394,Is it e dietro l'albero azul?,"Please try to fill in the blank in Italian.
+How do you say under?
+Can you give me your best guess?
+la palla e dietro l'albero azul
+Can you try filling in the blank to the best of your ability?",1,0,0,0,5,is it e dietro l'albero azul
+396,la pianta e in cima al tavolo,"Please try to fill in the blank in Italian.
+la pianta e dietro l'albero giallo
+Remember that  ""is on top of the"" is  ""e in cima al""
+la pianta e in cima al
+Hmm...  ""table"" is  ""tavolo""",1,0,0,0,5,la pianta e in cima al tavolo
+397,"I'm missing the phrase ""is next to the."" How would you say that in Italian?","Please try to fill in the blank in Italian.
+I believe the Italian word for bed is letto, right?
+Well,  ""bed"" is  ""letto""
+So how do you say ""is next to the"" in Italian?
+Remember that  ""is next to the"" is ""e accanto al""
+I didn't quite get that. Did you say is next to the is e accantca?
+al (""to the"", or ""of the"") is used when the following word (letto) is masculine and a singular object.  It is a contraction of the words a (""to"") and il (""the"").",0,1,0,0,7,i'm missing the phrase is next to the how would you say that in italian
+398,what is on top in italian?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is on top in italian
+400,il cane es behind l'albero?,"""Tree"" is ""l'albero"". Please try to fill in the blank in Italian.",1,0,0,0,1,il cane es behind l'albero
+401,Is it e sotto l'tavolo rojo?,Please try to fill in the blank in Italian.,1,0,0,0,1,is it e sotto l'tavolo rojo
+402,la borsa e dietro la verde scatola,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+verde box
+Can you try filling in the blank to the best of your ability?
+la borsa is behind the verde box
+Well,  ""is behind the"" is  ""e dietro la""
+la borsa e dietro la verde box
+""box"" is  ""scatola""",1,0,0,0,7,la borsa e dietro la verde scatola
+403,I didn't quite get that. Did you say is next to the is e accantca?,"Please try to fill in the blank in Italian.
+I believe the Italian word for bed is letto, right?
+Well,  ""bed"" is  ""letto""
+So how do you say ""is next to the"" in Italian?
+Remember that  ""is next to the"" is ""e accanto al""",0,1,0,0,5,i didn't quite get that did you say is next to the is e accantca
+404,What is the word for purple bed?,"""Is Behind The"" is ""e dietro il"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is the word for purple bed
+405,la scatola e in cima al tovolo rosso,"Please try to fill in the blank in Italian.
+how do you say on top of?
+Almost, ""al"" is a contraction of ""a"" and ""al"", so ""al"" is not needed.
+how do you say table?
+Remember that  ""table"" is  ""tavolo""
+las scatola e in al tovolo rosso
+OK,  ""is on top of the"" is  ""e in cima al""",1,0,0,0,7,la scatola e in cima al tovolo rosso
+408,"how do you say ""yellow box""?","Please try to fill in the blank in Italian.
+il gatto al frente de...
+Remember that  ""is in front of the"" is  ""e di fronte alla""",0,1,0,0,3,how do you say yellow box
+409,e dentro scatola rossa. Is this right?,"Please try to fill in the blank in Italian.
+what is the word for plant?
+Remember that  ""box"" is  ""scatola""
+Thanks. What is plant?
+['rossa is the feminine form, because the noun it modifies (scatola) is feminine.', 'Words in Italian have a gender associated with them (either masculine or feminine), even when the word is an object, concepts, or abstract ideas.']
+how do you say inside of the red box?
+Remember that  ""is inside of the"" is ""e dentro la""
+e dentro la scatola. But what is red?
+Remember that  ""red"" is ""rossa""",1,0,1,0,9,e dentro scatola rossa is this right
+410,verde all'albero?,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+verde
+['all\' (""to the"" is prepended to the following word when it begins with a vowel.  This is a contraction of al (""to"") and l\' (""the"")', 'This applies to both feminine and masculine words. Words in Italian have a gender associated with them (either masculine or feminine), even when the word is an object, concepts, or abstract ideas. ']
+I see. What is the word for tree?
+Can you give me your best guess?
+Tree?
+OK,  ""tree"" is  ""all'albero""",1,0,0,0,7,verde all'albero
+413,Il gatto,"Please try to fill in the blank in Italian.
+How do I say purple bunny
+Almost, ""al"" is a contraction of ""a"" and ""al"", so ""al"" is not needed.",1,0,0,0,3,il gatto
+414,il coniglio e dietro la scatola giala.,"Please try to fill in the blank in Italian.
+what's the words for is behind the?
+Can you try filling in the blank to the best of your ability?
+il coniglio is behind the scatola giala.
+Hmm...  ""is behind the"" is  ""e dietro la""",1,0,0,0,5,il coniglio e dietro la scatola giala
+415,il gatto e di fronte al bunny rosa.,"""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.",1,0,0,0,1,il gatto e di fronte al bunny rosa
+418,What does purple mean?,Please try to fill in the blank in Italian.,0,1,0,0,1,what does purple mean
+422,la palla e sotto all'bero verde,"Please try to fill in the blank in Italian.
+what is under?
+Hmm...  ""is under the"" is ""e sotto""",1,0,0,0,3,la palla e sotto all'bero verde
+425,il cane e sotto il tavolo gialla.,"Please try to fill in the blank in Italian.
+il cane is under the tavolo gialla.
+OK,  ""is under the"" is  ""e sotto il""",1,0,0,0,3,il cane e sotto il tavolo gialla
+427,what is behind in italian?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is behind in italian
+428,Got it! What about 'is behind the'?,"Please try to fill in the blank in Italian.
+What is blue?
+Well,  ""blue"" is ""blu""",0,1,1,0,3,got it what about 'is behind the'
+431,"Could you tell me how to say ""is in front of the?""","""Purple"" is ""viola"". Please try to fill in the blank in Italian.
+I don't remember. How do you say bed again?
+Hmm...  ""bed"" is  ""letto""
+So, letto viola is purple bed?
+['al (""to the"", or ""of the"") is used when the following word (letto) is masculine and a singular object.  It is a contraction of the words a (""to"") and il (""the"").', 'Words in Italian have a gender associated with them (either masculine or feminine), even when the word is an object, concepts, or abstract ideas.  ']",0,1,0,0,5,could you tell me how to say is in front of the
+432,e dietro la baggo rossa is my first guess.,Please try to fill in the blank in Italian.,1,0,0,0,1,e dietro la baggo rossa is my first guess
+434,il coniglio e di fronte alla scatola,"Please try to fill in the blank in Italian.
+what is front?
+Can you give me your best guess?
+il coniglio
+Well,  ""is in front of the"" is  ""e di fronte alla""
+il coniglio e di fronte alla
+Hmm...  ""box"" is  ""scatola""",1,0,0,0,7,il coniglio e di fronte alla scatola
+436,il coniglio e dietro il la gatto verde,"Please try to fill in the blank in Italian.
+il coniglio e dietro la gato verde.
+OK,  ""is behind the"" is  ""e dietro il""
+il coniglio e dietro il la gato verde
+Okay, I'll give you a hint.  ""cat"" is  ""gatto""",1,0,0,0,5,il coniglio e dietro il la gatto verde
+437,il gatto e vicino al all'albero blu,"Please try to fill in the blank in Italian.
+What is blue in italian?
+Hmm...  ""blue"" is ""blu""
+what is tree in italian
+Why don't you try filling in what you can.
+il gatto e vicino al tree blu
+Remember that  ""tree"" is  ""all'albero""",1,0,0,0,7,il gatto e vicino al all'albero blu
+438,did i write it correctly,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+verde box
+Can you try filling in the blank to the best of your ability?
+la borsa is behind the verde box
+Well,  ""is behind the"" is  ""e dietro la""
+la borsa e dietro la verde box
+""box"" is  ""scatola""
+la borsa e dietro la verde scatola
+Prepositional phrases separate the two noun phrases.",0,1,0,0,9,did i write it correctly
+442,la scatola e sotto rosa,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+la scatola is under the tree rosa
+OK,  ""is under the"" is  ""e sotto""",1,0,0,0,3,la scatola e sotto rosa
+446,how do you say inside of the red box?,"Please try to fill in the blank in Italian.
+what is the word for plant?
+Remember that  ""box"" is  ""scatola""
+Thanks. What is plant?
+['rossa is the feminine form, because the noun it modifies (scatola) is feminine.', 'Words in Italian have a gender associated with them (either masculine or feminine), even when the word is an object, concepts, or abstract ideas.']",0,1,0,0,5,how do you say inside of the red box
+447,il coniglio e vicino flower pot rosa.,Please try to fill in the blank in Italian.,1,0,0,0,1,il coniglio e vicino flower pot rosa
+448,il gatto es rosa,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.",1,0,0,0,1,il gatto es rosa
+449,il cane rosso e dietro il letto,"Please try to fill in the blank in Italian.
+il cane e
+Okay, I'll give you a hint.  ""is behind the"" is  ""e dietro il""
+il cane e dietro il
+Well,  ""bed"" is  ""letto""
+il cane e dietro il letto
+Hmm...  ""red"" is  ""rosso""",1,0,0,0,7,il cane rosso e dietro il letto
+452,il coniglio e dentro la scavalo rosa,"Please try to fill in the blank in Italian.
+il coniglio e dento scavalo rosa
+Remember that  ""is inside of the"" is  ""e dentro la""",1,0,0,0,3,il coniglio e dentro la scavalo rosa
+456,How do I say tree in italian?,"""Red"" is ""rosso"". Please try to fill in the blank in Italian.
+What is the word for tree in Italian?
+Why don't you try filling in what you can.
+Is il cane is in front of the rosso tree?
+OK,  ""is in front of the"" is  ""e di fronte""
+Is il cane e di fronte de rosso tree?
+""Tree"" is ""all'albero"". Do you know how to say red?
+Red is rosso right?
+OK,  ""red"" is ""rosso""",0,1,0,0,9,how do i say tree in italian
+458,a dentro scatola blu,"Please try to fill in the blank in Italian.
+What is blue?
+Well,  ""blue"" is ""blu""
+Got it! What about 'is behind the'?
+Almost, ""la"" is a contraction of ""a"" and ""la"", so ""la"" is not needed.",1,0,0,0,5,a dentro scatola blu
+459,Would e di fronte scatola rossa be correct?,"Please try to fill in the blank in Italian.
+Can you help tell me the word for red?
+Well,  ""red"" is ""rossa""
+Thanks. What is the word for box?
+Remember that  ""box"" is  ""scatola""",1,0,0,0,5,would e di fronte scatola rossa be correct
+460,il cane e dentro de la cama rosa,Please try to fill in the blank in Italian.,1,0,0,0,1,il cane e dentro de la cama rosa
+461,la pianta e in cima al,"Please try to fill in the blank in Italian.
+la pianta e dietro l'albero giallo
+Remember that  ""is on top of the"" is  ""e in cima al""",1,0,0,0,3,la pianta e in cima al
+462,"Would 'il cane e di fronte', be correct?","""Is In Front Of The"" is ""e di fronte"". Please try to fill in the blank in Italian.",1,0,1,0,1,would 'il cane e di fronte' be correct
+463,la pianta e in cima al tavolo,Please try to fill in the blank in Italian.,1,0,0,0,1,la pianta e in cima al tavolo
+464,la palla esta en la balsa verde,"""Green"" is ""verde"". Please try to fill in the blank in Italian.",1,0,0,0,1,la palla esta en la balsa verde
+465,"How do you say ""bed""?","Please try to fill in the blank in Italian.
+How do you say ""is on top of""?
+Remember that  ""is on top of the"" is ""e in cima al""",0,1,0,0,3,how do you say bed
+466,La palla e sotto il letto,"Please try to fill in the blank in Italian.
+What is under?
+Well,  ""is under the"" is ""e sotto il""
+Thank you. La palla e sotto il la bed
+OK,  ""bed"" is  ""letto""",1,0,0,0,5,la palla e sotto il letto
+469,"Okay. I remember now. And red is rossa, right?","Please try to fill in the blank in Italian.
+The Italian word for box is scatola, correct?
+Remember that  ""box"" is  ""scatola""",0,1,1,0,3,okay i remember now and red is rossa right
+470,il coniglio e dietro l'albero rosa,"Please try to fill in the blank in Italian.
+il coniglio
+OK,  ""tree"" is "" l'albero""
+il coniglio e sotto l'albero rosa
+Remember that  ""is behind the"" is  ""e dietro""",1,0,0,0,5,il coniglio e dietro l'albero rosa
+473,Is it e sotto l'albero pinko?,Please try to fill in the blank in Italian.,1,0,0,0,1,is it e sotto l'albero pinko
+476,la borsa e dietro la verde box,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+verde box
+Can you try filling in the blank to the best of your ability?
+la borsa is behind the verde box
+Well,  ""is behind the"" is  ""e dietro la""",1,0,0,0,5,la borsa e dietro la verde box
+477,e accanto al tabla amarilo,"Please try to fill in the blank in Italian.
+e centro la tabla amarilo
+Hmm...  ""is next to the"" is  ""e accanto al""",1,0,0,0,3,e accanto al tabla amarilo
+479,la pianta e in cima al verde tavolo,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+What is ""on top of""?
+Hmm...  ""is on top of the"" is ""e in cima al""
+la pianta e in cima al verde rasa
+Okay, I'll give you a hint.  ""table"" is  ""tavolo""",1,0,0,0,5,la pianta e in cima al verde tavolo
+480,I don't remember. How do you say is behind the in Italian?,Please try to fill in the blank in Italian.,0,1,0,0,1,i don't remember how do you say is behind the in italian
+481,il coniglio e vincino alla pianta verde,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+How do you say next?
+That's almost correct. Remember that ""alla"" is a contraction of the words ""a"" and ""alla."" Please try again.
+What is the word for plant?
+OK,  ""plant"" is  ""pianta""
+il coniglio es alla pianta verde
+Hmm...  ""is next to the"" is  ""e vicino alla""",1,0,0,0,7,il coniglio e vincino alla pianta verde
+482,la palla e dietro l'albero azul,"Please try to fill in the blank in Italian.
+How do you say under?
+Can you give me your best guess?",1,0,0,0,3,la palla e dietro l'albero azul
+483,il cane e dentro la,"Please try to fill in the blank in Italian.
+il cane...
+Hmm...  ""is inside of the"" is  ""e dentro la""
+il cane e dentro la
+Remember that  ""bag"" is "" borsa""",1,0,0,0,5,il cane e dentro la
+485,la scatola e in cima tovolo rosso,"Please try to fill in the blank in Italian.
+how do you say on top of?
+Almost, ""al"" is a contraction of ""a"" and ""al"", so ""al"" is not needed.
+how do you say table?
+Remember that  ""table"" is  ""tavolo""
+las scatola e in al tovolo rosso
+OK,  ""is on top of the"" is  ""e in cima al""
+la scatola e in cima al tovolo rosso
+al (""to the"", or ""of the"") is used when the following word (tavolo) is masculine and a singular object.  It is a contraction of the words a (""to"") and il (""the"").",1,0,0,0,9,la scatola e in cima tovolo rosso
+486,What is the word for pink?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for pink
+490,il coniglio e vicino alla flower pot rosa.,"Please try to fill in the blank in Italian.
+il coniglio e vicino flower pot rosa.
+Well,  ""is next to the"" is  ""e vicino alla""",1,0,0,0,3,il coniglio e vicino alla flower pot rosa
+492,"What is ""is next to"" again?",Please try to fill in the blank in Italian.,0,1,0,0,1,what is is next to again
+493,"So how do you say ""is next to the"" in Italian?","Please try to fill in the blank in Italian.
+I believe the Italian word for bed is letto, right?
+Well,  ""bed"" is  ""letto""",0,1,0,0,3,so how do you say is next to the in italian
+494,e fronto la scatola viola,Please try to fill in the blank in Italian.,1,0,0,0,1,e fronto la scatola viola
+495,"What is ""on top of""?","""Green"" is ""verde"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is on top of
+496,how do i saY behind the,Please try to fill in the blank in Italian.,0,1,1,0,1,how do i say behind the
+497,Okay! I remember that now. So my next guess is e vicino l'albera viola.,"Please try to fill in the blank in Italian.
+e dietro l'albera viola would be my first guess.
+Well,  ""is next to the"" is  ""e vicino""",1,0,0,0,3,okay i remember that now so my next guess is e vicino l'albera viola
+498,e sima la gato il tavolo,"Please try to fill in the blank in Italian.
+can I have a clue?
+il (""the"") is used for when the following word (tavolo) is masculine.",1,0,0,0,3,e sima la gato il tavolo
+500,il cane...,Please try to fill in the blank in Italian.,1,1,0,0,1,il cane
+501,What is the word for purple?,"""Is Behind The"" is ""e dietro il"". Please try to fill in the blank in Italian.
+What is the word for purple bed?
+OK,  ""bed"" is  ""letto""",0,1,0,0,3,what is the word for purple
+504,Is it il coniglio e dentro la rossa scatola?,"""Box"" is ""scatola"". Please try to fill in the blank in Italian.
+What's inside and red?
+Well,  ""red"" is ""rossa""
+Okay, what about inside?
+Well,  ""is inside of the"" is ""e dentro la""",1,0,0,0,5,is it il coniglio e dentro la rossa scatola
+506,How do you say is behind the in Italian?,"Please try to fill in the blank in Italian.
+e dietro al all'albero blu is my initial thought.
+l' (""the"" is prepended to the following word when it begins with a vowel.",0,1,0,0,3,how do you say is behind the in italian
+507,what is under?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is under
+509,e centro la scatola pupo,"Please try to fill in the blank in Italian.
+What does purple mean?
+Why don't you try filling in what you can.",1,0,0,0,3,e centro la scatola pupo
+510,il coniglio es alla pianta verde,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+How do you say next?
+That's almost correct. Remember that ""alla"" is a contraction of the words ""a"" and ""alla."" Please try again.
+What is the word for plant?
+OK,  ""plant"" is  ""pianta""",1,0,0,0,5,il coniglio es alla pianta verde
+513,What is the word for under?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for under
+515,Okay. How would I say is inside of the in Italian?,"""Box"" is ""scatola"". Please try to fill in the blank in Italian.
+Is gialla Italian for yellow?
+Remember that  ""yellow"" is ""gialla""",0,1,0,0,3,okay how would i say is inside of the in italian
+516,e dietro l'albero amarillo,Please try to fill in the blank in Italian.,1,0,0,0,1,e dietro l'albero amarillo
+517,la pianta e in cima al giallo tavolo,"Please try to fill in the blank in Italian.
+la pianta e dietro l'albero giallo
+Remember that  ""is on top of the"" is  ""e in cima al""
+la pianta e in cima al
+Hmm...  ""table"" is  ""tavolo""
+la pianta e in cima al tavolo
+Okay, I'll give you a hint.  ""yellow"" is  ""giallo""",1,0,0,0,7,la pianta e in cima al giallo tavolo
+518,How do you say bunny?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say bunny
+519,How do I say in front of?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do i say in front of
+520,I don't remember. How do you say bed again?,"""Purple"" is ""viola"". Please try to fill in the blank in Italian.",0,1,0,0,1,i don't remember how do you say bed again
+521,Thanks. What is plant?,"Please try to fill in the blank in Italian.
+what is the word for plant?
+Remember that  ""box"" is  ""scatola""",0,1,0,0,3,thanks what is plant
+522,il gatto al frente de...,Please try to fill in the blank in Italian.,1,0,0,0,1,il gatto al frente de
+523,il coniglio e dietro il gato verde.,"Please try to fill in the blank in Italian.
+il coniglio e dietro la gato verde.
+OK,  ""is behind the"" is  ""e dietro il""
+il coniglio e dietro il la gato verde
+Okay, I'll give you a hint.  ""cat"" is  ""gatto""
+il coniglio e dietro il la gatto verde
+il (""the"") is used for when the following word (gatto) is masculine.",1,0,0,0,7,il coniglio e dietro il gato verde
+524,Got it! What is yellow?,"Please try to fill in the blank in Italian.
+e centro la tabla amarilo
+Hmm...  ""is next to the"" is  ""e accanto al""
+e accanto al tabla amarilo
+Okay, I'll give you a hint.  ""is next to the"" is ""e accanto al""",0,1,1,0,5,got it what is yellow
+525,how do say green bed?,"""Bed"" is ""letto"". Please try to fill in the blank in Italian.
+what is the phrase next to?
+Remember that  ""is next to the"" is ""e accanto al""
+la pianta is next to the
+Remember that  ""bed"" is "" letto""
+la pianta e accanto al
+['al (""to the"", or ""of the"") is used when the following word (letto) is masculine and a singular object.  It is a contraction of the words a (""to"") and il (""the"").', 'Words in Italian have a gender associated with them (either masculine or feminine), even when the word is an object, concepts, or abstract ideas.  ']",0,1,1,0,7,how do say green bed
+526,il coniglio e di fronte all'albero conglo.,"Please try to fill in the blank in Italian.
+il coniglio e de fronte al all'albero conglio.
+OK,  ""is in front of the"" is  ""e di fronte""
+il coniglio e di fronte all'albero.
+""Tree"" is ""all'albero"". Do you know how to say yellow?",1,0,0,0,5,il coniglio e di fronte all'albero conglo
+527,what is box in italian?,"Please try to fill in the blank in Italian.
+what is inside in italian?
+OK,  ""is inside of the"" is ""e dentro la""",0,1,0,0,3,what is box in italian
+529,"I don't know the word for ""tree"" in any Romance language, I don't think.","""Is Under The"" is ""e sotto"". Please try to fill in the blank in Italian.",0,1,0,0,1,i don't know the word for tree in any romance language i don't think
+535,il cane e di fronte blu All'albero is the total sentence. Isn't this right?,"""Is In Front Of The"" is ""e di fronte"". Please try to fill in the blank in Italian.
+Would 'il cane e di fronte', be correct?
+Okay, I'll give you a hint.  ""tree"" is  ""all'albero""
+Thanks. So, 'il cane e di frote all'albero be the whole sentence?
+""All'albero"" is ""tree.""
+What is the word for blue?
+Okay, I'll give you a hint.  ""blue"" is ""blu""",0,1,0,0,7,il cane e di fronte blu all'albero is the total sentence isn't this right
+537,ill gatto e accanto al purple coniglio,"""Is Next To The"" is ""e accanto al"". Please try to fill in the blank in Italian.
+il gatto e accanto al purple bunny
+Bunny is coniglio",1,0,0,0,3,ill gatto e accanto al purple coniglio
+538,What is the word for box in Italian?,"Please try to fill in the blank in Italian.
+I don't remember. How do you say is behind the in Italian?
+OK,  ""is behind the"" is ""e dietro la""",0,1,0,0,3,what is the word for box in italian
+539,la palla e sotto tree rossa.,"""Is Under The"" is ""e sotto"". Please try to fill in the blank in Italian.",1,0,0,0,1,la palla e sotto tree rossa
+540,e dentro la lapiz borsa,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.
+e dentro la
+Can you try filling in the blank to the best of your ability?
+e dentro la lapiz bago
+Okay, I'll give you a hint.  ""bag"" is  ""borsa""",1,0,0,0,5,e dentro la lapiz borsa
+541,il gatto e in cima al table rosa.,"""Is On Top Of The"" is ""e in cima al"". Please try to fill in the blank in Italian.",1,0,0,0,1,il gatto e in cima al table rosa
+542,My guess is e dentro la bagga rossa.,"Please try to fill in the blank in Italian.
+e dietro la baggo rossa is my first guess.
+Can you try filling in the blank to the best of your ability?
+I just did that. What is the Italian word for bag please?
+Can you give me your best guess?
+I can but I'd love a little assistance. How do you say is inside of the in Italian?
+Remember that  ""is inside of the"" is ""e dentro la""",1,0,0,0,7,my guess is e dentro la bagga rossa
+543,il cane letto giallo,"""Yellow"" is ""giallo"". Please try to fill in the blank in Italian.
+how do you say bed?
+OK,  ""bed"" is  ""letto""
+Ok.   How do you say in front of?
+Why don't you try filling in what you can.",1,0,0,0,5,il cane letto giallo
+546,la borsa is behind the verde box,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+verde box
+Can you try filling in the blank to the best of your ability?",1,0,0,0,3,la borsa is behind the verde box
+548,How do you say dog in Italian?,"""Yellow"" is ""giallo"". Please try to fill in the blank in Italian.
+e fronte alla doggo giallo is my guess.
+Remember that  ""is behind the"" is  ""e dietro il""
+e dietro il doggo giallo perhaps?
+Can you try filling in the blank to the best of your ability?",0,1,0,0,5,how do you say dog in italian
+549,Is gialla Italian for yellow?,"""Box"" is ""scatola"". Please try to fill in the blank in Italian.",0,1,0,0,1,is gialla italian for yellow
+550,That's right. How do you say tree though?,"Please try to fill in the blank in Italian.
+What was the Italian word for tree again?
+Remember that  ""purple"" is ""viola""",0,1,1,0,3,that's right how do you say tree though
+551,"I believe dog in Italian is cane, right?",Please try to fill in the blank in Italian.,0,1,0,0,1,i believe dog in italian is cane right
+555,e dietro alla scatola viola is my initial guess.,Please try to fill in the blank in Italian.,1,0,0,0,1,e dietro alla scatola viola is my initial guess
+557,the dog is in front of the coniglio rosa.,Please try to fill in the blank in Italian.,1,0,0,0,1,the dog is in front of the coniglio rosa
+559,Okay. Is it el dietro all l'albero viola by chance?,"Please try to fill in the blank in Italian.
+What was the Italian word for tree again?
+Remember that  ""purple"" is ""viola""
+That's right. How do you say tree though?
+Okay, I'll give you a hint.  ""tree"" is  ""l'albero""",1,0,0,0,5,okay is it el dietro all l'albero viola by chance
+561,e in cima al la table blu,"Please try to fill in the blank in Italian.
+e topo la blu table
+Hmm...  ""is on top of the"" is  ""e in cima al""",1,0,0,0,3,e in cima al la table blu
+563,la pianta e dentro la giatta rosada,"Please try to fill in the blank in Italian.
+la pianta es en frente de al giatta pink
+OK,  ""is inside of the"" is  ""e dentro la""",1,0,0,0,3,la pianta e dentro la giatta rosada
+565,That's right. I remember that now.,"Please try to fill in the blank in Italian.
+I don't remember. How do you say is behind the in Italian?
+OK,  ""is behind the"" is ""e dietro la""
+What is the word for box in Italian?
+Remember that  ""box"" is  ""scatola""",0,0,1,0,5,that's right i remember that now
+568,il cane e sotto tavolo verde.,Please try to fill in the blank in Italian.,1,0,0,0,1,il cane e sotto tavolo verde
+569,la pianta is next to the,"""Bed"" is ""letto"". Please try to fill in the blank in Italian.
+what is the phrase next to?
+Remember that  ""is next to the"" is ""e accanto al""",1,0,0,0,3,la pianta is next to the
+570,il gatto e vicino al tree blu,"Please try to fill in the blank in Italian.
+What is blue in italian?
+Hmm...  ""blue"" is ""blu""
+what is tree in italian
+Why don't you try filling in what you can.",1,0,0,0,5,il gatto e vicino al tree blu
+572,"Thanks. So, 'il cane e di frote all'albero be the whole sentence?","""Is In Front Of The"" is ""e di fronte"". Please try to fill in the blank in Italian.
+Would 'il cane e di fronte', be correct?
+Okay, I'll give you a hint.  ""tree"" is  ""all'albero""",0,0,1,0,3,thanks so 'il cane e di frote all'albero be the whole sentence
+573,oh ok  il coniglio e dentro la scatolo rosa,"Please try to fill in the blank in Italian.
+il coniglio e dento scavalo rosa
+Remember that  ""is inside of the"" is  ""e dentro la""
+il coniglio e dentro la scavalo rosa
+Well,  ""box"" is  ""scatola""",1,0,0,0,5,oh ok il coniglio e dentro la scatolo rosa
+574,"How do you say ""red"" in Italian?","""Bunny"" is ""coniglio"". Please try to fill in the blank in Italian.",0,1,0,0,1,how do you say red in italian
+575,what's the words for is behind the?,Please try to fill in the blank in Italian.,0,1,0,0,1,what's the words for is behind the
+579,"How do you say ""yellow?",Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say yellow
+580,I have it. E dietro letto viola is my answer.,"Please try to fill in the blank in Italian.
+What was the Italian word for tree again?
+Remember that  ""purple"" is ""viola""
+That's right. How do you say tree though?
+Okay, I'll give you a hint.  ""tree"" is  ""l'albero""
+Okay. Is it el dietro all l'albero viola by chance?
+Okay, I'll give you a hint.  ""is behind the"" is  ""e dietro""",1,0,0,0,7,i have it e dietro letto viola is my answer
+584,how do you say bed?,"""Yellow"" is ""giallo"". Please try to fill in the blank in Italian.",0,1,0,0,1,how do you say bed
+585,Is it il congilio e dentro la scatola?,"""Box"" is ""scatola"". Please try to fill in the blank in Italian.
+How do I say inside?
+OK,  ""is inside of the"" is ""e dentro la""",1,0,0,0,3,is it il congilio e dentro la scatola
+586,il cane e dietro il,"Please try to fill in the blank in Italian.
+il cane e
+Okay, I'll give you a hint.  ""is behind the"" is  ""e dietro il""",1,0,0,0,3,il cane e dietro il
+588,il gatto e accanto al tavalo rosa.,"Please try to fill in the blank in Italian.
+How do you say ""is next to the""?
+Remember that  ""is next to the"" is ""e accanto al""",1,0,0,0,3,il gatto e accanto al tavalo rosa
+589,what is table in italian?,"Please try to fill in the blank in Italian.
+what is on top in italian?
+OK,  ""is on top of the"" is ""e in cima al""",0,1,0,0,3,what is table in italian
+592,I see. What is the word for tree?,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+verde
+['all\' (""to the"" is prepended to the following word when it begins with a vowel.  This is a contraction of al (""to"") and l\' (""the"")', 'This applies to both feminine and masculine words. Words in Italian have a gender associated with them (either masculine or feminine), even when the word is an object, concepts, or abstract ideas. ']",0,1,0,0,3,i see what is the word for tree
+593,"So, one last question, how do you say ""is in front of the"" in Italian?","Please try to fill in the blank in Italian.
+e dietro alla scatola viola is my initial guess.
+""Box"" is ""scatola"". Do you know how to say purple?
+I think purple is viola, correct?
+OK,  ""purple"" is ""viola""",0,1,0,0,5,so one last question how do you say is in front of the in italian
+594,What is under?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is under
+596,is bed letto?,"Please try to fill in the blank in Italian.
+how do you day red?
+Hmm...  ""red"" is ""rosso""",0,1,0,0,3,is bed letto
+597,what is the phrase next to?,"""Bed"" is ""letto"". Please try to fill in the blank in Italian.",0,1,1,0,1,what is the phrase next to
+598,il coniglio e dietro il la gato verde,"Please try to fill in the blank in Italian.
+il coniglio e dietro la gato verde.
+OK,  ""is behind the"" is  ""e dietro il""",1,0,0,0,3,il coniglio e dietro il la gato verde
+599,"how do you say ""pink""?","Please try to fill in the blank in Italian.
+la pianta es en frente de al giatta pink
+OK,  ""is inside of the"" is  ""e dentro la""
+la pianta e dentro la giatta rosada
+""box"" is  ""scatola""",0,1,0,0,5,how do you say pink
+600,What is the word for plant?,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+How do you say next?
+That's almost correct. Remember that ""alla"" is a contraction of the words ""a"" and ""alla."" Please try again.",0,1,0,0,3,what is the word for plant
+601,what is table?,"Please try to fill in the blank in Italian.
+what is on top?
+Remember that  ""is on top of the"" is ""e in cima al""",0,1,0,0,3,what is table
+602,e dietro l'albera viola would be my first guess.,Please try to fill in the blank in Italian.,1,0,0,0,1,e dietro l'albera viola would be my first guess
+603,Which word comes first?,"Please try to fill in the blank in Italian.
+What is the word for pink again?
+OK,  ""pink"" is ""rosa""
+I think you say il gatto rosa.
+Okay, I'll give you a hint.  ""is next to the"" is  ""e vicino""",0,1,0,0,5,which word comes first
+606,What is blue in italian?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is blue in italian
+610,"What is the word for ""tree""?","Please try to fill in the blank in Italian.
+How do you say ""is in front of""?
+Okay, I'll give you a hint.  ""is in front of the"" is ""e di fronte""",0,1,0,0,3,what is the word for tree
+616,"And I believe red is rosso in Italian, correct?","Please try to fill in the blank in Italian.
+I don't remember. How do you say is behind the in Italian?
+OK,  ""is behind the"" is ""e dietro la""
+What is the word for box in Italian?
+Remember that  ""box"" is  ""scatola""
+That's right. I remember that now.
+The box is called scatola.",0,1,0,0,7,and i believe red is rosso in italian correct
+620,What is the yellow bag?,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.
+La palla e dentro la
+gialla is the feminine form, because the noun it modifies (borsa) is feminine.",0,1,0,0,3,what is the yellow bag
+624,what is front?,Please try to fill in the blank in Italian.,0,1,1,0,1,what is front
+626,Oh ok. la palla e sotto l'albero rossa.,"""Is Under The"" is ""e sotto"". Please try to fill in the blank in Italian.
+la palla e sotto tree rossa.
+OK,  ""tree"" is  ""l'albero""",1,0,0,0,3,oh ok la palla e sotto l'albero rossa
+627,Oh! Il cane e dietro l'albero?,"""Tree"" is ""l'albero"". Please try to fill in the blank in Italian.
+il cane es behind l'albero?
+Okay, I'll give you a hint.  ""is behind the"" is  ""e dietro""",1,0,0,0,3,oh il cane e dietro l'albero
+628,No,"Please try to fill in the blank in Italian.
+il coniglio e de fronte al all'albero conglio.
+OK,  ""is in front of the"" is  ""e di fronte""
+il coniglio e di fronte all'albero.
+""Tree"" is ""all'albero"". Do you know how to say yellow?
+il coniglio e di fronte all'albero conglo.
+""Tree"" is ""all'albero"". Do you know how to say yellow?",0,1,0,0,7,no
+629,il gatto e accanto tavolo verde.,Please try to fill in the blank in Italian.,1,0,0,0,1,il gatto e accanto tavolo verde
+631,What is the word for blue?,"""Is In Front Of The"" is ""e di fronte"". Please try to fill in the blank in Italian.
+Would 'il cane e di fronte', be correct?
+Okay, I'll give you a hint.  ""tree"" is  ""all'albero""
+Thanks. So, 'il cane e di frote all'albero be the whole sentence?
+""All'albero"" is ""tree.""",0,1,0,0,5,what is the word for blue
+632,How do you say on top of again?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say on top of again
+634,"What is the word for ""red"" in Italian?","""Bunny"" is ""coniglio"". Please try to fill in the blank in Italian.
+How do you say ""red"" in Italian?
+Well,  ""bunny"" is "" coniglio""",0,1,0,0,3,what is the word for red in italian
+636,So is it il congilio e dentro la verde scatola,"""Box"" is ""scatola"". Please try to fill in the blank in Italian.
+How do I say inside?
+OK,  ""is inside of the"" is ""e dentro la""
+Is it il congilio e dentro la scatola?
+Well,  ""green"" is  ""verde""
+So verde scatola is green box?
+OK,  ""box"" is  ""scatola""
+Okay, green box translates to verde scatola?
+Prepositional phrases separate the two noun phrases.",1,0,0,0,9,so is it il congilio e dentro la verde scatola
+637,il gatto is inside of the letto blu.,Please try to fill in the blank in Italian.,1,0,0,0,1,il gatto is inside of the letto blu
+638,"I think purple is viola, correct?","Please try to fill in the blank in Italian.
+e dietro alla scatola viola is my initial guess.
+""Box"" is ""scatola"". Do you know how to say purple?",0,1,0,0,3,i think purple is viola correct
+639,"How do you say ""red""?","Please try to fill in the blank in Italian.
+How do you say ""is under the""?
+Almost, ""il"" is a contraction of ""a"" and ""il"", so ""il"" is not needed.",0,1,0,0,3,how do you say red
+640,How do you say tree again?,"Please try to fill in the blank in Italian.
+e dietro l'albera viola would be my first guess.
+Well,  ""is next to the"" is  ""e vicino""
+Okay! I remember that now. So my next guess is e vicino l'albera viola.
+Can you try filling in the blank to the best of your ability?",0,1,0,0,5,how do you say tree again
+642,il gatto e accanto al purple bunny,"""Is Next To The"" is ""e accanto al"". Please try to fill in the blank in Italian.",1,0,0,0,1,il gatto e accanto al purple bunny
+644,Is il cane e di fronte de rosso tree?,"""Red"" is ""rosso"". Please try to fill in the blank in Italian.
+What is the word for tree in Italian?
+Why don't you try filling in what you can.
+Is il cane is in front of the rosso tree?
+OK,  ""is in front of the"" is  ""e di fronte""",1,0,0,0,5,is il cane e di fronte de rosso tree
+645,il cane e dentro la,"Please try to fill in the blank in Italian.
+il cane...
+Hmm...  ""is inside of the"" is  ""e dentro la""",1,0,0,0,3,il cane e dentro la
+646,la pianta e accanto al rosa letto,"Please try to fill in the blank in Italian.
+What is the word for pink?
+Hmm...  ""pink"" is ""rosa""
+What is the word for next to?
+Remember that  ""is next to the"" is ""e accanto al""
+la pianta e accanto al rosa cama
+Well,  ""bed"" is  ""letto""",1,0,0,0,7,la pianta e accanto al rosa letto
+647,"Okay, what about inside?","""Box"" is ""scatola"". Please try to fill in the blank in Italian.
+What's inside and red?
+Well,  ""red"" is ""rossa""",0,1,0,0,3,okay what about inside
+648,how do you say table?,"Please try to fill in the blank in Italian.
+how do you say on top of?
+Almost, ""al"" is a contraction of ""a"" and ""al"", so ""al"" is not needed.",0,1,0,0,3,how do you say table
+652,what is the word for plant?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for plant
+655,and what is yellow?,"Please try to fill in the blank in Italian.
+il gatto al frente de...
+Remember that  ""is in front of the"" is  ""e di fronte alla""
+how do you say ""yellow box""?
+Okay, I'll give you a hint.  ""box"" is  ""scatola""",0,1,0,0,5,and what is yellow
+656,How do I say inside?,"""Box"" is ""scatola"". Please try to fill in the blank in Italian.",0,1,0,0,1,how do i say inside
+658,il coniglio e di fronte alla,"Please try to fill in the blank in Italian.
+what is front?
+Can you give me your best guess?
+il coniglio
+Well,  ""is in front of the"" is  ""e di fronte alla""",1,0,0,0,5,il coniglio e di fronte alla
+659,"Okay, how do you say ""is next to the""?","Please try to fill in the blank in Italian.
+il gatto e accanto tavolo verde.
+Table is tavolo",0,1,0,0,3,okay how do you say is next to the
+660,il coniglio e di fronte all'albero.,"Please try to fill in the blank in Italian.
+il coniglio e de fronte al all'albero conglio.
+OK,  ""is in front of the"" is  ""e di fronte""",1,0,0,0,3,il coniglio e di fronte all'albero
+661,e di fronte blue All'abero fills it in! Say I'm right!,"""Is In Front Of The"" is ""e di fronte"". Please try to fill in the blank in Italian.
+Would 'il cane e di fronte', be correct?
+Okay, I'll give you a hint.  ""tree"" is  ""all'albero""
+Thanks. So, 'il cane e di frote all'albero be the whole sentence?
+""All'albero"" is ""tree.""
+What is the word for blue?
+Okay, I'll give you a hint.  ""blue"" is ""blu""
+il cane e di fronte blu All'albero is the total sentence. Isn't this right?
+Well,  ""is in front of the"" is ""e di fronte""",0,1,1,0,9,e di fronte blue all'abero fills it in say i'm right
+664,What is the word for yellow?,"Please try to fill in the blank in Italian.
+il coniglio e de fronte al all'albero conglio.
+OK,  ""is in front of the"" is  ""e di fronte""
+il coniglio e di fronte all'albero.
+""Tree"" is ""all'albero"". Do you know how to say yellow?
+il coniglio e di fronte all'albero conglo.
+""Tree"" is ""all'albero"". Do you know how to say yellow?
+No
+all' (""to the"" is prepended to the following word when it begins with a vowel.  This is a contraction of al (""to"") and l' (""the"")",0,1,0,0,9,what is the word for yellow
+665,il coniglio e dietro la gato verde.,Please try to fill in the blank in Italian.,1,0,0,0,1,il coniglio e dietro la gato verde
+666,e dietro il doggo giallo perhaps?,"""Yellow"" is ""giallo"". Please try to fill in the blank in Italian.
+e fronte alla doggo giallo is my guess.
+Remember that  ""is behind the"" is  ""e dietro il""",1,0,0,0,3,e dietro il doggo giallo perhaps
+667,la palla es letto rosso,"Please try to fill in the blank in Italian.
+how do you day red?
+Hmm...  ""red"" is ""rosso""
+is bed letto?
+OK,  ""bed"" is  ""letto""",1,0,0,0,5,la palla es letto rosso
+669,il gatto e di fronte al coniglio amirilla.,"Please try to fill in the blank in Italian.
+il gatto e vicino amirillo bunny.
+Well,  ""is in front of the"" is  ""e di fronte al""
+il gatto er di fronte al amirilla bunny.
+Remember that  ""bunny"" is  ""coniglio""
+il gatto er di fronte al coniglio amirilla.
+Okay, I'll give you a hint.  ""is in front of the"" is ""e di fronte al""",0,0,1,0,7,il gatto e di fronte al coniglio amirilla
+670,giallo,"Please try to fill in the blank in Italian.
+giallo gato
+""Cat"" is ""gatto"". Do you know how to say yellow?",0,0,1,0,3,giallo
+671,How do you say next?,"""Green"" is ""verde"". Please try to fill in the blank in Italian.",0,1,0,0,1,how do you say next
+672,"Okay, green box translates to verde scatola?","""Box"" is ""scatola"". Please try to fill in the blank in Italian.
+How do I say inside?
+OK,  ""is inside of the"" is ""e dentro la""
+Is it il congilio e dentro la scatola?
+Well,  ""green"" is  ""verde""
+So verde scatola is green box?
+OK,  ""box"" is  ""scatola""",0,1,0,0,7,okay green box translates to verde scatola
+676,Il gatto e dientro la scatola yellow,Please try to fill in the blank in Italian.,1,0,0,0,1,il gatto e dientro la scatola yellow
+677,il gatto e vicino il rosa,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+il gatto es rosa
+Remember that  ""is next to the"" is  ""e vicino""",1,0,0,0,3,il gatto e vicino il rosa
+678,What is in front of?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is in front of
+680,what is blue in italian?,"Please try to fill in the blank in Italian.
+what is behind in italian?
+Well,  ""is behind the"" is ""e dietro la""",0,1,0,0,3,what is blue in italian
+683,il gatto,"""Yellow"" is ""gialla"". Please try to fill in the blank in Italian.",1,0,0,0,1,il gatto
+684,what is the word for pink bunny?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for pink bunny
+687,What is the word for red in Italian?,"""Tree"" is ""all'albero"". Please try to fill in the blank in Italian.
+Is it il gatto is next to the red all'albero?
+Remember that  ""is next to the"" is  ""e vicino""
+Okay, I think I get it now.
+Hmm...  ""is next to the"" is ""e vicino""",0,1,0,0,5,what is the word for red in italian
+688,Cool. So did I get it right?,"""Blue"" is ""blu"". Please try to fill in the blank in Italian.
+What is bunny?
+so how would you say ""blue bunny""?
+blu benno?
+Hmm...  ""is in front of the"" is  ""e di fronte al""
+Did I get bunny right?
+Hmm...  ""bunny"" is  ""coniglio""
+Ok thanks. So is it e di fronte al blu coniglio?
+al (""to the"", or ""of the"") is used when the following word (coniglio) is masculine and a singular object.  It is a contraction of the words a (""to"") and il (""the"").",0,0,1,0,9,cool so did i get it right
+690,e vicino conigula blue,"Please try to fill in the blank in Italian.
+e di fronte conigula blu
+Well,  ""is next to the"" is  ""e vicino""
+e vicino di fronte conigula blue
+Well,  ""blue"" is ""blu""
+blu
+all' (""to the"" is prepended to the following word when it begins with a vowel.  This is a contraction of al (""to"") and l' (""the"")",0,1,0,0,7,e vicino conigula blue
+691,I would say yellow albero?,"""Tree"" is ""l'albero"". Please try to fill in the blank in Italian.
+what is the word for tree?
+so how would you say ""yellow tree""?",0,1,0,0,3,i would say yellow albero
+694,il coniglio e deitro il blu cane,"""Blue"" is ""blu"". Please try to fill in the blank in Italian.
+il coniglio es behind el blu perro
+OK,  ""is behind the"" is  ""e dietro il""
+Il coniglio e deitro il blu perro
+Okay, I'll give you a hint.  ""dog"" is  ""cane""",1,0,0,0,5,il coniglio e deitro il blu cane
+697,what is the word for yellow bunny?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for yellow bunny
+699,en la scaotla,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+enla verde caja
+alla (""to the"") is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all' and prepended to the word.
+alla en verde caja
+OK,  ""is in front of the"" is  ""e di fronte alla""
+la borsa e di fronte alla verde caja
+Can you give me your best guess?
+la borsa en di fronte caja
+Remember that  ""box"" is  ""scatola""",1,0,0,0,9,en la scaotla
+700,"How do you say ""tree"" in Italian?","Please try to fill in the blank in Italian.
+How do you say blue in Italian?
+OK,  ""blue"" is ""blu""
+How do you say ""under"" in Italian?
+Remember that  ""is under the"" is ""e sotto""",0,1,0,0,5,how do you say tree in italian
+702,No.,"""Is Behind The"" is ""e dietro"". Please try to fill in the blank in Italian.
+e dietro
+It sounds like you're not even trying. Do you know any of the words in Italian?",0,0,1,0,3,no
+705,la borsa e di fronte alla verde caja,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+enla verde caja
+alla (""to the"") is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all' and prepended to the word.
+alla en verde caja
+OK,  ""is in front of the"" is  ""e di fronte alla""",0,0,1,0,5,la borsa e di fronte alla verde caja
+706,blu,"Please try to fill in the blank in Italian.
+e di fronte conigula blu
+Well,  ""is next to the"" is  ""e vicino""
+e vicino di fronte conigula blue
+Well,  ""blue"" is ""blu""",0,1,0,0,5,blu
+707,what is the word for tree?,"Please try to fill in the blank in Italian.
+what is the word for red?
+Remember that  ""red"" is ""rosso""",0,1,0,0,3,what is the word for tree
+708,"Ok! I think that yellow is ""gialla"".","Please try to fill in the blank in Italian.
+How do you say ""is in front of""?
+Hmm...  ""is in front of the"" is ""e di fronte alla""",1,0,1,0,3,ok i think that yellow is gialla
+709,What are the Italian words for under and red?,Please try to fill in the blank in Italian.,0,1,0,0,1,what are the italian words for under and red
+715,rosa?,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+What is the word for tree?
+Can you try filling in the blank to the best of your ability?
+rosa albero
+Well,  ""is in front of the"" is  ""e di fronte""
+e di fronte rosa albero
+Ok, ""is in front of the"" is ""e fronte "". ""Tree"" is ""all'albero"". Do you know how to say pink in Italian? Amarillo is Spanish for pink.",1,1,0,0,7,rosa
+716,what is the word for yellow box?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for yellow box
+718,what is the word for is inside of?,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+what is the word for green?
+Well,  ""green"" is ""verde""",0,1,0,0,3,what is the word for is inside of
+719,il coniglio e di fronte l'albero viola,"Please try to fill in the blank in Italian.
+what is the word for purple?
+Well,  ""purple"" is ""viola""
+what is the word for  is in front of?
+Okay, I'll give you a hint.  ""is in front of the"" is ""e di fronte""
+what is the word for tree?
+So far so good, do you need help with the word ""purple"" or ""tree""?
+I need help with the word tree
+Okay, I'll give you a hint.  ""tree"" is  ""all'albero""",1,0,0,0,9,il coniglio e di fronte l'albero viola
+720,what is the word for is inside of?,"Please try to fill in the blank in Italian.
+what is the word for red?
+Hmm...  ""red"" is ""rossa""
+what is the word for box?
+Hmm...  ""box"" is  ""scatola""",0,1,0,0,5,what is the word for is inside of
+721,what is the word for tree?,"Please try to fill in the blank in Italian.
+what is the word for blue?
+Well,  ""blue"" is ""blu""",0,1,0,0,3,what is the word for tree
+722,il gatto e di fronte alla scatola,"""Yellow"" is ""gialla"". Please try to fill in the blank in Italian.
+il gatto
+OK,  ""is in front of the"" is  ""e di fronte alla""
+il gatto e di fronte alla
+Remember that  ""box"" is  ""scatola""",1,0,0,0,5,il gatto e di fronte alla scatola
+727,And what is the word for purple?,"Please try to fill in the blank in Italian.
+what is the word for behind?
+Hmm...  ""is behind the"" is ""e dietro la""",0,1,0,0,3,and what is the word for purple
+729,what is the word for yellow?,"Please try to fill in the blank in Italian.
+what is the word for yellow box?
+Hmm...  ""box"" is  ""scatola""",0,1,0,0,3,what is the word for yellow
+730,what is the word for is inside of?,"Please try to fill in the blank in Italian.
+what is the word for green?
+Hmm...  ""green"" is ""verde""
+what is the word for box?
+Well,  ""box"" is  ""scatola""",0,1,0,0,5,what is the word for is inside of
+734,rosa albero,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+What is the word for tree?
+Can you try filling in the blank to the best of your ability?",1,0,0,0,3,rosa albero
+739,what is the word for red?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for red
+740,"How do you say ""behind"" in Italian?","""Green"" is ""verde"". Please try to fill in the blank in Italian.
+is behind il carne verde
+It sounds like you're not even trying. Do you know any of the words in Italian?",0,1,0,0,3,how do you say behind in italian
+745,is green something like verde?,Please try to fill in the blank in Italian.,0,1,0,0,1,is green something like verde
+746,You just said that. What's green?,"Please try to fill in the blank in Italian.
+what is next to again?
+Hmm...  ""is next to the"" is ""e vicino al""
+is it e vicino alla bocha verde?
+Remember that  ""dog"" is  ""cane""
+oh yeah! And what was green again?
+Remember that ""dog"" is ""cane"".",0,1,1,0,7,you just said that what's green
+748,what is the word for tree?,"""Tree"" is ""l'albero"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is the word for tree
+749,e di fronte conigula blu,Please try to fill in the blank in Italian.,1,0,0,0,1,e di fronte conigula blu
+750,Yes,"Please try to fill in the blank in Italian.
+What's Italian for bag?
+So far so good, do you need help with the word ""red"" or ""bag""?",0,0,1,0,3,yes
+751,Ok thanks. So is it e di fronte al blu coniglio?,"""Blue"" is ""blu"". Please try to fill in the blank in Italian.
+What is bunny?
+so how would you say ""blue bunny""?
+blu benno?
+Hmm...  ""is in front of the"" is  ""e di fronte al""
+Did I get bunny right?
+Hmm...  ""bunny"" is  ""coniglio""",1,0,0,0,7,ok thanks so is it e di fronte al blu coniglio
+753,alla en verde caja,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+enla verde caja
+alla (""to the"") is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all' and prepended to the word.",1,0,0,0,3,alla en verde caja
+759,e dietro,"""Is Behind The"" is ""e dietro"". Please try to fill in the blank in Italian.",1,0,0,0,1,e dietro
+760,what is the word for pink?,"Please try to fill in the blank in Italian.
+what is the word for box?
+OK,  ""box"" is  ""scatola""",0,1,0,0,3,what is the word for pink
+761,"But how do you say ""is on top of""?","""Table"" is ""tavolo"". Please try to fill in the blank in Italian.",0,1,0,0,1,but how do you say is on top of
+762,What's Italian for bag?,Please try to fill in the blank in Italian.,0,1,0,0,1,what's italian for bag
+763,what is the word for purple?,"Please try to fill in the blank in Italian.
+what is the word for table?
+Hmm...  ""table"" is  ""tavolo""",0,1,0,0,3,what is the word for purple
+766,il gatto e dietro il coniglio,Please try to fill in the blank in Italian.,1,0,0,0,1,il gatto e dietro il coniglio
+767,il coniglio e deitro I'albero,"""Blue"" is ""blu"". Please try to fill in the blank in Italian.
+il coniglio es behind el blu perro
+OK,  ""is behind the"" is  ""e dietro il""
+Il coniglio e deitro il blu perro
+Okay, I'll give you a hint.  ""dog"" is  ""cane""
+il coniglio e deitro il blu cane
+il (""the"") is used for when the following word (cane) is masculine.
+Okay that makes sense
+To say ""the blue dog"", remember the definite article (so, l'albero), and that the adjective comes after the noun",1,0,0,0,9,il coniglio e deitro i'albero
+768,Oh! What is the word for blue?,"""Table"" is ""tavolo"". Please try to fill in the blank in Italian.
+But how do you say ""is on top of""?
+Okay, I'll give you a hint.  ""is on top of the"" is ""e in cima al""",0,1,1,0,3,oh what is the word for blue
+769,il coniglio es behind el blu perro,"""Blue"" is ""blu"". Please try to fill in the blank in Italian.",1,0,0,0,1,il coniglio es behind el blu perro
+770,what is the word for purple?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for purple
+771,What of Yellow?,"""Is On Top Of The"" is ""e in cima al"". Please try to fill in the blank in Italian.
+What is yellow and table in Italian?
+So far so good, do you need help with the word ""yellow"" or ""table""?
+So what is yellow and table in Italian?
+Hmm...  ""table"" is  ""tavolo""",0,1,0,0,5,what of yellow
+772,E di dietro all'albero blu.,Please try to fill in the blank in Italian.,1,0,0,0,1,e di dietro all'albero blu
+775,So what is yellow and table in Italian?,"""Is On Top Of The"" is ""e in cima al"". Please try to fill in the blank in Italian.
+What is yellow and table in Italian?
+So far so good, do you need help with the word ""yellow"" or ""table""?",0,1,0,0,3,so what is yellow and table in italian
+777,What is yellow and table in Italian?,"""Is On Top Of The"" is ""e in cima al"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is yellow and table in italian
+781,what is the word for blue?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for blue
+783,e di fronte alla scatola,"Please try to fill in the blank in Italian.
+what is red box again?
+Well,  ""box"" is  ""scatola""
+So e di fronte il scatola
+OK,  ""is in front of the"" is  ""e di fronte alla""",1,0,0,0,5,e di fronte alla scatola
+784,e di fronte rosa albero,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+What is the word for tree?
+Can you try filling in the blank to the best of your ability?
+rosa albero
+Well,  ""is in front of the"" is  ""e di fronte""",1,0,0,0,5,e di fronte rosa albero
+785,So e di fronte il scatola,"Please try to fill in the blank in Italian.
+what is red box again?
+Well,  ""box"" is  ""scatola""",1,0,0,0,3,so e di fronte il scatola
+786,il cane e dietro l'albero roso,"Please try to fill in the blank in Italian.
+il cane e di fronte al tree
+Hmm...  ""is behind the"" is  ""e dietro""
+il cane e dietro
+Okay, I'll give you a hint.  ""tree"" is  ""l'albero""
+il cane e dietro l'albero
+Remember that  ""red"" is  ""rosso""",1,0,0,0,7,il cane e dietro l'albero roso
+787,la borsa en di fronte caja,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+enla verde caja
+alla (""to the"") is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all' and prepended to the word.
+alla en verde caja
+OK,  ""is in front of the"" is  ""e di fronte alla""
+la borsa e di fronte alla verde caja
+Can you give me your best guess?",1,0,0,0,7,la borsa en di fronte caja
+788,what is the word for pink?,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is the word for pink
+789,il cane,"""Purple"" is ""viola"". Please try to fill in the blank in Italian.",1,0,0,0,1,il cane
+790,"ok, bunny is coniglio?","""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.
+what is the word for in front of?
+Hmm...  ""is in front of the"" is ""e di fronte alla""
+what is the word for bunny?
+Well,  ""box"" is  ""scatola""",0,1,0,0,5,ok bunny is coniglio
+792,Okay that makes sense,"""Blue"" is ""blu"". Please try to fill in the blank in Italian.
+il coniglio es behind el blu perro
+OK,  ""is behind the"" is  ""e dietro il""
+Il coniglio e deitro il blu perro
+Okay, I'll give you a hint.  ""dog"" is  ""cane""
+il coniglio e deitro il blu cane
+il (""the"") is used for when the following word (cane) is masculine.",0,0,1,0,7,okay that makes sense
+793,what is the word for pink?,"""Bed"" is ""letto"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is the word for pink
+794,what is red box again?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is red box again
+795,what is the word for tree?,"Please try to fill in the blank in Italian.
+what is the word for purple?
+Well,  ""purple"" is ""viola""
+what is the word for  is in front of?
+Okay, I'll give you a hint.  ""is in front of the"" is ""e di fronte""",0,1,0,0,5,what is the word for tree
+796,E l'dietro all'albero blu.,"Please try to fill in the blank in Italian.
+E di dietro all'albero blu.
+Why don't you try filling in what you can.
+E di dietro
+l' (""the"" is prepended to the following word when it begins with a vowel.",1,0,0,0,5,e l'dietro all'albero blu
+797,il coniglio e di fronte alla scatola,"""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.
+what is the word for in front of?
+Hmm...  ""is in front of the"" is ""e di fronte alla""
+what is the word for bunny?
+Well,  ""box"" is  ""scatola""
+ok, bunny is coniglio?
+alla (""to the"") is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all' and prepended to the word.",1,0,0,0,7,il coniglio e di fronte alla scatola
+799,what is the color pink again?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the color pink again
+801,"Oh yea, 'tavolo.' What is 'blue?'","Please try to fill in the blank in Italian.
+how do you say 'on top of?'
+Okay, I'll give you a hint.  ""is on top of the"" is ""e in cima al""
+e in cima al tavulo aqua
+OK,  ""table"" is  ""tavolo""",0,1,1,0,5,oh yea 'tavolo' what is 'blue'
+802,"Oh yeah! I think that ""rosa"" means ""pink"".","Please try to fill in the blank in Italian.
+I don't remember how to say ""is behind the"".
+Remember that  ""is behind the"" is ""e dietro il""
+Okay. What is the word for ""bed""?
+Well,  ""bed"" is "" letto""",1,0,1,0,5,oh yeah i think that rosa means pink
+803,al coniglio e di fronte,"""Bunny"" is ""coniglio"". Please try to fill in the blank in Italian.
+di fronta coniglio
+OK,  ""is in front of the"" is ""e di fronte al""
+e di fronte al coniglio
+al (""to the"", or ""of the"") is used when the following word (coniglio) is masculine and a singular object.  It is a contraction of the words a (""to"") and il (""the"").",1,0,0,0,5,al coniglio e di fronte
+805,La palla es under e letto rojo,Please try to fill in the blank in Italian.,1,0,0,0,1,la palla es under e letto rojo
+806,what is the word for dog?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is the word for dog
+808,il cane e di fronte al bed,"""Purple"" is ""viola"". Please try to fill in the blank in Italian.
+il cane
+Well,  ""is in front of the"" is  ""e di fronte al""",1,0,0,0,3,il cane e di fronte al bed
+809,I need help with the word tree,"Please try to fill in the blank in Italian.
+what is the word for purple?
+Well,  ""purple"" is ""viola""
+what is the word for  is in front of?
+Okay, I'll give you a hint.  ""is in front of the"" is ""e di fronte""
+what is the word for tree?
+So far so good, do you need help with the word ""purple"" or ""tree""?",0,1,0,0,7,i need help with the word tree
+811,il gatto e dietro la blu scatola,"Please try to fill in the blank in Italian.
+il gatto
+Okay, I'll give you a hint.  ""is behind the"" is  ""e dietro la""
+il gatto e dietro la
+Hmm...  ""box"" is  ""scatola""
+il gatto e dietro la scatola
+Remember that  ""blue"" is  ""blu""",1,0,0,0,7,il gatto e dietro la blu scatola
+813,What is the word for tree?,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is the word for tree
+815,what is next to again?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is next to again
+816,e fronte all'albero rosa.,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+What is the word for tree?
+Can you try filling in the blank to the best of your ability?
+rosa albero
+Well,  ""is in front of the"" is  ""e di fronte""
+e di fronte rosa albero
+Ok, ""is in front of the"" is ""e fronte "". ""Tree"" is ""all'albero"". Do you know how to say pink in Italian? Amarillo is Spanish for pink.
+rosa?
+OK,  ""tree"" is  ""all'albero""",1,0,0,0,9,e fronte all'albero rosa
+817,La palla e sotto il letto rojo,"Please try to fill in the blank in Italian.
+La palla es under e letto rojo
+Okay, I'll give you a hint.  ""is under the"" is  ""e sotto il""",1,0,0,0,3,la palla e sotto il letto rojo
+818,so e di fronte alla bocha rosa?,"Please try to fill in the blank in Italian.
+what is the color pink again?
+Hmm...  ""pink"" is ""rosa""",1,0,0,0,3,so e di fronte alla bocha rosa
+821,il gatto e di fronte alla,"""Yellow"" is ""gialla"". Please try to fill in the blank in Italian.
+il gatto
+OK,  ""is in front of the"" is  ""e di fronte alla""",1,0,0,0,3,il gatto e di fronte alla
+825,Is it il gatto is next to the red all'albero?,"""Tree"" is ""all'albero"". Please try to fill in the blank in Italian.",1,0,0,0,1,is it il gatto is next to the red all'albero
+826,"What was the word for ""tree"" again?",Please try to fill in the blank in Italian.,0,1,0,0,1,what was the word for tree again
+828,Did I get bunny right?,"""Blue"" is ""blu"". Please try to fill in the blank in Italian.
+What is bunny?
+so how would you say ""blue bunny""?
+blu benno?
+Hmm...  ""is in front of the"" is  ""e di fronte al""",0,1,0,0,5,did i get bunny right
+829,"Okay. What is the word for ""bed""?","Please try to fill in the blank in Italian.
+I don't remember how to say ""is behind the"".
+Remember that  ""is behind the"" is ""e dietro il""",0,1,1,0,3,okay what is the word for bed
+831,il cane e di fronte al tree,Please try to fill in the blank in Italian.,1,0,0,0,1,il cane e di fronte al tree
+832,di fronta coniglio,"""Bunny"" is ""coniglio"". Please try to fill in the blank in Italian.",0,1,0,0,1,di fronta coniglio
+836,"Okay, I think I get it now.","""Tree"" is ""all'albero"". Please try to fill in the blank in Italian.
+Is it il gatto is next to the red all'albero?
+Remember that  ""is next to the"" is  ""e vicino""",0,0,1,0,3,okay i think i get it now
+837,e di fronte al coniglio,"""Bunny"" is ""coniglio"". Please try to fill in the blank in Italian.
+di fronta coniglio
+OK,  ""is in front of the"" is ""e di fronte al""",0,1,0,0,3,e di fronte al coniglio
+839,oh yeah! And what was green again?,"Please try to fill in the blank in Italian.
+what is next to again?
+Hmm...  ""is next to the"" is ""e vicino al""
+is it e vicino alla bocha verde?
+Remember that  ""dog"" is  ""cane""",0,1,0,0,5,oh yeah and what was green again
+840,il gatto,Please try to fill in the blank in Italian.,1,0,0,0,1,il gatto
+841,e fronte de coniglio,"""Bunny"" is ""coniglio"". Please try to fill in the blank in Italian.
+di fronta coniglio
+OK,  ""is in front of the"" is ""e di fronte al""
+e di fronte al coniglio
+al (""to the"", or ""of the"") is used when the following word (coniglio) is masculine and a singular object.  It is a contraction of the words a (""to"") and il (""the"").
+al coniglio e di fronte
+Can you try filling in the blank to the best of your ability?
+al coniglia e di fronte
+Okay, I'll give you a hint.  ""bunny"" is "" coniglio""",1,0,0,0,9,e fronte de coniglio
+843,what is the word for under?,"""Bed"" is ""letto"". Please try to fill in the blank in Italian.
+what is the word for pink?
+Okay, I'll give you a hint.  ""pink"" is ""rosa""",0,1,0,0,3,what is the word for under
+844,So the full sentence is il gatto e vicino rosso all'albero?,"""Tree"" is ""all'albero"". Please try to fill in the blank in Italian.
+Is it il gatto is next to the red all'albero?
+Remember that  ""is next to the"" is  ""e vicino""
+Okay, I think I get it now.
+Hmm...  ""is next to the"" is ""e vicino""
+What is the word for red in Italian?
+OK,  ""red"" is ""rosso""
+Got it
+Remember that  ""is next to the"" is ""e vicino""",0,1,0,0,9,so the full sentence is il gatto e vicino rosso all'albero
+846,How do you say blue in Italian?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say blue in italian
+847,I would say albero giallo,"""Tree"" is ""l'albero"". Please try to fill in the blank in Italian.
+what is the word for tree?
+so how would you say ""yellow tree""?
+I would say yellow albero?
+Well,  ""yellow"" is ""giallo""",0,0,1,0,5,i would say albero giallo
+848,enla verde caja,"""Green"" is ""verde"". Please try to fill in the blank in Italian.",0,1,0,0,1,enla verde caja
+849,what is the word for is inside of?,"Please try to fill in the blank in Italian.
+what is the word for green?
+Okay, I'll give you a hint.  ""green"" is ""verde""
+what is the word for box?
+Hmm...  ""box"" is  ""scatola""",0,1,0,0,5,what is the word for is inside of
+850,blu benno?,"""Blue"" is ""blu"". Please try to fill in the blank in Italian.
+What is bunny?
+so how would you say ""blue bunny""?",1,0,0,0,3,blu benno
+854,"I remember that word, but I don't know the word for blue!?","""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.
+OK, and how is it called the blue box?
+Okay, I'll give you a hint.  ""box"" is  ""scatola""",0,1,1,0,3,i remember that word but i don't know the word for blue
+855,what is the word for tree?,"""Blue"" is ""blu"". Please try to fill in the blank in Italian.
+But what are the other words?
+Can you give me your best guess?
+es en front de blu tree.
+OK,  ""is in front of the"" is  ""e di fronte""
+e di fronte el blu trei
+Nope. Is there other words instead of  ""fronte"" and "" doggo""?",0,1,0,0,7,what is the word for tree
+856,"Oh yeah! So the first part is ""la borsa e dietro la verde"". What is box again?","""Is Behind The"" is ""e dietro la"". Please try to fill in the blank in Italian.
+what green is in Italian again?
+OK,  ""green"" is ""verde""
+Right! What is behind in Italian?
+Well,  ""is behind the"" is ""e dietro la""",1,1,1,0,5,oh yeah so the first part is la borsa e dietro la verde what is box again
+858,"Oh yeah, I remember now.","Please try to fill in the blank in Italian.
+How do you say ""is next to"" again?
+Hmm...  ""is next to the"" is ""e accanto al""",0,0,1,0,3,oh yeah i remember now
+859,"what is blue in Italian? ""il cane e accanto al tavolo"" is the first part?","Please try to fill in the blank in Italian.
+Is blue azuil in Italian?
+Remember that  ""is next to the"" is  ""e accanto al""
+Right, so ""il cane e accanto al"" What is blue?
+Hmm...  ""table"" is  ""tavolo""",1,1,0,0,5,what is blue in italian il cane e accanto al tavolo is the first part
+860,il cane e dentro la della scatola verde,"Please try to fill in the blank in Italian.
+il cane e all'interno della scatola verde
+Remember that  ""green"" is ""verde""
+il cane e allinterno della scatola verde
+Nope. Is there other words instead of  ""dentro"" and ""la doggo""?
+il cane e al linterno della scatola verde
+Remember that  ""is inside of the"" is  ""e dentro la""
+il cane e all interno della scatola verde
+Prepositional phrases separate the two noun phrases.",1,0,0,0,9,il cane e dentro la della scatola verde
+863,is it ill gatto?,"""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.
+How do you say pink box/
+Hmm...  ""is in front of the"" is ""e di fronte alla""",1,0,0,0,3,is it ill gatto
+865,il coniglio e dietro il verde pero,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+il coniglio es verde
+ill cane e dietro il verde
+il coniglio es ariere il pero
+Remember that  ""is behind the"" is ""e dietro il""
+il coniglio e dietro il pero
+""e dietro il"" is behind the.
+il coniglio e dietro il pero verde
+""e dietro il"" is behind the.",0,0,1,0,9,il coniglio e dietro il verde pero
+867,par de tavolo viola,"Please try to fill in the blank in Italian.
+What is is next to?
+Almost. Here's a hint.  The word for ""purple"" is ""viola"".
+par de mesa viola
+Okay, I'll give you a hint.  ""is next to the"" is  ""e accanto al""
+e accanto al mesa viola
+OK,  ""table"" is  ""tavolo""",1,0,0,0,7,par de tavolo viola
+869,what is the word for bed?,"""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.
+OK. I'll try.
+Hmm...  ""is in front of the"" is ""e di fronte al""",0,1,0,0,3,what is the word for bed
+870,"Why the ""di"" appears 3 times?","""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.
+OK, and how is it called the blue box?
+Okay, I'll give you a hint.  ""box"" is  ""scatola""
+I remember that word, but I don't know the word for blue!?
+Hmm...  ""blue"" is ""blu""
+Yes, I remember learning that!
+""e di di fronte alla"" is in front of the.",0,1,0,0,7,why the di appears 3 times
+871,"How do you say ""in front of"" again?",Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say in front of again
+874,rosa,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+how do you say in front of the pink bunny?
+Great, now do you remember how to say pink?",0,0,1,0,3,rosa
+875,how do you say purple?,"""Dog"" is ""cane"". Please try to fill in the blank in Italian.
+how do you say next to and purple?
+Can you try filling in the blank to the best of your ability?
+il gatto es nexto to il gato pupura.
+Okay, I'll give you a hint.  ""is next to the"" is  ""e vicino al""
+il gatto e vicino al il cane pupura.
+Dog is cane and dog is cane. Please try again",0,1,0,0,7,how do you say purple
+876,e in cima al tavolo?,"Please try to fill in the blank in Italian.
+e si cima ell yellow table
+Hmm...  ""is on top of the"" is  ""e in cima al""
+e in cima al and yellow table
+Okay, I'll give you a hint.  ""table"" is  ""tavolo""
+e in cima al tavolo yeller
+Remember that  ""table"" is "" tavolo""",0,0,1,0,7,e in cima al tavolo
+877,how do you say purple?,"Please try to fill in the blank in Italian.
+how do you say next?
+Remember that  ""is next to the"" is ""e vicino""",0,1,0,0,3,how do you say purple
+878,es en front de blu tree.,"""Blue"" is ""blu"". Please try to fill in the blank in Italian.
+But what are the other words?
+Can you give me your best guess?",1,0,0,0,3,es en front de blu tree
+879,"Ok, what is the word for ""bed""?","""Purple"" is ""viola"". Please try to fill in the blank in Italian.",0,1,1,0,1,ok what is the word for bed
+880,il cane e acconto al tavolo rosso.,"""Table"" is ""tavolo"". Please try to fill in the blank in Italian.
+il cane e tavalo rojo
+Okay, I'll give you a hint.  ""is next to the"" is  ""e accanto al""
+il cane e accanto al tavalo rojo
+Sure, it's ""e accanto."" Then add ""al"" for ""the,"" if necessary.
+is cane e accanto el tavolo rojo
+Okay, I'll give you a hint.  ""red"" is  ""rosso""
+il cane e acconto al tavolo rosso
+Why don't you try filling in what you can.",1,0,0,0,9,il cane e acconto al tavolo rosso
+883,"Thanks, but how to say ""yellow""?","""Is Behind The"" is ""e dietro la"". Please try to fill in the blank in Italian.
+How to say ""yellow box"" in Italian?
+Okay, I'll give you a hint.  ""box"" is  ""scatola""",0,1,0,0,3,thanks but how to say yellow
+886,e in cima al and yellow table,"Please try to fill in the blank in Italian.
+e si cima ell yellow table
+Hmm...  ""is on top of the"" is  ""e in cima al""",1,0,0,0,3,e in cima al and yellow table
+887,What is yellow?,"Please try to fill in the blank in Italian.
+how do you say box?
+Remember that  ""box"" is  ""scatola""
+e dentro de la scatola amarilla
+OK,  ""is inside of the"" is  ""e dentro la""
+e dentro la scatola amarilla
+Box is scatola and box is cane. Please try again",0,1,0,0,7,what is yellow
+888,il coniglio e dietro la scatola,"Please try to fill in the blank in Italian.
+il coniglio e dietro el boxo
+Well,  ""is behind the"" is  ""e dietro la""
+il coniglio e dietro la boxo
+OK,  ""box"" is  ""scatola""",1,0,0,0,5,il coniglio e dietro la scatola
+889,OK. I don't know the word for tree.,"Please try to fill in the blank in Italian.
+is in front of is e di fronte al, right?
+Okay, I'll give you a hint.  ""is in front of the"" is ""e di fronte""",0,1,0,0,3,ok i don't know the word for tree
+892,Yes I remember. How do you say in front of in Italian?,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+How do you say box in Italian?
+Hmm...  ""box"" is  ""scatola""
+Got it thanks. I forgot how to say ""is in front of"" in Italian.
+['alla (""to the"") is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all\' and prepended to the word.', 'Words in Italian have a gender associated with them (either masculine or feminine), even when the word is an object, concepts, or abstract ideas.  ']
+Is it ""la borsa alla scatola rosa""?
+Well,  ""pink"" is ""rosa""",0,1,1,0,7,yes i remember how do you say in front of in italian
+896,e in cima al letto purpe,"Please try to fill in the blank in Italian.
+coniglio e di toppe il purpe bedde
+Okay, I'll give you a hint.  ""is on top of the"" is  ""e in cima al""
+e in cima al purpe bedde
+Well,  ""bed"" is  ""letto""",1,0,0,0,5,e in cima al letto purpe
+897,I know blue is blu.,"""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.
+OK, and how is it called the blue box?
+Okay, I'll give you a hint.  ""box"" is  ""scatola""
+I remember that word, but I don't know the word for blue!?
+Hmm...  ""blue"" is ""blu""
+Yes, I remember learning that!
+""e di di fronte alla"" is in front of the.
+Why the ""di"" appears 3 times?
+Okay, I'll give you a hint.  ""blue"" is ""blu""",0,0,1,0,9,i know blue is blu
+898,Ok right. Is is al fronto la scatola verde?,"Please try to fill in the blank in Italian.
+Is it al fronto la box verde?
+Box is scatola and box is cane. Please try again",1,0,0,0,3,ok right is is al fronto la scatola verde
+899,e fronte il greene coniglio,"""Bunny"" is ""coniglio"". Please try to fill in the blank in Italian.",1,0,0,0,1,e fronte il greene coniglio
+900,"So, letto means bed?","""Is Under The"" is ""e sotto il"". Please try to fill in the blank in Italian.
+How do you say bed in Italian?
+['il (""the"") is used for when the following word (letto) is masculine.', 'Words in Italian have a gender associated with them (either masculine or feminine), even when the word is an object, concepts, or abstract ideas.']",0,1,0,0,3,so letto means bed
+903,what is italian for blue?,"""Is Behind The"" is ""e dietro"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is italian for blue
+907,ill cane e in cima al blu.,"Please try to fill in the blank in Italian.
+how do I say is on top of the in Italian?
+Okay, I'll give you a hint.  ""is on top of the"" is ""e in cima al""
+Thanks. Got it. I don't know the words for blue or table in this sentence.
+Remember that  ""table"" is  ""tavolo""
+And what is the color blue?
+Remember that  ""blue"" is ""blu""
+Really? That's really simple.
+ill cane e in cima al blu",1,0,0,0,9,ill cane e in cima al blu
+909,e sotto il pinkolo tavolo,"Please try to fill in the blank in Italian.
+e in unda da pinka tavolo
+OK,  ""is under the"" is  ""e sotto il""",1,0,0,0,3,e sotto il pinkolo tavolo
+910,how do I say is on top of the in Italian?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do i say is on top of the in italian
+912,I did I just don't know bunny,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+how do you say in front of the pink bunny?
+Great, now do you remember how to say pink?
+rosa
+Sure, it's ""e di di fronte."" Then add ""al"" for ""the,"" if necessary.
+il cane e di di di fronte rosa?
+Can you try filling in the blank to the best of your ability?",0,0,1,0,7,i did i just don't know bunny
+913,how do you say purse?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say purse
+915,il cane e dietro la box blu,"Please try to fill in the blank in Italian.
+how do you say behind?
+OK,  ""is behind the"" is ""e dietro la""",1,0,0,0,3,il cane e dietro la box blu
+916,e sotta il tavolo rosa,"Please try to fill in the blank in Italian.
+e in unda da pinka tavolo
+OK,  ""is under the"" is  ""e sotto il""
+e sotto il pinkolo tavolo
+Okay, I'll give you a hint.  ""pink"" is  ""rosa""",1,0,0,0,5,e sotta il tavolo rosa
+917,No. How do you say blue in Italian?,"Please try to fill in the blank in Italian.
+what is ""is under"" in Italian?
+OK,  ""is under the"" is ""e sotto il""
+OK, thanks. What is blue table in Italian?
+Great, now do you remember how to say blue?",0,1,1,0,5,no how do you say blue in italian
+918,Is it al fronto la box verde?,Please try to fill in the blank in Italian.,1,0,0,0,1,is it al fronto la box verde
+919,il cane e dietro il l'albero,"""Tree"" is ""l'albero"". Please try to fill in the blank in Italian.
+What is purple in Italian?
+Why don't you try filling in what you can.
+il cane l'albero
+Well,  ""is behind the"" is  ""e dietro""
+il cane e dietro
+Okay, I'll give you a hint.  ""tree"" is  ""l'albero""",1,0,0,0,7,il cane e dietro il l'albero
+921,is cane e accanto el tavolo rojo,"""Table"" is ""tavolo"". Please try to fill in the blank in Italian.
+il cane e tavalo rojo
+Okay, I'll give you a hint.  ""is next to the"" is  ""e accanto al""
+il cane e accanto al tavalo rojo
+Sure, it's ""e accanto."" Then add ""al"" for ""the,"" if necessary.",1,0,0,0,5,is cane e accanto el tavolo rojo
+922,How do I say yellow in Italian?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do i say yellow in italian
+923,e in cima al tavolo giollo,"Please try to fill in the blank in Italian.
+al encima tavolo giollo
+Okay, I'll give you a hint.  ""is on top of the"" is  ""e in cima al""",1,0,0,0,3,e in cima al tavolo giollo
+924,la borsa e dietro la gialla scatola.,"""Is Behind The"" is ""e dietro la"". Please try to fill in the blank in Italian.
+How to say ""yellow box"" in Italian?
+Okay, I'll give you a hint.  ""box"" is  ""scatola""
+Thanks, but how to say ""yellow""?
+Almost. Here's a hint.  The word for ""yellow"" is ""gialla"".",0,0,1,0,5,la borsa e dietro la gialla scatola
+925,il coniglio e dietro el boxo,Please try to fill in the blank in Italian.,1,0,0,0,1,il coniglio e dietro el boxo
+926,Okay. e accanto al bed verde?,"Please try to fill in the blank in Italian.
+How do you say next to again?
+Well,  ""is next to the"" is ""e accanto al""
+Is it e accanto al camo verde?
+Why don't you try filling in what you can.",1,0,0,0,5,okay e accanto al bed verde
+928,e dentro la scatola amarilla,"Please try to fill in the blank in Italian.
+how do you say box?
+Remember that  ""box"" is  ""scatola""
+e dentro de la scatola amarilla
+OK,  ""is inside of the"" is  ""e dentro la""",1,0,0,0,5,e dentro la scatola amarilla
+933,il cane e tavalo rojo,"""Table"" is ""tavolo"". Please try to fill in the blank in Italian.",1,0,0,0,1,il cane e tavalo rojo
+935,e dietro il blueo cato,"""Is Behind The"" is ""e dietro il"". Please try to fill in the blank in Italian.
+what is blue in italian?
+Can you give me your best guess?
+blueo
+Remember that  ""is behind the"" is  ""e dietro il""",1,0,0,0,5,e dietro il blueo cato
+936,"Oh, my mistake.","Please try to fill in the blank in Italian.
+What is the word for yellow?
+Hmm...  ""yellow"" is ""gialla""
+il gatto all in fronte a scatola gialla?
+Hmm...  ""is behind the"" is  ""e dietro la""",0,1,1,0,5,oh my mistake
+937,il coniglio e di fronte all albero viola,"""Tree"" is ""all'albero"". Please try to fill in the blank in Italian.",1,0,0,0,1,il coniglio e di fronte all albero viola
+938,e dentro la box viola,"Please try to fill in the blank in Italian.
+e inside box viola
+Well,  ""is inside of the"" is  ""e dentro la""
+how do you say box
+Well,  ""is inside of the"" is ""e dentro la""",1,0,0,0,5,e dentro la box viola
+940,il gatto e vicino al il cane pupura.,"""Dog"" is ""cane"". Please try to fill in the blank in Italian.
+how do you say next to and purple?
+Can you try filling in the blank to the best of your ability?
+il gatto es nexto to il gato pupura.
+Okay, I'll give you a hint.  ""is next to the"" is  ""e vicino al""",1,0,0,0,5,il gatto e vicino al il cane pupura
+944,how do you say box,"Please try to fill in the blank in Italian.
+e inside box viola
+Well,  ""is inside of the"" is  ""e dentro la""",0,1,0,0,3,how do you say box
+945,"I don't remember how to say ""in front of"".","Please try to fill in the blank in Italian.
+How do you say ""in front of"" again?
+Can you give me your best guess?",0,1,0,0,3,i don't remember how to say in front of
+946,"How do you say ""bed""?","""Purple"" is ""viola"". Please try to fill in the blank in Italian.
+Ok, what is the word for ""bed""?
+Almost. Here's a hint.  The word for ""purple"" is ""viola"".",0,1,0,0,3,how do you say bed
+950,What thes word for yellow? I almost have it.,"""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.
+il cane e di fronte al.
+Well,  ""bunny"" is  ""coniglio""",0,1,0,0,3,what thes word for yellow i almost have it
+951,tree is all'albero,"""Red"" is ""rosso"". Please try to fill in the blank in Italian.
+red is rosso
+Okay, I'll give you a hint.  ""is in front of the"" is  ""e di fronte""
+e di fronte
+Well,  ""tree"" is  ""all'albero""",1,0,0,0,5,tree is all'albero
+952,"Oh, okay is it e di fronte al verde coniglio","""Bunny"" is ""coniglio"". Please try to fill in the blank in Italian.
+e fronte il greene coniglio
+Well,  ""is in front of the"" is  ""e di fronte al""
+e di fronte al greenee coniglio
+Okay, I'll give you a hint.  ""green"" is  ""verde""",1,0,0,0,5,oh okay is it e di fronte al verde coniglio
+953,I don't know the word for bed.,"""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.
+OK. I'll try.
+Hmm...  ""is in front of the"" is ""e di fronte al""
+what is the word for bed?
+Great, now do you remember how to say pink?",0,1,0,0,5,i don't know the word for bed
+955,"I forgot how to say ""next to"", can you remind me?",Please try to fill in the blank in Italian.,0,1,0,0,1,i forgot how to say next to can you remind me
+957,Can you clarify which box to use in this situation?,"""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.
+Oh. That should be no problem!
+Sure, it's ""e di di fronte."" Then add ""alla"" for ""the,"" if necessary.
+I'm not sure how to say pink box. Is it scatola rosa?
+Box is scatola and box is cane. Please try again",0,1,0,0,5,can you clarify which box to use in this situation
+961,Purple is viola. I know that one.,"Please try to fill in the blank in Italian.
+How do I say behind?
+Great, now do you remember how to say purple?",0,0,1,0,3,purple is viola i know that one
+962,Is it il gatto alla rosa scatola/,"""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.
+How do you say pink box/
+Hmm...  ""is in front of the"" is ""e di fronte alla""
+is it ill gatto?
+Well,  ""box"" is  ""scatola""
+How do you say ""in front of?
+alla (""to the"") is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all' and prepended to the word.
+Is it il gatto all pink scatola?
+Okay, I'll give you a hint.  ""pink"" is  ""rosa""",0,0,1,0,9,is it il gatto alla rosa scatola
+968,il coniglio es ariere il pero,"""Green"" is ""verde"". Please try to fill in the blank in Italian.
+il coniglio es verde
+ill cane e dietro il verde",0,0,1,0,3,il coniglio es ariere il pero
+970,How can I say on top of the table?,Please try to fill in the blank in Italian.,0,1,0,0,1,how can i say on top of the table
+973,Okay. I know that part. Now what is purple?,"Please try to fill in the blank in Italian.
+How do I say purple in Italian?
+OK,  ""is behind the"" is  ""e dietro il""",0,1,0,0,3,okay i know that part now what is purple
+979,How do I say purple in Italian?,Please try to fill in the blank in Italian.,1,0,0,0,1,how do i say purple in italian
+980,e dietro il gatto,"""Is Behind The"" is ""e dietro il"". Please try to fill in the blank in Italian.
+what is blue in italian?
+Can you give me your best guess?
+blueo
+Remember that  ""is behind the"" is  ""e dietro il""
+e dietro il blueo cato
+Hmm...  ""is behind the"" is ""e dietro il""
+e dietro il
+Hmm...  ""cat"" is  ""gatto""",1,0,0,0,9,e dietro il gatto
+981,"How to say ""purple"" in Italian?","Please try to fill in the blank in Italian.
+La borsa e dietro la gialla scatola.
+Okay, I'll give you a hint.  ""is in front of the"" is  ""e di fronte alla""",0,1,0,0,3,how to say purple in italian
+982,"OK, and how is it called the blue box?","""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.",0,1,1,0,1,ok and how is it called the blue box
+983,e si cima ell yellow table,Please try to fill in the blank in Italian.,1,0,0,0,1,e si cima ell yellow table
+984,la pianta e accanto al congilietto giallo,"Please try to fill in the blank in Italian.
+How do I say yellow in Italian?
+Well,  ""yellow"" is ""giallo""
+How do I say is next to the?
+Hmm...  ""is next to the"" is ""e accanto al""",1,0,0,0,5,la pianta e accanto al congilietto giallo
+985,how do you say box?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say box
+986,blueo,"""Is Behind The"" is ""e dietro il"". Please try to fill in the blank in Italian.
+what is blue in italian?
+Can you give me your best guess?",1,0,0,0,3,blueo
+989,La pianta e accanto al congilio giallo.,"Please try to fill in the blank in Italian.
+How do I say yellow in Italian?
+Well,  ""yellow"" is ""giallo""
+How do I say is next to the?
+Hmm...  ""is next to the"" is ""e accanto al""
+la pianta e accanto al congilietto giallo
+Nope. Is there other words instead of  ""accanto"" and ""al doggo""?",1,0,0,0,7,la pianta e accanto al congilio giallo
+994,How do you say box in Italian?,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.",0,1,0,0,1,how do you say box in italian
+996,what is blue in italian?,"""Is Behind The"" is ""e dietro il"". Please try to fill in the blank in Italian.",0,1,0,0,1,what is blue in italian
+997,il gatto e vicino al il cane viola.,"""Dog"" is ""cane"". Please try to fill in the blank in Italian.
+how do you say next to and purple?
+Can you try filling in the blank to the best of your ability?
+il gatto es nexto to il gato pupura.
+Okay, I'll give you a hint.  ""is next to the"" is  ""e vicino al""
+il gatto e vicino al il cane pupura.
+Dog is cane and dog is cane. Please try again
+how do you say purple?
+Okay, I'll give you a hint.  ""purple"" is ""viola""",1,0,0,0,9,il gatto e vicino al il cane viola
+998,La borsa e dietro la gialla scatola.,Please try to fill in the blank in Italian.,1,0,0,0,1,la borsa e dietro la gialla scatola
+999,And what is the color blue?,"Please try to fill in the blank in Italian.
+how do I say is on top of the in Italian?
+Okay, I'll give you a hint.  ""is on top of the"" is ""e in cima al""
+Thanks. Got it. I don't know the words for blue or table in this sentence.
+Remember that  ""table"" is  ""tavolo""",0,1,0,0,5,and what is the color blue
+1001,Is it e accanto al camo verde?,"Please try to fill in the blank in Italian.
+How do you say next to again?
+Well,  ""is next to the"" is ""e accanto al""",1,0,0,0,3,is it e accanto al camo verde
+1002,Oh. That should be no problem!,"""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.",0,0,1,0,1,oh that should be no problem
+1005,Thanks. Got it. I don't know the words for blue or table in this sentence.,"Please try to fill in the blank in Italian.
+how do I say is on top of the in Italian?
+Okay, I'll give you a hint.  ""is on top of the"" is ""e in cima al""",0,1,1,0,3,thanks got it i don't know the words for blue or table in this sentence
+1007,Yes. blu. How do I say table?,"Please try to fill in the blank in Italian.
+what is ""is under"" in Italian?
+OK,  ""is under the"" is ""e sotto il""
+OK, thanks. What is blue table in Italian?
+Great, now do you remember how to say blue?
+No. How do you say blue in Italian?
+Hmm...  ""blue"" is ""blu""
+OK. What is the word for table in Italian?
+Great, now do you remember how to say blue?",0,1,1,0,9,yes blu how do i say table
+1011,il cane e all'interno della scatola verde,Please try to fill in the blank in Italian.,1,0,0,0,1,il cane e all'interno della scatola verde
+1012,il gatto e in cima al table blu,"Please try to fill in the blank in Italian.
+How can I say on top of the table?
+OK,  ""is on top of the"" is ""e in cima al""",1,0,0,0,3,il gatto e in cima al table blu
+1014,il cane e acconto al tavolo rosso,"""Table"" is ""tavolo"". Please try to fill in the blank in Italian.
+il cane e tavalo rojo
+Okay, I'll give you a hint.  ""is next to the"" is  ""e accanto al""
+il cane e accanto al tavalo rojo
+Sure, it's ""e accanto."" Then add ""al"" for ""the,"" if necessary.
+is cane e accanto el tavolo rojo
+Okay, I'll give you a hint.  ""red"" is  ""rosso""",0,0,1,0,7,il cane e acconto al tavolo rosso
+1016,Is it e dentro la box blu?,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.
+How do you say blue box in Italian?
+['Prepositional phrases separate the two noun phrases.', '']",1,0,0,0,3,is it e dentro la box blu
+1017,OK. What is the word for table in Italian?,"Please try to fill in the blank in Italian.
+what is ""is under"" in Italian?
+OK,  ""is under the"" is ""e sotto il""
+OK, thanks. What is blue table in Italian?
+Great, now do you remember how to say blue?
+No. How do you say blue in Italian?
+Hmm...  ""blue"" is ""blu""",0,1,1,0,7,ok what is the word for table in italian
+1022,al encima tavolo giollo,Please try to fill in the blank in Italian.,1,0,0,0,1,al encima tavolo giollo
+1023,how do you say next?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say next
+1029,OK. How do you say next to in Italian.,Please try to fill in the blank in Italian.,0,1,1,0,1,ok how do you say next to in italian
+1032,il gatto all in fronte a scatola gialla?,"Please try to fill in the blank in Italian.
+What is the word for yellow?
+Hmm...  ""yellow"" is ""gialla""",1,0,0,0,3,il gatto all in fronte a scatola gialla
+1034,e di fronte el blu trei,"""Blue"" is ""blu"". Please try to fill in the blank in Italian.
+But what are the other words?
+Can you give me your best guess?
+es en front de blu tree.
+OK,  ""is in front of the"" is  ""e di fronte""",1,0,0,0,5,e di fronte el blu trei
+1037,la palla e sotto il blu letto,"""Is Under The"" is ""e sotto il"". Please try to fill in the blank in Italian.
+How do you say bed in Italian?
+['il (""the"") is used for when the following word (letto) is masculine.', 'Words in Italian have a gender associated with them (either masculine or feminine), even when the word is an object, concepts, or abstract ideas.']
+So, letto means bed?
+Remember that  ""bed"" is  ""letto""
+Ok, I think I have it then,
+Sure, it's ""e sotto."" Then add ""il"" for ""the,"" if necessary.
+la palla e sotto il letto
+Remember that  ""blue"" is  ""blu""",1,0,0,0,9,la palla e sotto il blu letto
+1038,e dentro de la scatola amarilla,"Please try to fill in the blank in Italian.
+how do you say box?
+Remember that  ""box"" is  ""scatola""",1,0,0,0,3,e dentro de la scatola amarilla
+1039,la palla e sotto il letto,"""Is Under The"" is ""e sotto il"". Please try to fill in the blank in Italian.
+How do you say bed in Italian?
+['il (""the"") is used for when the following word (letto) is masculine.', 'Words in Italian have a gender associated with them (either masculine or feminine), even when the word is an object, concepts, or abstract ideas.']
+So, letto means bed?
+Remember that  ""bed"" is  ""letto""
+Ok, I think I have it then,
+Sure, it's ""e sotto."" Then add ""il"" for ""the,"" if necessary.",1,0,0,0,7,la palla e sotto il letto
+1040,Il cane di fronte a all'albero viola.,Please try to fill in the blank in Italian.,1,0,0,0,1,il cane di fronte a all'albero viola
+1041,il cane e di di di fronte rosa?,"""Pink"" is ""rosa"". Please try to fill in the blank in Italian.
+how do you say in front of the pink bunny?
+Great, now do you remember how to say pink?
+rosa
+Sure, it's ""e di di fronte."" Then add ""al"" for ""the,"" if necessary.",0,0,1,0,5,il cane e di di di fronte rosa
+1042,"How to say ""yellow box"" in Italian?","""Is Behind The"" is ""e dietro la"". Please try to fill in the blank in Italian.",0,1,0,0,1,how to say yellow box in italian
+1044,red is rosso,"""Red"" is ""rosso"". Please try to fill in the blank in Italian.",1,0,0,0,1,red is rosso
+1045,il cane e all interno della scatola verde,"Please try to fill in the blank in Italian.
+il cane e all'interno della scatola verde
+Remember that  ""green"" is ""verde""
+il cane e allinterno della scatola verde
+Nope. Is there other words instead of  ""dentro"" and ""la doggo""?
+il cane e al linterno della scatola verde
+Remember that  ""is inside of the"" is  ""e dentro la""",1,0,0,0,7,il cane e all interno della scatola verde
+1046,How do you say pink box/,"""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.",0,1,0,0,1,how do you say pink box
+1047,"Ok! And what is the word for ""bunny"" again?","Please try to fill in the blank in Italian.
+How do you say ""is next to""?
+Hmm...  ""is next to the"" is ""e accanto al""",0,1,1,0,3,ok and what is the word for bunny again
+1048,il cane e di fronte al.,"""Is In Front Of The"" is ""e di fronte al"". Please try to fill in the blank in Italian.",1,0,0,0,1,il cane e di fronte al
+1051,How do you say purple again?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say purple again
+1052,OK. What is the word for in front of?,"Please try to fill in the blank in Italian.
+Il cane di fronte a all'albero viola.
+all' (""to the"" is prepended to the following word when it begins with a vowel.  This is a contraction of al (""to"") and l' (""the"")
+Oh. I didn't know that. That applies to nouns that begin with a vowel?
+Almost. Here's a hint.  The word for ""purple"" is ""viola"".",0,1,1,0,5,ok what is the word for in front of
+1055,I'm not sure how to say pink box. Is it scatola rosa?,"""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.
+Oh. That should be no problem!
+Sure, it's ""e di di fronte."" Then add ""alla"" for ""the,"" if necessary.",1,0,0,0,3,i'm not sure how to say pink box is it scatola rosa
+1056,il gatoo e dietro la boxi.,"Please try to fill in the blank in Italian.
+how do you say box?
+Hmm...  ""is behind the"" is ""e dietro la""",1,0,0,0,3,il gatoo e dietro la boxi
+1059,e accanto al mesa viola,"Please try to fill in the blank in Italian.
+What is is next to?
+Almost. Here's a hint.  The word for ""purple"" is ""viola"".
+par de mesa viola
+Okay, I'll give you a hint.  ""is next to the"" is  ""e accanto al""",1,0,0,0,5,e accanto al mesa viola
+1060,"Okay, so e dentro la bag blu","Please try to fill in the blank in Italian.
+How do you say bag?
+Why don't you try filling in what you can.
+e dentro al bag blu
+Well,  ""is inside of the"" is  ""e dentro la""",1,0,1,0,5,okay so e dentro la bag blu
+1061,il cane e dentro la scatola,"""Box"" is ""scatola"". Please try to fill in the blank in Italian.
+il cane es en scatola
+""e dentro la"" is inside of the.",0,0,1,0,3,il cane e dentro la scatola
+1063,What is is next to?,Please try to fill in the blank in Italian.,0,1,0,0,1,what is is next to
+1064,la painta el accanto al coniglio roja.,"Please try to fill in the blank in Italian.
+la painta el accanto la coniglio
+Bunny is coniglio and bunny is cane. Please try again
+la painta el accanto la coniglio roja
+Hmm...  ""is next to the"" is  ""e accanto al""",1,0,0,0,5,la painta el accanto al coniglio roja
+1068,e in cima al tavolo yeller,"Please try to fill in the blank in Italian.
+e si cima ell yellow table
+Hmm...  ""is on top of the"" is  ""e in cima al""
+e in cima al and yellow table
+Okay, I'll give you a hint.  ""table"" is  ""tavolo""",1,0,0,0,5,e in cima al tavolo yeller
+1069,il coniglio alla pianta verde,"""Plant"" is ""pianta"". Please try to fill in the blank in Italian.
+Hello?
+alla (""to the"") is used when the following word (pianta) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all' and prepended to the word.",1,0,0,0,3,il coniglio alla pianta verde
+1070,How do you say blue box in Italian?,"""Is Inside Of The"" is ""e dentro la"". Please try to fill in the blank in Italian.",0,1,0,0,1,how do you say blue box in italian
+1071,e in unda da pinka tavolo,Please try to fill in the blank in Italian.,1,0,0,0,1,e in unda da pinka tavolo
+1072,il cane es en scatola,"""Box"" is ""scatola"". Please try to fill in the blank in Italian.",0,0,1,0,1,il cane es en scatola
+1073,"Yes, I remember learning that!","""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.
+OK, and how is it called the blue box?
+Okay, I'll give you a hint.  ""box"" is  ""scatola""
+I remember that word, but I don't know the word for blue!?
+Hmm...  ""blue"" is ""blu""",0,0,1,0,5,yes i remember learning that
+1075,Is it il gatto all pink scatola?,"""Is In Front Of The"" is ""e di fronte alla"". Please try to fill in the blank in Italian.
+How do you say pink box/
+Hmm...  ""is in front of the"" is ""e di fronte alla""
+is it ill gatto?
+Well,  ""box"" is  ""scatola""
+How do you say ""in front of?
+alla (""to the"") is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (""to"") and la (""the""). When the following word begins with a vowel, this is shortened to all' and prepended to the word.",1,0,0,0,7,is it il gatto all pink scatola
+1077,how do you say bed,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say bed
+1078,par de mesa viola,"Please try to fill in the blank in Italian.
+What is is next to?
+Almost. Here's a hint.  The word for ""purple"" is ""viola"".",1,0,0,0,3,par de mesa viola
+1083,la borsa e di fronte alla verde caja,"Green is verde. Please try to fill in the blank in Italian.
+enla verde caja
+alla (to the) is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (to) and la (the). When the following word begins with a vowel, this is shortened to all' and prepended to the word.
+alla en verde caja
+OK,  is in front of the is  e di fronte alla",0,0,1,0,5,la borsa e di fronte alla verde caja
+1084,what is the word for is inside of?,"Please try to fill in the blank in Italian.
+what is the word for green?
+Hmm...  green is verde
+what is the word for box?
+Well,  box is  scatola",0,1,0,0,5,what is the word for is inside of
+1085,How do you say behind in Italian?,"Green is verde. Please try to fill in the blank in Italian.
+is behind il carne verde
+It sounds like you're not even trying. Do you know any of the words in Italian?",0,1,0,0,3,how do you say behind in italian
+1086,And what is the word for purple?,"Please try to fill in the blank in Italian.
+what is the word for behind?
+Hmm...  is behind the is e dietro la",0,1,0,0,3,and what is the word for purple
+1087,what is the word for is inside of?,"Please try to fill in the blank in Italian.
+what is the word for red?
+Hmm...  red is rossa
+what is the word for box?
+Hmm...  box is  scatola",0,1,0,0,5,what is the word for is inside of
+1088,Oh okay! That seems easy enough.,"Please try to fill in the blank in Italian.
+Is blue, azul?
+OK,  blue is blu",0,0,1,0,3,oh okay that seems easy enough
+1089,e in cima al,"Please try to fill in the blank in Italian.
+What is the word for on top of?
+Remember that  is on top of the is e in cima al",1,0,0,0,3,e in cima al
+1090,e vicino conigula blue,"Please try to fill in the blank in Italian.
+e di fronte conigula blu
+Well,  is next to the is  e vicino
+e vicino di fronte conigula blue
+Well,  blue is blu
+blu
+all' (to the is prepended to the following word when it begins with a vowel.  This is a contraction of al (to) and l' (the)",0,1,0,0,7,e vicino conigula blue
+1092,Ok! I think that yellow is gialla.,"Please try to fill in the blank in Italian.
+How do you say is in front of?
+Hmm...  is in front of the is e di fronte alla",1,0,1,0,3,ok i think that yellow is gialla
+1093,il gatto e di fronte alla scatola,"Yellow is gialla. Please try to fill in the blank in Italian.
+il gatto
+OK,  is in front of the is  e di fronte alla
+il gatto e di fronte alla
+Remember that  box is  scatola",1,0,0,0,5,il gatto e di fronte alla scatola
+1095,What is the word for red in Italian?,"Tree is all'albero. Please try to fill in the blank in Italian.
+Is it il gatto is next to the red all'albero?
+Remember that  is next to the is  e vicino
+Okay, I think I get it now.
+Hmm...  is next to the is e vicino",0,1,0,0,5,what is the word for red in italian
+1096,what is the word for yellow?,"Please try to fill in the blank in Italian.
+what is the word for yellow box?
+Hmm...  box is  scatola",0,1,0,0,3,what is the word for yellow
+1097,il gatto e in cima al table blu,"Please try to fill in the blank in Italian.
+How can I say on top of the table?
+OK,  is on top of the is e in cima al",1,0,0,0,3,il gatto e in cima al table blu
+1100,la borsa e di dietro la scatola,"Please try to fill in the blank in Italian.
+la borsa
+Remember that  is behind the is  e dietro la
+la borsa e di dietro la
+OK,  box is  scatola",1,1,0,0,5,la borsa e di dietro la scatola
+1104,No.,"Is Behind The is e dietro. Please try to fill in the blank in Italian.
+e dietro
+It sounds like you're not even trying. Do you know any of the words in Italian?",0,0,1,0,3,no
+1106,what is the word for tree?,"Please try to fill in the blank in Italian.
+what is the word for blue?
+Well,  blue is blu",0,1,0,0,3,what is the word for tree
+1107,rosa?,"Pink is rosa. Please try to fill in the blank in Italian.
+What is the word for tree?
+Can you try filling in the blank to the best of your ability?
+rosa albero
+Well,  is in front of the is  e di fronte
+e di fronte rosa albero
+Ok, is in front of the is e fronte . Tree is all'albero. Do you know how to say pink in Italian? Amarillo is Spanish for pink.",1,1,0,0,7,rosa
+1108,How do you say is in front of?,Please try to fill in the blank in Italian.,0,1,0,0,1,how do you say is in front of
+1109,What's bunny?,"Please try to fill in the blank in Italian.
+What's bunny?
+Okay, I'll give you a hint.  tree is  all'albero
+What's bunny?
+all' (to the is prepended to the following word when it begins with a vowel.  This is a contraction of al (to) and l' (the)
+What's bunny?
+Prepositional phrases separate the two noun phrases.",0,1,0,0,7,what's bunny
+1111,"Oh, il gatto e vicino al all'albero verde?","Please try to fill in the blank in Italian.
+il gatto e vicino al tree verde?
+Remember that  tree is  all'albero",1,0,1,0,3,oh il gatto e vicino al all'albero verde
+1113,en la scaotla,"Green is verde. Please try to fill in the blank in Italian.
+enla verde caja
+alla (to the) is used when the following word (scatola) is feminine and a singular object.  It is a contraction of a (to) and la (the). When the following word begins with a vowel, this is shortened to all' and prepended to the word.
+alla en verde caja
+OK,  is in front of the is  e di fronte alla
+la borsa e di fronte alla verde caja
+Can you give me your best guess?
+la borsa en di fronte caja
+Remember that  box is  scatola",1,0,0,0,9,en la scaotla
+1115,what is the word for tree?,"Please try to fill in the blank in Italian.
+what is the word for red?
+Remember that  red is rosso",0,1,0,0,3,what is the word for tree
+1117,How do you say tree in Italian?,"Please try to fill in the blank in Italian.
+How do you say blue in Italian?
+OK,  blue is blu
+How do you say under in Italian?
+Remember that  is under the is e sotto",0,1,0,0,5,how do you say tree in italian
+1118,il gatto e vicino all'abero blu.,"Please try to fill in the blank in Italian.
+what is nest to ?
+all' (to the is prepended to the following word when it begins with a vowel.  This is a contraction of al (to) and l' (the)
+blue?
+OK,  blue is blu
+il gatto all'bero blu.
+OK,  is next to the is  e vicino",1,0,0,0,7,il gatto e vicino all'abero blu
+1120,Okay.  What is tree again?,Pink is rosa. Please try to fill in the blank in Italian.,0,1,1,0,1,okay what is tree again
+1122,Cool. So did I get it right?,"Blue is blu. Please try to fill in the blank in Italian.
+What is bunny?
+so how would you say blue bunny?
+blu benno?
+Hmm...  is in front of the is  e di fronte al
+Did I get bunny right?
+Hmm...  bunny is  coniglio
+Ok thanks. So is it e di fronte al blu coniglio?
+al (to the, or of the) is used when the following word (coniglio) is masculine and a singular object.  It is a contraction of the words a (to) and il (the).",0,0,1,0,9,cool so did i get it right
+1123,blu,"Please try to fill in the blank in Italian.
+e di fronte conigula blu
+Well,  is next to the is  e vicino
+e vicino di fronte conigula blue
+Well,  blue is blu",0,1,0,0,5,blu
+1124,I would say yellow albero?,"Tree is l'albero. Please try to fill in the blank in Italian.
+what is the word for tree?
+so how would you say yellow tree?",0,1,0,0,3,i would say yellow albero
+1125,rosa albero,"Pink is rosa. Please try to fill in the blank in Italian.
+What is the word for tree?
+Can you try filling in the blank to the best of your ability?",1,0,0,0,3,rosa albero
+1127,il coniglio e deitro il blu cane,"Blue is blu. Please try to fill in the blank in Italian.
+il coniglio es behind el blu perro
+OK,  is behind the is  e dietro il
+Il coniglio e deitro il blu perro
+Okay, I'll give you a hint.  dog is  cane",1,0,0,0,5,il coniglio e deitro il blu cane
+1130,il coniglio e di fronte l'albero viola,"Please try to fill in the blank in Italian.
+what is the word for purple?
+Well,  purple is viola
+what is the word for  is in front of?
+Okay, I'll give you a hint.  is in front of the is e di fronte
+what is the word for tree?
+So far so good, do you need help with the word purple or tree?
+I need help with the word tree
+Okay, I'll give you a hint.  tree is  all'albero",1,0,0,0,9,il coniglio e di fronte l'albero viola
+1133,what is the word for is inside of?,"Green is verde. Please try to fill in the blank in Italian.
+what is the word for green?
+Well,  green is verde",0,1,0,0,3,what is the word for is inside of
+1134,il gatto,Yellow is gialla. Please try to fill in the blank in Italian.,1,0,0,0,1,il gatto
