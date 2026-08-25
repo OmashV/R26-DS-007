@@ -111,7 +111,7 @@ The initial implementation targets **K-12 mathematics** as the working domain, s
 | ID   | Requirement |
 |------|-------------|
 | FR16 | The system shall generate a personalised learning path containing three categories: revise urgently, learn next, already strong |
-| FR17 | The system shall regenerate the learning path after each completed session |
+| FR17 | After resolved session evidence updates mastery, the cross-session pipeline shall regenerate the learning path as a deterministic derived view of current mastery and curriculum data |
 | FR18 | The system shall expose the current learning path for a given student via the API |
 
 ### 5.7 New-student cold-start

@@ -4,11 +4,25 @@ Meta-Agent Dashboard — interactive demo interface.
 Run with: streamlit run streamlit_app.py
 """
 
+import uuid
+
 import streamlit as st
 
 from bkt.predict import BKTPredictor
-from core.knowledge_graph import KnowledgeGraph
 from core.concept_extractor import ConceptExtractor
+from core.cross_session_pipeline import CrossSessionStudentModelPipeline
+from core.curriculum import Curriculum, load_curriculum as load_curriculum_artifact
+from core.detector_service import DetectorService
+from core.knowledge_graph import KnowledgeGraph
+from core.learning_path import generate_learning_path
+from core.learning_path_presentation import (
+    learning_path_sections,
+    present_learning_path_entry,
+)
+from core.student_answer_evaluator import (
+    EvaluatorContext,
+    StudentAnswerEvaluator,
+)
 from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent
 
@@ -34,6 +48,45 @@ def load_knowledge_graph() -> KnowledgeGraph:
 def load_extractor() -> ConceptExtractor:
     predictor = load_predictor()
     return ConceptExtractor(allowed_skills=list(predictor.params.keys()))
+
+
+@st.cache_resource
+def load_detectors() -> DetectorService:
+    return DetectorService.from_project_defaults(PROJECT_ROOT)
+
+
+@st.cache_resource
+def load_curriculum() -> Curriculum:
+    return load_curriculum_artifact()
+
+
+def render_learning_path(path: dict) -> None:
+    """Render canonical planner output without recalculating its ranking."""
+    for title, entries in learning_path_sections(path):
+        st.markdown(f"##### {title}")
+
+        if not entries:
+            st.caption("No skills in this section.")
+            continue
+
+        for entry in entries:
+            item = present_learning_path_entry(entry)
+            st.markdown(
+                f"**{item['skill']}**  \n"
+                f"- Mastery status: `{item['mastery_status']}`  \n"
+                f"- Mastery probability: "
+                f"`{item['mastery_probability']}`  \n"
+                f"- Planning status: `{item['planning_status']}`"
+            )
+            st.caption(f"Reason: {item['reason']}")
+            st.caption(
+                f"Priority reason: {item['priority_reason']}"
+            )
+            if item["unmet_prerequisites"]:
+                st.caption(
+                    "Unmet prerequisites: "
+                    + ", ".join(item["unmet_prerequisites"])
+                )
 
 
 # Header
@@ -234,6 +287,11 @@ def parse_transcript_text(text: str) -> list[dict]:
     return turns
 
 
+def fmt_probability(value) -> str:
+    """Format an optional detector probability for display."""
+    return "n/a" if value is None else f"{value:.3f}"
+
+
 with tab_session:
     st.header("Process a tutoring session")
     st.markdown(
@@ -256,6 +314,35 @@ with tab_session:
             help="Use 'TUTOR:' and 'STUDENT:' prefixes on each line.",
         )
 
+        st.markdown("**Authoritative assessment context**")
+        st.caption(
+            "Transcript presets do not contain a machine-readable answer key. "
+            "Supply the current problem and authoritative scoring context "
+            "before mastery can be updated."
+        )
+        problem_text = st.text_area(
+            "Current problem text",
+            value="",
+            height=100,
+        )
+        reference_answer = st.text_input(
+            "Authoritative reference answer (optional if rubric is supplied)",
+            value="",
+        )
+        rubric = st.text_area(
+            "Authoritative rubric (optional if reference answer is supplied)",
+            value="",
+            height=100,
+        )
+        assessed_skill = st.selectbox(
+            "Assessed skill",
+            options=[""] + sorted(load_predictor().params.keys()),
+            help=(
+                "Only this explicitly authorized skill may receive a BKT "
+                "observation. Other extracted skills remain metadata-only."
+            ),
+        )
+
         process_clicked = st.button("🚀 Process session", type="primary", use_container_width=True)
 
     with col_right:
@@ -267,85 +354,203 @@ with tab_session:
                 st.error("Couldn't parse any turns from the transcript. "
                          "Make sure each line starts with 'TUTOR:' or 'STUDENT:'.")
             else:
-                with st.spinner("Extracting conversational signals via LLM..."):
-                    extractor = load_extractor()
-                    extraction = extractor.extract(transcript)
-
-                st.success(f"Extracted {len(extraction['signals'])} learning signals")
-
-                # Show extracted signals with confidence levels
-                with st.expander("📋 Extracted conversational signals", expanded=True):
-                    st.caption(
-                        "Each signal is a piece of evidence about student mastery, "
-                        "weighted by confidence. Standard binary attempts have confidence 1.0; "
-                        "softer evidence (confusion, partial reasoning) has lower confidence."
+                missing_context = []
+                if not problem_text.strip():
+                    missing_context.append("current problem text")
+                if not reference_answer.strip() and not rubric.strip():
+                    missing_context.append(
+                        "an authoritative reference answer or rubric"
                     )
-                    for s in extraction["signals"]:
-                        marker = "✅" if s["label"] == 1 else "❌"
-                        sig_type = s.get("signal_type", "unknown")
-                        confidence = s.get("confidence", 1.0)
-                        # Visual confidence bar
-                        bar_width = int(confidence * 100)
-                        bar_color = "#10b981" if s["label"] == 1 else "#ef4444"
-                        st.markdown(
-                            f"{marker}  **{s['skill']}**  "
-                            f"`{sig_type}`  &nbsp; "
-                            f"<span style='background: linear-gradient(to right, "
-                            f"{bar_color} 0%, {bar_color} {bar_width}%, "
-                            f"#e5e7eb {bar_width}%, #e5e7eb 100%); "
-                            f"padding: 2px 8px; border-radius: 4px; "
-                            f"color: white; font-size: 0.75em; font-weight: 600;'>"
-                            f"conf {confidence:.1f}</span>",
-                            unsafe_allow_html=True,
+                if not assessed_skill:
+                    missing_context.append("an assessed skill")
+
+                if missing_context:
+                    st.error(
+                        "Mastery was not updated. Supply "
+                        + ", ".join(missing_context)
+                        + "."
+                    )
+                    result = None
+                else:
+                    evaluator = StudentAnswerEvaluator(
+                        EvaluatorContext(
+                            problem=problem_text.strip(),
+                            reference_answer=(
+                                reference_answer.strip() or None
+                            ),
+                            rubric=rubric.strip() or None,
+                            assessed_skills=(assessed_skill,),
                         )
-                    if extraction["misconceptions"]:
-                        st.markdown("**Misconceptions detected:**")
-                        for m in extraction["misconceptions"]:
-                            st.write(f"- {m}")
+                    )
+                    pipeline = CrossSessionStudentModelPipeline(
+                        concept_extractor=load_extractor(),
+                        evaluator=evaluator,
+                        detectors=load_detectors(),
+                        knowledge_graph=load_knowledge_graph(),
+                        curriculum=load_curriculum(),
+                    )
+                    session_id = f"sess_{uuid.uuid4().hex[:12]}"
 
-                # Run through knowledge graph
-                with st.spinner("Updating knowledge graph (running BKT with confidence-weighted signals)..."):
-                    kg = load_knowledge_graph()
-                    session = kg.process_session(
-                        student_id=student_id,
-                        signals=extraction["signals"],
+                    try:
+                        with st.spinner(
+                            "Running the validated cross-session "
+                            "student-model pipeline..."
+                        ):
+                            result = pipeline.process_transcript(
+                                transcript=transcript,
+                                student_id=student_id,
+                                session_id=session_id,
+                            )
+                    except Exception as exc:
+                        st.error(
+                            "The student-model pipeline failed; no silent "
+                            f"fallback was used: {exc}"
+                        )
+                        result = None
+
+                if result is not None:
+                    evaluated_extraction = result[
+                        "evaluated_extraction"
+                    ]
+                    resolved_events = result["resolved_events"]
+                    session = result["knowledge_graph_result"]
+                    observations = sum(
+                        event.bkt_update.should_update
+                        for event in resolved_events
                     )
 
-                st.success(f"Session {session['session_id']} processed")
+                    st.success(
+                        f"Session {session['session_id']} processed: "
+                        f"{len(resolved_events)} events, "
+                        f"{observations} mastery observations"
+                    )
 
-                # Show updated mastery, highlighting cold-start transfers
-                with st.expander("🧠 Updated knowledge graph", expanded=True):
-                    # First, the skills affected this session (with cold-start details)
-                    cold_start_skills = [s for s in session["skills_updated"] if s.get("cold_start_used")]
-                    if cold_start_skills:
-                        st.markdown("**⭐ Cold-start transfer applied** to skills the student encountered for the first time:")
-                        for s in cold_start_skills:
-                            details = s["cold_start_details"]
-                            related = ", ".join(details["related_skills_used"])
-                            st.info(
-                                f"**{s['skill']}** — prior boosted "
-                                f"{details['population_prior']:.3f} → {details['transferred_prior']:.3f} "
-                                f"based on student's mastery of: *{related}*"
+                    with st.expander(
+                        "📋 Evaluated learning events",
+                        expanded=True,
+                    ):
+                        st.caption(
+                            "Correctness comes from the authoritative "
+                            "student-answer evaluator. Behavioural signals can "
+                            "modify BKT evidence strength and, when correctness "
+                            "is unavailable, uncertainty or clarification may "
+                            "produce one weak behavioural-difficulty observation."
+                        )
+
+                        for evaluated, resolved in zip(
+                            evaluated_extraction["events"],
+                            resolved_events,
+                            strict=True,
+                        ):
+                            correctness = evaluated["correctness"]
+                            icon = {
+                                "correct": "✅",
+                                "partial": "🟠",
+                                "incorrect": "❌",
+                                "unknown": "⚪",
+                            }.get(correctness, "⚪")
+
+                            st.markdown(
+                                f"{icon} **{evaluated['skill']}** — "
+                                f"{correctness} "
+                                f"(evaluator confidence "
+                                f"{evaluated['evaluator_confidence']:.2f}, "
+                                f"source `{evaluated['evaluator_source']}`)"
                             )
 
-                    st.markdown("**Current mastery for affected skills:**")
-                    for s in session["skills_updated"]:
-                        p = s["probability"]
-                        label = s["label"]
-                        if label == "strong":
-                            colour = "🟢"
-                        elif label == "weak":
-                            colour = "🔴"
-                        else:
-                            colour = "🟡"
-                        cold_start_marker = "  ⭐" if s.get("cold_start_used") else ""
-                        st.write(
-                            f"{colour}  **{s['skill']}** — "
-                            f"P(mastery) = {p:.3f} ({label}){cold_start_marker}"
-                        )
+                            behaviour = resolved.behaviour
+                            st.caption(
+                                "Behaviour — "
+                                f"reasoning={fmt_probability(behaviour.reasoning_probability)} "
+                                f"({'✓' if behaviour.reasoning_present else '–'}), "
+                                f"uncertainty={fmt_probability(behaviour.uncertainty_probability)} "
+                                f"({'✓' if behaviour.uncertainty_present else '–'}), "
+                                f"clarification={fmt_probability(behaviour.clarification_probability)} "
+                                f"({'✓' if behaviour.clarification_present else '–'})"
+                            )
 
-                st.info("👤 Switch to **Student Profile** tab to see the full graph "
-                        "and learning path with charts.")
+                            update = resolved.bkt_update
+
+                            if update.should_update:
+                                outcome_label = (
+                                    "positive"
+                                    if update.outcome == 1
+                                    else "negative"
+                                )
+
+                                st.markdown(
+                                    "**Resolved mastery evidence**  \n"
+                                    f"- Signal: `{resolved.primary_signal.value}`  \n"
+                                    "- Observation source: "
+                                    f"`{update.observation_source.value}`  \n"
+                                    f"- BKT outcome: **{outcome_label} "
+                                    f"({update.outcome})**  \n"
+                                    "- BKT update confidence: "
+                                    f"**{update.update_confidence:.3f}**  \n"
+                                    "- Contributors: "
+                                    f"`{', '.join(update.contributors) or 'none'}`"
+                                )
+                            else:
+                                st.markdown(
+                                    "**Resolved mastery evidence:** "
+                                    "`no_update` — no BKT observation."
+                                )
+
+                        if evaluated_extraction["misconceptions"]:
+                            st.markdown("**Misconceptions detected:**")
+                            for misconception in evaluated_extraction[
+                                "misconceptions"
+                            ]:
+                                st.write(f"- {misconception}")
+
+                if result is not None:
+                    # Show updated mastery, highlighting cold-start transfers
+                    with st.expander("🧠 Updated knowledge graph", expanded=True):
+                        # First, the skills affected this session (with cold-start details)
+                        cold_start_skills = [s for s in session["skills_updated"] if s.get("cold_start_used")]
+                        if cold_start_skills:
+                            st.markdown("**⭐ Cold-start transfer applied** to skills the student encountered for the first time:")
+                            for s in cold_start_skills:
+                                details = s["cold_start_details"]
+                                related = ", ".join(details["related_skills_used"])
+                                st.info(
+                                    f"**{s['skill']}** — prior boosted "
+                                    f"{details['population_prior']:.3f} → {details['transferred_prior']:.3f} "
+                                    f"based on student's mastery of: *{related}*"
+                                )
+
+                        if session["skills_updated"]:
+                            st.markdown("**Current mastery for affected skills:**")
+                            for s in session["skills_updated"]:
+                                p = s["probability"]
+                                label = s["label"]
+                                if label == "strong":
+                                    colour = "🟢"
+                                elif label == "weak":
+                                    colour = "🔴"
+                                else:
+                                    colour = "🟡"
+                                cold_start_marker = "  ⭐" if s.get("cold_start_used") else ""
+                                st.write(
+                                    f"{colour}  **{s['skill']}** — "
+                                    f"P(mastery) = {p:.3f} ({label}){cold_start_marker}"
+                                )
+                        else:
+                            st.info(
+                                "No evaluator-authorized performance "
+                                "observation was written to mastery."
+                            )
+
+                    with st.expander(
+                        "🧭 Learning path",
+                        expanded=True,
+                    ):
+                        # This is the canonical path derived by the pipeline
+                        # after mastery was updated; the UI does not rerank it.
+                        render_learning_path(result["learning_path"])
+
+                    st.info("👤 Switch to **Student Profile** tab to see the full graph "
+                            "and learning path with charts.")
         else:
             st.write("Click **Process session** to run the pipeline.")
 
@@ -378,8 +583,10 @@ with tab_profile:
             st.warning(f"No mastery data for {selected_student}.")
         else:
             # Top-level summary metrics
-            from core.learning_path import generate_learning_path
-            path = generate_learning_path(graph)
+            path = generate_learning_path(
+                graph,
+                curriculum=load_curriculum(),
+            )
             summary = path["summary"]
 
             col1, col2, col3, col4 = st.columns(4)
@@ -406,22 +613,7 @@ with tab_profile:
 
             with col_path:
                 st.subheader("Learning path")
-
-                if path["revise_urgently"]:
-                    st.markdown("##### 🔴 Revise urgently")
-                    for e in path["revise_urgently"]:
-                        flag = "  ↓ regression" if e.get("is_regression") else ""
-                        st.write(f"- **{e['skill']}** (P={e['mastery_probability']:.3f}){flag}")
-
-                if path["learn_next"]:
-                    st.markdown("##### 🟡 Learn next")
-                    for e in path["learn_next"]:
-                        st.write(f"- **{e['skill']}** (P={e['mastery_probability']:.3f})")
-
-                if path["already_strong"]:
-                    st.markdown("##### 🟢 Already strong")
-                    for e in path["already_strong"]:
-                        st.write(f"- **{e['skill']}** (P={e['mastery_probability']:.3f})")
+                render_learning_path(path)
 
             st.divider()
 

@@ -1,0 +1,258 @@
+{
+  "project_root": "C:\\Users\\Lenovo\\Documents\\Research\\meta_agent_pro",
+  "model_artifacts": [
+    {
+      "path": "models\\bkt_model.pkl",
+      "size_bytes": 45643,
+      "load_ok": false,
+      "load_error": "ValueError: <class 'numpy.random._mt19937.MT19937'> is not a known BitGenerator module."
+    },
+    {
+      "path": "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.10.0_pickle_py27_np17.pkl",
+      "size_bytes": 986,
+      "load_ok": false,
+      "load_error": "ValueError: You may be trying to read with python 3 a joblib pickle generated with python 2. This feature is not supported by joblib."
+    },
+    {
+      "path": "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.10.0_pickle_py33_np18.pkl",
+      "size_bytes": 1068,
+      "load_ok": true,
+      "model": {
+        "type": "builtins.list"
+      }
+    },
+    {
+      "path": "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.10.0_pickle_py34_np19.pkl",
+      "size_bytes": 1068,
+      "load_ok": true,
+      "model": {
+        "type": "builtins.list"
+      }
+    },
+    {
+      "path": "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.10.0_pickle_py35_np19.pkl",
+      "size_bytes": 1068,
+      "load_ok": true,
+      "model": {
+        "type": "builtins.list"
+      }
+    },
+    {
+      "path": "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.11.0_pickle_py36_np111.pkl",
+      "size_bytes": 1068,
+      "load_ok": true,
+      "model": {
+        "type": "builtins.list"
+      }
+    },
+    {
+      "path": "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.9.2_pickle_py27_np16.pkl",
+      "size_bytes": 670,
+      "load_ok": false,
+      "load_error": "ValueError: You may be trying to read with python 3 a joblib pickle generated with python 2. This feature is not supported by joblib."
+    },
+    {
+      "path": "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.9.2_pickle_py27_np17.pkl",
+      "size_bytes": 670,
+      "load_ok": false,
+      "load_error": "ValueError: You may be trying to read with python 3 a joblib pickle generated with python 2. This feature is not supported by joblib."
+    },
+    {
+      "path": "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.9.2_pickle_py33_np18.pkl",
+      "size_bytes": 691,
+      "load_ok": true,
+      "model": {
+        "type": "builtins.list"
+      }
+    },
+    {
+      "path": "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.9.2_pickle_py34_np19.pkl",
+      "size_bytes": 691,
+      "load_ok": true,
+      "model": {
+        "type": "builtins.list"
+      }
+    },
+    {
+      "path": "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.9.2_pickle_py35_np19.pkl",
+      "size_bytes": 691,
+      "load_ok": true,
+      "model": {
+        "type": "builtins.list"
+      }
+    },
+    {
+      "path": "venv\\Lib\\site-packages\\numpy\\core\\tests\\data\\astype_copy.pkl",
+      "size_bytes": 716,
+      "load_ok": false,
+      "load_error": "ValueError: You may be trying to read with python 3 a joblib pickle generated with python 2. This feature is not supported by joblib."
+    },
+    {
+      "path": "venv\\Lib\\site-packages\\numpy\\core\\tests\\data\\numpy_2_0_array.pkl",
+      "size_bytes": 718,
+      "load_ok": false,
+      "load_error": "ValueError: You may be trying to read with python 3 a joblib pickle generated with python 2. This feature is not supported by joblib."
+    }
+  ],
+  "candidate_models": {
+    "reasoning": [],
+    "uncertainty": [],
+    "clarification": [],
+    "unclassified": [
+      "models\\bkt_model.pkl",
+      "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.10.0_pickle_py27_np17.pkl",
+      "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.10.0_pickle_py33_np18.pkl",
+      "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.10.0_pickle_py34_np19.pkl",
+      "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.10.0_pickle_py35_np19.pkl",
+      "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.11.0_pickle_py36_np111.pkl",
+      "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.9.2_pickle_py27_np16.pkl",
+      "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.9.2_pickle_py27_np17.pkl",
+      "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.9.2_pickle_py33_np18.pkl",
+      "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.9.2_pickle_py34_np19.pkl",
+      "venv\\Lib\\site-packages\\joblib\\test\\data\\joblib_0.9.2_pickle_py35_np19.pkl",
+      "venv\\Lib\\site-packages\\numpy\\core\\tests\\data\\astype_copy.pkl",
+      "venv\\Lib\\site-packages\\numpy\\core\\tests\\data\\numpy_2_0_array.pkl"
+    ]
+  },
+  "training_references": [
+    {
+      "path": "scripts\\audit_detector_artifacts.py",
+      "matches": [
+        {
+          "line": 15,
+          "text": "\"TfidfVectorizer\","
+        },
+        {
+          "line": 16,
+          "text": "\"LogisticRegression\","
+        },
+        {
+          "line": 17,
+          "text": "\"joblib.dump\","
+        },
+        {
+          "line": 18,
+          "text": "\"pickle.dump\","
+        },
+        {
+          "line": 19,
+          "text": "\"reasoning\","
+        },
+        {
+          "line": 20,
+          "text": "\"uncertainty\","
+        },
+        {
+          "line": 21,
+          "text": "\"clarification\","
+        },
+        {
+          "line": 22,
+          "text": "\"[SEP]\","
+        },
+        {
+          "line": 23,
+          "text": "\"text_a\","
+        },
+        {
+          "line": 24,
+          "text": "\"text_b\","
+        },
+        {
+          "line": 25,
+          "text": "\"ColumnTransformer\","
+        },
+        {
+          "line": 26,
+          "text": "\"Pipeline\","
+        },
+        {
+          "line": 43,
+          "text": "info[\"pipeline_steps\"] = ["
+        },
+        {
+          "line": 169,
+          "text": "\"reasoning\": [],"
+        },
+        {
+          "line": 170,
+          "text": "\"uncertainty\": [],"
+        },
+        {
+          "line": 171,
+          "text": "\"clarification\": [],"
+        },
+        {
+          "line": 179,
+          "text": "for key in (\"reasoning\", \"uncertainty\", \"clarification\"):"
+        },
+        {
+          "line": 235,
+          "text": "if \"pipeline_steps\" in model_info:"
+        },
+        {
+          "line": 236,
+          "text": "print(\" pipeline steps:\")"
+        },
+        {
+          "line": 237,
+          "text": "for step in model_info[\"pipeline_steps\"]:"
+        }
+      ]
+    },
+    {
+      "path": "notebooks\\bkt_exploration.ipynb",
+      "matches": [
+        {
+          "line": 703,
+          "text": "\"DATA PIPELINE:\\n\","
+        },
+        {
+          "line": 734,
+          "text": "\"print(\\\"DATA PIPELINE:\\\")\\n\","
+        },
+        {
+          "line": 1581,
+          "text": "\"# Initialise the full pipeline\\n\","
+        },
+        {
+          "line": 1756,
+          "text": "\" reasoning: Simple words like 'dont get' and 'hard' indicate a basic vocabulary. The general expression of confusion and difficulty suggests a need for a slow pace. Explicit statements like 'i dont get how percents work' and 'its hard' ..."
+        },
+        {
+          "line": 1765,
+          "text": "\" reasoning: The student uses specific mathematical terms like 'quadratic equations' and 'leading coefficient', indicating an intermediate vocabulary level. Their ability to solve linear equations and desire to focus on a specific quadra..."
+        },
+        {
+          "line": 1774,
+          "text": "\" reasoning: The student uses simple, everyday language, indicating a basic vocabulary level. The phrase 'not sure where to start' suggests a need for foundational instruction at a slow pace. Expressions like 'need help' and 'not sure wh..."
+        },
+        {
+          "line": 1805,
+          "text": "\" if k == \\\"reasoning\\\":\\n\","
+        },
+        {
+          "line": 1806,
+          "text": "\" print(f\\\" reasoning: {v}\\\")\\n\","
+        },
+        {
+          "line": 1889,
+          "text": "\" \u2717 [clarification_request ] Percents conf=0.3\\n\","
+        },
+        {
+          "line": 1952,
+          "text": "\" \u2717 [clarification_request ] Percent Of conf=0.3\\n\","
+        }
+      ]
+    },
+    {
+      "path": "notebooks\\bkt_training_colab.ipynb",
+      "matches": [
+        {
+          "line": 713,
+          "text": "\" pickle.dump(model, f)\\n\","
+        }
+      ]
+    }
+  ]
+}

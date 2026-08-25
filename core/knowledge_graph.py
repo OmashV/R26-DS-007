@@ -360,3 +360,74 @@ class KnowledgeGraph:
             "skills_updated": skill_updates,
             "graph": self.get_student_graph(student_id),
         }
+
+    def process_resolved_events(
+        self,
+        student_id: str,
+        resolved_events: list,
+        session_id: Optional[str] = None,
+    ) -> dict:
+        """
+        Process Signal Resolver outputs.
+
+        Each resolved event can create at most one BKT observation. Behavioural
+        evidence is preserved in the returned summary, but does not create
+        additional attempts or independently affect mastery.
+        """
+        session_id = session_id or f"sess_{uuid.uuid4().hex[:12]}"
+        self.ensure_student(student_id)
+
+        affected_skills = set()
+        behaviour_events = []
+
+        with get_connection() as conn:
+            conn.execute(
+                """
+                INSERT OR REPLACE INTO sessions
+                    (session_id, student_id, concept_count)
+                VALUES (?, ?, ?)
+                """,
+                (
+                    session_id,
+                    student_id,
+                    len({event.skill_id for event in resolved_events}),
+                ),
+            )
+
+        for event in resolved_events:
+            behaviour_events.append({
+                "event_id": event.event_id,
+                "skill": event.skill_id,
+                "primary_signal": event.primary_signal.value,
+                "reasoning_probability": event.behaviour.reasoning_probability,
+                "uncertainty_probability": event.behaviour.uncertainty_probability,
+                "clarification_probability": event.behaviour.clarification_probability,
+                "repeated_misunderstanding": (
+                    event.history.repeated_misunderstanding
+                ),
+            })
+
+            if not event.bkt_update.should_update:
+                continue
+
+            self.record_attempt(
+                student_id=student_id,
+                skill=event.skill_id,
+                correct=event.bkt_update.outcome,
+                confidence=event.bkt_update.update_confidence,
+                signal_type=event.primary_signal.value,
+                session_id=session_id,
+            )
+            affected_skills.add(event.skill_id)
+
+        skill_updates = []
+        for skill in sorted(affected_skills):
+            update_result = self.update_mastery(student_id, skill)
+            skill_updates.append({"skill": skill, **update_result})
+
+        return {
+            "session_id": session_id,
+            "skills_updated": skill_updates,
+            "behaviour_events": behaviour_events,
+            "graph": self.get_student_graph(student_id),
+        }

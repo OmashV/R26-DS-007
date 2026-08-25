@@ -1,26 +1,13 @@
-"""
-Concept extractor: turns a raw tutoring session transcript into structured
-attempts that the knowledge graph can consume.
-
-Implements:
-    FR4 — Identifies concepts present in a transcript
-    FR5 — Classifies each concept by mastery signal
-    FR6 — Distinguishes gaps from active misconceptions
-    FR7 — Produces structured JSON output
-
-Uses Google Gemini for extraction. The list of valid skills is constrained
-to what the trained BKT model knows, ensuring downstream compatibility.
-"""
-
 import json
 import logging
 import os
+import time
 from pathlib import Path
 from typing import Optional
 
+from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
 
@@ -31,38 +18,47 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_MODEL = "gemini-2.5-flash"
 
 
-SYSTEM_PROMPT = """You are an educational data extraction assistant. Your job is to read a tutoring conversation between a student and a tutor, and identify learning evidence signals about specific concepts. The system uses these signals to estimate student mastery.
+SYSTEM_PROMPT = """You are an educational data extraction assistant.
+
+Your job is to read a tutoring conversation and identify event-level learning evidence.
+
+IMPORTANT:
+You are NOT assigning BKT-ready signals.
+You are NOT assigning uncertainty, clarification, confusion, or repeated misunderstanding.
+You are ONLY extracting:
+1. which skill is involved,
+2. which student turn provides evidence,
+3. the student's correctness state for that skill,
+4. any explicit misconception.
 
 Rules:
+
 1. Only use skill names from the provided list of allowed skills.
-2. For each piece of learning evidence, output one signal entry.
-3. Multiple signals on the same skill in chronological order are normal — the system models sequences.
-4. Don't invent signals. Only emit a signal when there is clear textual evidence.
-5. Optionally, identify any misconceptions — specific wrong beliefs the student revealed.
-
-Signal types and their meanings:
-
-POSITIVE EVIDENCE (label=1):
-- correct_answer       — Student gave a correct, definitive answer to a problem (confidence 1.0)
-- correct_explanation  — Student explained the concept correctly in their own words (confidence 0.7)
-- partial_correct      — Student got there with significant scaffolding/hints from the tutor (confidence 0.4)
-- evaluator_positive   — Explicit positive feedback from an evaluator agent (confidence 1.0)
-
-NEGATIVE EVIDENCE (label=0):
-- incorrect_answer            — Student gave a wrong answer to a problem (confidence 1.0)
-- repeated_misunderstanding   — Student showed the same misconception multiple times (confidence 0.8)
-- confusion                   — Student expressed clear confusion ("I don't get it") (confidence 0.6)
-- clarification_request       — Student asked for an explanation (confidence 0.3)
-- evaluator_negative          — Explicit negative feedback from an evaluator agent (confidence 1.0)
+2. Output one event for each student-turn × skill pair where there is clear evidence.
+3. Use the exact transcript turn index for the student utterance that produced the evidence.
+4. Only use these correctness values:
+   - "correct"
+   - "partial"
+   - "incorrect"
+   - "unknown"
+5. Use:
+   - "correct" when the student clearly demonstrates correct understanding or a correct answer,
+   - "partial" when the student is partly right or reaches the answer with substantial tutor support,
+   - "incorrect" when the student gives a clearly wrong answer or explanation,
+   - "unknown" when the turn is relevant to a skill but correctness cannot be judged.
+6. Do not invent events. Only emit an event when there is clear textual evidence.
+7. Do not emit behavioural signals such as confusion or clarification_request.
+8. If a student expresses a specific wrong belief, also include it in misconceptions.
 
 Output strict JSON with this exact structure:
+
 {
-  "signals": [
+  "events": [
     {
+      "turn_index": <integer>,
       "skill": "<skill name from allowed list>",
-      "signal_type": "<one of the types above>",
-      "label": 0 or 1,
-      "confidence": <float matching the type's confidence>
+      "correctness": "correct" | "partial" | "incorrect" | "unknown",
+      "evidence_span": "<short quote from the relevant student turn>"
     }
   ],
   "misconceptions": [
@@ -70,21 +66,34 @@ Output strict JSON with this exact structure:
   ]
 }
 
-Use the exact label and confidence values from the lists above. Don't invent your own. Output ONLY the JSON, no prose, no markdown fences."""
+Output ONLY the JSON. No prose. No markdown fences.
+"""
+
 
 class ConceptExtractor:
     """
-    Extracts structured concept-mastery data from raw conversation transcripts
-    using a constrained LLM prompt.
+    Extracts structured event candidates from raw tutoring transcripts.
+
+    This extractor is intentionally limited to:
+    - skill identification
+    - correctness state
+    - misconception extraction
+
+    It does NOT produce BKT-ready behavioural signals.
     """
 
-    def __init__(self, allowed_skills: list[str], api_key: Optional[str] = None) -> None:
-        """
-        Args:
-            allowed_skills: List of skill names the BKT model knows.
-                            Extractor will constrain output to this list.
-            api_key: Gemini API key. Defaults to GEMINI_API_KEY env var.
-        """
+    VALID_CORRECTNESS = {
+        "correct",
+        "partial",
+        "incorrect",
+        "unknown",
+    }
+
+    def __init__(
+        self,
+        allowed_skills: list[str],
+        api_key: Optional[str] = None,
+    ) -> None:
         if not allowed_skills:
             raise ValueError("allowed_skills cannot be empty")
 
@@ -96,35 +105,57 @@ class ConceptExtractor:
 
         self.client = genai.Client(api_key=key)
         self.allowed_skills = allowed_skills
-        logger.info(f"ConceptExtractor initialised with {len(allowed_skills)} allowed skills")
 
-    def extract(self, transcript: list[dict], max_retries: int = 3) -> dict:
+        logger.info(
+            f"ConceptExtractor initialised with {len(allowed_skills)} allowed skills"
+        )
+
+    def extract(
+        self,
+        transcript: list[dict],
+        max_retries: int = 3,
+    ) -> dict:
         """
-        Extract structured attempts from a transcript.
+        Extract structured event candidates from a transcript.
 
         Args:
             transcript: List of {"role": "student"|"tutor", "text": str} turns.
-            max_retries: How many times to retry on transient API errors.
+            max_retries: Number of retries on transient API failure.
 
         Returns:
-            Dict with "attempts" (list of {skill, correct}) and "misconceptions" (list of str).
+            Dict:
+            {
+                "events": [...],
+                "misconceptions": [...]
+            }
         """
-        if not transcript:
-            return {"attempts": [], "misconceptions": []}
 
-        formatted_transcript = "\n".join(
-            f"{turn['role'].upper()}: {turn['text']}" for turn in transcript
-        )
+        if not transcript:
+            return {
+                "events": [],
+                "misconceptions": [],
+            }
+
+        formatted_transcript_lines = []
+        for i, turn in enumerate(transcript):
+            role = str(turn["role"]).upper()
+            text = str(turn["text"])
+            formatted_transcript_lines.append(
+                f"[{i}] {role}: {text}"
+            )
+
+        formatted_transcript = "\n".join(formatted_transcript_lines)
         skills_list = "\n".join(f"- {s}" for s in self.allowed_skills)
 
         user_message = (
             f"ALLOWED SKILLS (use only these):\n{skills_list}\n\n"
             f"TRANSCRIPT:\n{formatted_transcript}\n\n"
-            f"Extract structured attempts and misconceptions as JSON."
+            f"Extract event candidates and misconceptions as JSON."
         )
 
-        import time
+        response = None
         last_error = None
+
         for attempt in range(max_retries):
             try:
                 response = self.client.models.generate_content(
@@ -136,19 +167,26 @@ class ConceptExtractor:
                         temperature=0.1,
                     ),
                 )
-                break  # success
+                break
             except Exception as e:
                 last_error = e
                 if attempt < max_retries - 1:
-                    wait_time = 2 ** attempt  # exponential backoff: 1s, 2s, 4s
+                    wait_time = 2 ** attempt
                     logger.warning(
                         f"Gemini API error (attempt {attempt + 1}/{max_retries}): {e}. "
                         f"Retrying in {wait_time}s..."
                     )
                     time.sleep(wait_time)
                 else:
-                    logger.error(f"Gemini API failed after {max_retries} attempts")
+                    logger.error(
+                        f"Gemini API failed after {max_retries} attempts"
+                    )
                     raise
+
+        if response is None:
+            raise RuntimeError(
+                f"Gemini API returned no response. Last error: {last_error}"
+            )
 
         try:
             result = json.loads(response.text)
@@ -156,62 +194,113 @@ class ConceptExtractor:
             logger.error(f"Failed to parse LLM JSON response: {response.text}")
             raise ValueError(f"Invalid JSON from LLM: {e}") from e
 
-        result = self._validate_output(result)
+        result = self._validate_output(
+            result=result,
+            transcript=transcript,
+        )
+
         logger.info(
-            f"Extracted {len(result['signals'])} signals, "
+            f"Extracted {len(result['events'])} events, "
             f"{len(result['misconceptions'])} misconceptions"
         )
+
         return result
 
-    # Allowed signal types and their canonical (label, confidence) values
-    SIGNAL_TYPES = {
-        # positive
-        "correct_answer":       (1, 1.0),
-        "correct_explanation":  (1, 0.7),
-        "partial_correct":      (1, 0.4),
-        "evaluator_positive":   (1, 1.0),
-        # negative
-        "incorrect_answer":           (0, 1.0),
-        "repeated_misunderstanding":  (0, 0.8),
-        "confusion":                  (0, 0.6),
-        "clarification_request":      (0, 0.3),
-        "evaluator_negative":         (0, 1.0),
-    }
+    def _validate_output(
+        self,
+        result: dict,
+        transcript: list[dict],
+    ) -> dict:
+        """
+        Validate LLM output structure and filter invalid entries.
+        """
 
-    def _validate_output(self, result: dict) -> dict:
-        """Validate LLM output structure and filter invalid entries."""
-        signals = result.get("signals", [])
+        events = result.get("events", [])
         misconceptions = result.get("misconceptions", [])
 
-        valid_signals = []
-        for s in signals:
-            if not isinstance(s, dict):
+        valid_events = []
+
+        for event in events:
+            if not isinstance(event, dict):
                 continue
-            skill = s.get("skill")
-            signal_type = s.get("signal_type")
-            label = s.get("label")
-            confidence = s.get("confidence")
+
+            turn_index = event.get("turn_index")
+            skill = event.get("skill")
+            correctness = event.get("correctness")
+            evidence_span = event.get("evidence_span", "")
+
+            # ------------------------------
+            # turn index checks
+            # ------------------------------
+
+            if not isinstance(turn_index, int):
+                logger.warning(
+                    f"Event missing valid turn_index: {event} — skipping"
+                )
+                continue
+
+            if turn_index < 0 or turn_index >= len(transcript):
+                logger.warning(
+                    f"turn_index out of range: {turn_index} — skipping"
+                )
+                continue
+
+            turn = transcript[turn_index]
+
+            if turn.get("role") != "student":
+                logger.warning(
+                    f"turn_index {turn_index} is not a student turn — skipping"
+                )
+                continue
+
+            # ------------------------------
+            # skill checks
+            # ------------------------------
 
             if skill not in self.allowed_skills:
-                logger.warning(f"LLM returned skill not in allowed list: '{skill}' — skipping")
-                continue
-            if signal_type not in self.SIGNAL_TYPES:
-                logger.warning(f"Unknown signal type: '{signal_type}' — skipping")
+                logger.warning(
+                    f"LLM returned skill not in allowed list: '{skill}' — skipping"
+                )
                 continue
 
-            # Enforce canonical label/confidence for the signal type
-            # (LLMs can drift; we trust the taxonomy, not the LLM's numbers)
-            canonical_label, canonical_confidence = self.SIGNAL_TYPES[signal_type]
-            valid_signals.append({
-                "skill": skill,
-                "signal_type": signal_type,
-                "label": canonical_label,
-                "confidence": canonical_confidence,
-            })
+            # ------------------------------
+            # correctness checks
+            # ------------------------------
 
-        valid_misconceptions = [m for m in misconceptions if isinstance(m, str)]
+            if correctness not in self.VALID_CORRECTNESS:
+                logger.warning(
+                    f"Invalid correctness '{correctness}' — skipping"
+                )
+                continue
+
+            # ------------------------------
+            # normalize evidence span
+            # ------------------------------
+
+            if not isinstance(evidence_span, str):
+                evidence_span = ""
+
+            evidence_span = evidence_span.strip()
+
+            if not evidence_span:
+                # fallback to full student turn
+                evidence_span = str(turn.get("text", "")).strip()
+
+            valid_events.append(
+                {
+                    "turn_index": turn_index,
+                    "skill": skill,
+                    "correctness": correctness,
+                    "evidence_span": evidence_span,
+                    "student_text": str(turn.get("text", "")).strip(),
+                }
+            )
+
+        valid_misconceptions = [
+            m for m in misconceptions if isinstance(m, str)
+        ]
 
         return {
-            "signals": valid_signals,
+            "events": valid_events,
             "misconceptions": valid_misconceptions,
         }

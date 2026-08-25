@@ -93,8 +93,12 @@ Interactive docs (Swagger UI): `http://127.0.0.1:8000/docs`
 | GET | `/student/{id}/path` | Current personalised learning path |
 | POST | `/student/new` | Initialise a new student profile (cold-start) |
 
-All endpoints currently return mock data. The `_mock: true` flag in each
-response indicates that the real pipeline has not yet been wired in.
+`GET /student/{id}/path` is wired to the real persisted student graph and the
+version-controlled prerequisite curriculum. It returns the legacy
+`revise_urgently`, `learn_next`, and `already_strong` lists plus `regressions`,
+`blocked`, `unseen`, `recommended_order`, and `summary`. The path is derived on
+every request and is not persisted. The other endpoints still return mock data
+with `_mock: true` while their production wiring remains pending.
 
 ---
 

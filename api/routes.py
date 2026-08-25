@@ -7,20 +7,37 @@ Implements the four endpoints specified in requirements.md §7:
   GET  /student/{id}/path    — FR16, FR18
   POST /student/new          — FR19, FR20
 
-All handlers currently return mock data so teammates can develop against a
-stable interface (R3 mitigation). Replace mock returns with real pipeline
-calls once core modules are implemented.
+The learning-path endpoint is backed by the real persisted mastery graph and
+deterministic curriculum planner. Other handlers retain their existing mock
+contracts until their production wiring is completed.
 """
 
 import logging
+from functools import lru_cache
 from typing import Any
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel
+
+from core.curriculum import Curriculum, load_curriculum
+from core.knowledge_graph import KnowledgeGraph
+from core.learning_path import generate_learning_path
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
+
+
+@lru_cache(maxsize=1)
+def get_path_knowledge_graph() -> KnowledgeGraph:
+    """Return the shared read model used by the learning-path endpoint."""
+    return KnowledgeGraph()
+
+
+@lru_cache(maxsize=1)
+def get_path_curriculum() -> Curriculum:
+    """Load and validate the version-controlled curriculum once."""
+    return load_curriculum()
 
 
 # ---------------------------------------------------------------------------
@@ -109,21 +126,30 @@ async def get_student_profile(student_id: str) -> dict[str, Any]:
 
 
 @router.get("/student/{student_id}/path")
-async def get_student_path(student_id: str) -> dict[str, Any]:
+async def get_student_path(
+    student_id: str,
+    knowledge_graph: KnowledgeGraph = Depends(get_path_knowledge_graph),
+    curriculum: Curriculum = Depends(get_path_curriculum),
+) -> dict[str, Any]:
     """
     Return the current personalised learning path for a student.
 
-    FR16, FR18 — three categories: revise urgently, learn next, already strong.
-    UR1 — student receives a path indicating status of each concept.
+    FR16, FR18 — prerequisite-aware planner output with actionable,
+    blocked, unseen, regression, and strong views. The response is derived
+    from current mastery and is never persisted by this endpoint.
     """
-    logger.info("GET /student/%s/path [MOCK]", student_id)
-    return {
-        "student_id": student_id,
-        "revise_urgently": ["Equivalent Fractions", "Fraction Comparison"],
-        "learn_next": ["Mixed Numbers", "Fraction Addition", "Fraction Division"],
-        "already_strong": ["Basic Addition", "Multiplication Tables", "Whole Number Division"],
-        "_mock": True,
-    }
+    graph = knowledge_graph.get_student_graph(student_id)
+    path = generate_learning_path(
+        graph,
+        curriculum=curriculum,
+    )
+    logger.info(
+        "GET /student/%s/path | mastery_rows=%d recommended=%d",
+        student_id,
+        len(graph),
+        len(path["recommended_order"]),
+    )
+    return {"student_id": student_id, **path}
 
 
 @router.post("/student/new")

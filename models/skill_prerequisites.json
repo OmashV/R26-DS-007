@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "skills": [
+    {
+      "skill": "Addition Whole Numbers",
+      "prerequisites": []
+    },
+    {
+      "skill": "Multiplication Whole Numbers",
+      "prerequisites": [
+        "Addition Whole Numbers"
+      ]
+    },
+    {
+      "skill": "Equivalent Fractions",
+      "prerequisites": []
+    },
+    {
+      "skill": "Ordering Fractions",
+      "prerequisites": [
+        "Equivalent Fractions"
+      ]
+    },
+    {
+      "skill": "Addition and Subtraction Fractions",
+      "prerequisites": [
+        "Equivalent Fractions"
+      ]
+    },
+    {
+      "skill": "Multiplication Fractions",
+      "prerequisites": [
+        "Multiplication Whole Numbers",
+        "Equivalent Fractions"
+      ]
+    },
+    {
+      "skill": "Division Fractions",
+      "prerequisites": [
+        "Multiplication Fractions"
+      ]
+    },
+    {
+      "skill": "Conversion of Fraction Decimals Percents",
+      "prerequisites": [
+        "Equivalent Fractions"
+      ]
+    },
+    {
+      "skill": "Percents",
+      "prerequisites": [
+        "Conversion of Fraction Decimals Percents"
+      ]
+    },
+    {
+      "skill": "Finding Percents",
+      "prerequisites": [
+        "Percents"
+      ]
+    },
+    {
+      "skill": "Percent Of",
+      "prerequisites": [
+        "Percents",
+        "Multiplication Fractions"
+      ]
+    }
+  ]
+}
